@@ -1,0 +1,66 @@
+///////////////////////////////////////////////////////////////////////////////////////////////
+///        Instalation React Bootstrap : https://reactstrap.github.io/components/alerts/     //
+///                                                                                          //
+///    1. npm install --save reactstrap react react-dom                                      //
+///    2. import React Strap to index.js (import 'bootstrap/dist/css/bootstrap.min.css';)    //
+///                                                                                          //
+///        uninstall reactstrap                                                              //
+///                                                                                          //
+///    3. npm uninstall reactstrap                                                           //
+///                                                                                          //
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///        Instalation MDB React : https://mdbootstrap.com/docs/react/                       //
+///                                                                                          //
+///     1. npm install --save mdbreact                                                       //
+///     2. import to index.js                                                                //
+///            import '@fortawesome/fontawesome-free/css/all.min.css';                       //
+///            import'bootstrap-css-only/css/bootstrap.min.css';                             //
+///            import'mdbreact/dist/css/mdb.css';                                            //
+///                                                                                          //
+///         uninstall MDB React                                                              //
+///                                                                                          //
+///     3. npm uninstall  mdbreact                                                           //
+///                                                                                          //
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+///        Installations React Materialize : https://github.com/react-materialize                      //
+///                                                                                                  //
+///     1. npm install materialize-css@next                                                          //
+///     2. npm install react-materialize                                                             //
+///     3. place this tag to index.js                                                                //
+///         <link rel="stylesheets" href="https://fonts.googleapis.com/icon?family=Material+Icons">   //
+///         <link rel="stylesheets" href="path/to/materialize.css">                                   //
+///                                                                                                  //
+///     4. To see Boilerplate : https://github.com/react-materialize/webpack-boilplate               //
+///                                                                                                  //
+///        Uninstall React Materialize                                                               //
+///                                                                                                  //
+///     5. npm uninstall materialize-css@next                                                        //
+///     6. npm uninstall react-materialize                                                           //
+///                                                                                                  //
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///        Instalation React Material-UI : https://material-ui.com/                                                             //
+///                                                                                                                             //
+///     1. npm install @material-ui/core                                                                                        //
+///     2. Place this tag in index.js                                                                                           //
+///             <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />     //
+///             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />                        //
+///                                                                                                                             //
+///     3. if need some SVG icon can run this  :                                                                                //
+///             => npm install @material-ui/icons                                                                               //
+///                                                                                                                             //
+///     uninstall React Matertial-UI                                                                                            //
+///                                                                                                                             //
+///     4. npm uninstall @material-ui/core                                                                                      //
+///                                                                                                                             //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+

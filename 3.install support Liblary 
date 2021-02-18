@@ -1,0 +1,99 @@
+1.  if you need to make search input this will help 
+    //////////////////////////////////////////////////////////
+    //  Instalation Quick Search Liblary                    //
+    //////////////////////////////////////////////////////////
+    //  Source : https://www.npmjs.com/package/qs           //
+    //                                                      //
+    //  How To Install                                      //
+    //  1. npm install qs                                   //
+    //  2. how to use you must import                      //    
+    //         => import Qs from "qs";                      //
+    //     example code : https://www.npmjs.com/package/qs  //
+    //                                                      //        
+    //  3. uninstall : npm uninstall qs                     //
+    //                                                      //
+    //////////////////////////////////////////////////////////
+
+
+2.  if you need to make some Number format use this
+    //////////////////////////////////////////////////////////////////////
+    //    Instalation React Number Format                               //
+    //////////////////////////////////////////////////////////////////////
+    //    Source : https://www.npmjs.com/package/react-number-format    //   
+    //                                                                  // 
+    //    How To Install                                                //
+    //    1. npm install react-number-format --save                     //
+    //    2. how to use Must import                                     //
+    //            =>import NumberFormat from 'react-number-format';     //
+    //        example Code : {Source}                                   //
+    //                                                                  //    
+    //    3. uninstall : npm uninstall react-number-format              //
+    //                                                                  //        
+    //////////////////////////////////////////////////////////////////////
+    
+
+3.  if you want to use gogel maps in react you can use this     
+    //////////////////////////////////////////////////////////////////////
+    //    Instalation Gogel Maps React                                  //
+    //////////////////////////////////////////////////////////////////////
+    //    Source : https://www.npmjs.com/package/google-map-react       //   
+    //                                                                  // 
+    //    How To Install                                                //
+    //    1. npm install --save google-map-react                        //
+    //          example Code : {Source}                                 //
+    //                                                                  //    
+    //    2. uninstall : npm uninstall google-map-react                 //
+    //                                                                  //        
+    //////////////////////////////////////////////////////////////////////
+
+
+4.  if you wana tracking some day left or tracking hour left you can do whit this 
+    //////////////////////////////////////////////////////////////////////
+    //    Instalation Momment js                                        //
+    //////////////////////////////////////////////////////////////////////
+    //    Source :  https://www.npmjs.com/package/moment                //
+    //              https://momentjs.com/docs/#/use-it/                 //   
+    //                                                                  // 
+    //    How To Install                                                //
+    //    1. npm install moment                                         //
+    //          example Code : https://momentjs.com/docs/#/get-set/     //
+    //                                                                  //    
+    //    2. uninstall : npm uninstall moment                           //
+    //                                                                  //        
+    //////////////////////////////////////////////////////////////////////     
+    
+
+5. if you wana create some Chapta from gogel
+    ////////////////////////////////////////////////////////////////////////////////////
+    //    Instalation Gogel Recaptcha                                                 //
+    ////////////////////////////////////////////////////////////////////////////////////
+    //    Source :  https://github.com/dozoisch/react-google-recaptcha                //
+    //                                                                                //   
+    //                                                                                // 
+    //    How To Install                                                              //
+    //    1. npm install --save react-google-recaptcha                                //
+    //          example Code : https://github.com/dozoisch/react-google-recaptcha     //
+    //                                                                                //    
+    //    2. uninstall : npm uninstall react-google-recaptcha                         //
+    //                                                                                //        
+    ////////////////////////////////////////////////////////////////////////////////////     
+
+
+6. if you wana create some Spiner  for Progress holding 
+    ////////////////////////////////////////////////////////////////////////////////////
+    //    Instalation React Loader Spiner                                             //
+    ////////////////////////////////////////////////////////////////////////////////////
+    //    Source :  https://www.npmjs.com/package/react-loader-spinner                //
+    //                                                                                //   
+    //                                                                                // 
+    //    How To Install                                                              //
+    //    1. npm install react-loader-spinner --save                                  //
+    //    2. you need to import :                                                     //
+    //                                                                                //
+    //    => import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"   //
+    //                                                                                //
+    //      example Code : https://github.com/dozoisch/react-google-recaptcha         //
+    //                                                                                //    
+    //    2. uninstall : npm uninstall eact-loader-spinner                            //
+    //                                                                                //        
+    ////////////////////////////////////////////////////////////////////////////////////     
