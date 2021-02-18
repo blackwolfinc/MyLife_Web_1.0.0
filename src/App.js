@@ -1,9 +1,10 @@
-import "./app.sass"
+import "./app.scss"
+import Page1 from "./Pages/Page1"
 
 function App() {
   return (
     <div className="App">
-      ts
+      <Page1/>
     </div>
   );
 }

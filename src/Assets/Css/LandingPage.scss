@@ -1,0 +1,113 @@
+.HeaderPage {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+
+    .LogoEquity {
+        width: 15%;
+    }
+
+    .HeaderTitle {
+        // background-color: aqua;
+        width: 100%;
+        padding: 3% 1%;
+        border-bottom: 1px solid gray;
+    }
+}
+
+.FromIsi {
+
+
+    width: 100%;
+}
+
+.col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    label {
+        margin: 20px 0px;
+        font-weight: bold;
+
+        span {
+            color: red;
+        }
+    }
+
+    select   {
+        padding: 0.5rem 2rem;
+        border: 1px solid grey;
+        border-radius: 5px;
+
+        option {
+            background-color: red;
+            margin: 1rem;
+        }
+    }
+
+    input {
+        padding: 0.5rem;
+        border: 1px solid grey;
+        border-radius: 5px;
+
+
+    }
+
+
+}
+.checkboxlWrap {
+
+    margin-top: 1rem;
+    label {
+        display: flex;
+        justify-content: left;
+        flex-direction: row;
+        align-items: center;
+        p {
+            margin-left: 1rem;
+            font-weight: 100;
+        }
+        span{color: red;}
+    }
+ }
+
+
+ .checkbookFrom {
+    //  background-color: red;
+    label{
+        font-weight: 50;
+        margin-top: 0.5rem;
+    }
+
+    .KotaProf {
+        display: flex;
+        justify-content: space-between;
+        .kota ,.prof {
+            width: 50%;
+            input {
+                width: 95%;
+            }
+        }
+        .kota {
+            input  {
+                width: 90%;
+            }
+        }
+    }
+    .kodePos {
+        width: 45%;
+    }
+
+ }
+ .btn-Submit{
+     padding: 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 20%;
+}
