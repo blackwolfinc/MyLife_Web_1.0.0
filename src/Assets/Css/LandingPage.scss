@@ -39,13 +39,14 @@
     }
 
     select   {
+        width: 30%;
         padding: 0.5rem 2rem;
         border: 1px solid grey;
         border-radius: 5px;
 
         option {
-            background-color: red;
-            margin: 1rem;
+            // background-color: red;
+            margin: 0rem;
         }
     }
 
@@ -104,10 +105,15 @@
 
  }
  .btn-Submit{
+     margin-top: 1rem;
      padding: 20px;
     background-color: green;
     color: white;
     border: none;
     border-radius: 5px;
     width: 20%;
+}
+
+.hide {
+    display: none;
 }

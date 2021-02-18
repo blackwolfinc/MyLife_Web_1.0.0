@@ -1,12 +1,65 @@
 import React, { forwardRef } from "react";
 import "../Assets/Css/LandingPage.scss";
 import Logo from "../Assets/Img/Logo.jpg";
-import React, { useState, useEffect } from
+import  { useState, useEffect } from'react';
+import { loadReCaptcha ,ReCaptcha } from 'react-recaptcha-google'
 function Page1() {
+const [Hide, SetHideAlternative] = useState("hide")
+const [HideCheck, SetAlternativeCheck] = useState(false)
+const [Change, SetChange] = useState("")
+const [ChangeWa, SetChangeWa] = useState("hide")
 
+// data
+const [DataPolis, SetDataPolis] = useState("")
+const [DataNama, SetDataNama] = useState("")
+const [DataNumber, SetDataNumber] = useState(0)
+const [DataEmail, SetDataEmail] = useState("")
+
+
+
+const TidakAdaEmailAction =()=> {
+    if (Hide==="hide"&&HideCheck==="true") {
+
+        SetHideAlternative("")
+        SetAlternativeCheck("false")
+    }
+    else{
+        SetHideAlternative("hide")
+        SetAlternativeCheck("true")
+    }
+
+}
+
+const handleChange =(e)=>{
+    SetChange(e.target.value)
+    alert(e.target.value)
+}
+const handleChangeAll =(e)=>{
+    if (e.target.id =="Email") {
+        SetDataEmail( e.target.value);
+    }
+    if ( e.target.id=="Nomor") {
+        SetDataNumber( e.target.value);
+    }
+    if (e.target.id =="noPolis") {
+        SetDataPolis( e.target.value);
+    }
+    if (e.target.id =="Name")
+    {
+        SetDataNama( e.target.value);
+
+    }
+
+
+
+}
+
+const handleChangeWa =(e)=>{
+    SetChangeWa(e.target.value)
+}
 
     useEffect(() => {
-       
+        loadReCaptcha();
     }, [])
 
 
@@ -31,77 +84,81 @@ function Page1() {
             <label htmlFor="noPolis">
               Nomor Polis <span>*</span>
             </label>
-            <input type="text" id="noPolis" required/>
+            <input onChange={handleChangeAll} type="text" id="noPolis" required/>
           </div>
           {/* Nama Lengkap */}
           <div className="col nameWrap">
             <label htmlFor="Name">
               Nama Lengkap <span>*</span>
             </label>
-            <input type="text" id="Name" required />
+            <input onChange={handleChangeAll} type="text" id="Name" required />
           </div>
           {/* Nomor Ponsel */}
           <div className="col nomorWrap">
-            <label htmlFor="Nomor">
+            <label  htmlFor="Nomor">
               Nomor Ponsel / HP <span>*</span>
             </label>
-            <input type="number" id="Nomor" required />
+            <input onChange={handleChangeAll}   type="number" id="Nomor" required />
+
           </div>
+
           {/* Alamat Email */}
           <div className="col emailWrap">
             <label htmlFor="Email">
              Alamat E-mail<span>*</span>
             </label>
-            <input type="email" id="Email" required />
+            <input placeholder={"email sekarang = " } onChange={handleChangeAll} type="email" id="Email" required />
+
           </div>
+
           {/* Select  Perubahan Data*/}
-          <div className="col SelectlWrap">
-            <label htmlFor="Email">
-              Apakah Data diatas ada perubahan ? <span>*</span>
-            </label>
-            <select>
-              <option value=""></option>
-              <option id="option1" value="1">
-                ya
-              </option>
-              <option id="option2" value="2">
-                Tidak
-              </option>
-            </select>
-          </div>
+
+
+
+
+
           {/*Terhubung Wa  */}
           <div className="col selectlWrap">
             <label htmlFor="Email">
               Apakah no Hp anda Terhubung dengan No Whatsapp <span>*</span>
             </label>
-            <select>
-              <option value=""></option>
-              <option id="option1" value="1">
+            <select
+             onChange={handleChangeWa} >
+              <option value="hide"></option>
+              <option selected id="option1" value="hide">
                 ya
               </option>
-              <option id="option2" value="2">
+              <option  id="option2" value="show">
                 Tidak
               </option>
+              
             </select>
           </div>
-
+            {/* no Wa baru  */}
+            <div className={`col nomorWrap2 ${ChangeWa}`}>
+            <label htmlFor="Nomor">
+             Nomor Whatsapp  <span>*</span>
+            </label>
+            <input type="number" id="Nomor"  />
+          </div>
           {/* Checkbox */}
           {/* Checkbook Triger */}
-          <div className="col checkboxlWrap">
+          <div className="col checkboxlWrap ">
             <label>
               <input
                 name="isGoing"
                 type="checkbox"
-                // checked={this.state.isGoing}
-                // onChange={this.handleInputChange}
+                checked={(Hide==="hide")?false:true}
+                onChange={TidakAdaEmailAction}
               />
               <p>Tidak Ada Alamat Email</p>
             </label>
             {/* Checkboox From */}
-            <label htmlFor="checkbookFrom">
+
+            <div className= {`col checkbookFrom ${Hide}`}>
+            <label htmlFor="checkbookFrom ">
               Alamat Korespondensi <span> *</span>
             </label>
-            <div className="col checkbookFrom">
               {/* nama jaalan dan rumah  */}
               <input type="text" id="namaJalan" />
               <label htmlFor="namaJalan"> Nama Jalan,No Rumah/Umit</label>
@@ -159,6 +216,16 @@ function Page1() {
            Mohon verivikasi Diri anda <span>*</span>
             </label>
 
+            <ReCaptcha
+
+            ref={(el) => {"tes"}}
+            size="normal"
+            data-theme="dark"
+            render="explicit"
+            sitekey="6LeB9VwaAAAAAMRZDD8GPlr1-Wn9WPcJaRTGnXp-"
+            // onloadCallback={this.onLoadRecaptcha}
+            // verifyCallback={this.verifyCallback}
+        />
           </div>
 
 
