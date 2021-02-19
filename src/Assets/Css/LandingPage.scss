@@ -7,7 +7,7 @@
 
 
     .LogoEquity {
-        width: 15%;
+        width: 17rem;
     }
 
     .HeaderTitle {
@@ -38,7 +38,7 @@
         }
     }
 
-    select   {
+    select {
         width: 30%;
         padding: 0.5rem 2rem;
         border: 1px solid grey;
@@ -60,26 +60,33 @@
 
 
 }
+
 .checkboxlWrap {
 
     margin-top: 1rem;
+
     label {
         display: flex;
         justify-content: left;
         flex-direction: row;
         align-items: center;
+
         p {
             margin-left: 1rem;
             font-weight: 100;
         }
-        span{color: red;}
+
+        span {
+            color: red;
+        }
     }
- }
+}
 
 
- .checkbookFrom {
+.checkbookFrom {
+
     //  background-color: red;
-    label{
+    label {
         font-weight: 50;
         margin-top: 0.5rem;
     }
@@ -87,26 +94,32 @@
     .KotaProf {
         display: flex;
         justify-content: space-between;
-        .kota ,.prof {
+
+        .kota,
+        .prof {
             width: 50%;
+
             input {
                 width: 95%;
             }
         }
+
         .kota {
-            input  {
+            input {
                 width: 90%;
             }
         }
     }
+
     .kodePos {
         width: 45%;
     }
 
- }
- .btn-Submit{
-     margin-top: 1rem;
-     padding: 20px;
+}
+
+.btn-Submit {
+    margin-top: 1rem;
+    padding: 20px;
     background-color: green;
     color: white;
     border: none;
@@ -116,4 +129,47 @@
 
 .hide {
     display: none;
+}
+
+
+.dataUpload{
+
+img{
+    height: 100px;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+
+}
+.PerubahanDataWrap {
+    border: 1px solid gray;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+    .PerbuahanDataCheck {
+        .nomorWa1 {
+            border: 1px solid gray;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .checkboxwrap {
+            display: flex;
+            justify-content: left;
+            flex-direction: row;
+            // border-bottom: 1px solid gray;
+
+            label {
+                display: flex;
+                align-items: center;
+
+                p {
+                    margin-left: 1rem;
+                }
+            }
+
+        }
+    }
 }

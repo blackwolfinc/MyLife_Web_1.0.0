@@ -1,71 +1,94 @@
 import React, { forwardRef } from "react";
 import "../Assets/Css/LandingPage.scss";
 import Logo from "../Assets/Img/Logo.jpg";
-import  { useState, useEffect } from'react';
-import { loadReCaptcha ,ReCaptcha } from 'react-recaptcha-google'
-function Page1() {
-const [Hide, SetHideAlternative] = useState("hide")
-const [HideCheck, SetAlternativeCheck] = useState(false)
-const [Change, SetChange] = useState("")
-const [ChangeWa, SetChangeWa] = useState("hide")
+import { useState, useEffect } from "react";
+import { loadReCaptcha, ReCaptcha } from "react-recaptcha-google";
+export const Page1 = () => {
+  const [Hide, SetHideAlternative] = useState("hide");
+  const [HideCheck, SetAlternativeCheck] = useState(false);
+  const [HideCheck2, SetAlternativeCheck2] = useState("hide");
+  const [HideCheck3, SetAlternativeCheck3] = useState("hide");
+  const [ChangeWa, SetChangeWa] = useState("hide");
+  const [ChangeNumber, SetChangeNumber] = useState("hide");
+  const [ChangeEmail, SetChangeEmail] = useState("hide");
+  // File Upload
+  const [FileUpload, SetFileUpload] = useState();
+  const [UploadStatus, SetUploadStatus] = useState(false);
+  const [UrlFile, SetUrlFile] = useState(false);
 
-// data
-const [DataPolis, SetDataPolis] = useState("")
-const [DataNama, SetDataNama] = useState("")
-const [DataNumber, SetDataNumber] = useState(0)
-const [DataEmail, SetDataEmail] = useState("")
+  // data
+  const [DataPolis, SetDataPolis] = useState("");
+  const [DataNama, SetDataNama] = useState("");
+  const [DataNumber, SetDataNumber] = useState(0);
+  const [DataEmail, SetDataEmail] = useState("");
 
+  const CheckbookAction = (e) => {
 
+    if (e.target.id ==="NomorHpBaru"&&HideCheck2=="show") {
 
-const TidakAdaEmailAction =()=> {
-    if (Hide==="hide"&&HideCheck==="true") {
-
-        SetHideAlternative("")
-        SetAlternativeCheck("false")
+      SetAlternativeCheck2("hide")
+      SetChangeNumber("hide")
     }
-    else{
-        SetHideAlternative("hide")
-        SetAlternativeCheck("true")
-    }
+    if (e.target.id ==="NomorHpBaru"&&HideCheck2=="hide") {
 
-}
+      SetAlternativeCheck2("show")
+      SetChangeNumber("show")
+    }
+    if (e.target.id ==="EmailBaru"&&HideCheck3=="show") {
+      SetChangeEmail("hide")
+      SetAlternativeCheck3("hide")
+    }
+    if (e.target.id ==="EmailBaru"&&HideCheck3=="hide") {
+      SetChangeEmail("show")
+      SetAlternativeCheck3("show")
+    }
+    if (e.target.id === "emailCheck"&& Hide=="hide") {
 
-const handleChange =(e)=>{
-    SetChange(e.target.value)
-    alert(e.target.value)
-}
-const handleChangeAll =(e)=>{
-    if (e.target.id =="Email") {
-        SetDataEmail( e.target.value);
+      SetHideAlternative("");
+      SetAlternativeCheck("false");
     }
-    if ( e.target.id=="Nomor") {
-        SetDataNumber( e.target.value);
-    }
-    if (e.target.id =="noPolis") {
-        SetDataPolis( e.target.value);
-    }
-    if (e.target.id =="Name")
-    {
-        SetDataNama( e.target.value);
+    if (e.target.id === "emailCheck"&& Hide=="") {
 
+      SetHideAlternative("hide");
+      SetAlternativeCheck("true");
     }
 
 
 
-}
 
-const handleChangeWa =(e)=>{
-    SetChangeWa(e.target.value)
-}
-
-    useEffect(() => {
-        loadReCaptcha();
-    }, [])
+  };
 
 
+  const handleChangeAll = (e) => {
+    if (e.target.id == "Email") {
+      SetDataEmail(e.target.value);
+    }
+    if (e.target.id == "Nomor") {
+      SetDataNumber(e.target.value);
+    }
+    if (e.target.id == "noPolis") {
+      SetDataPolis(e.target.value);
+    }
+    if (e.target.id == "Name") {
+      SetDataNama(e.target.value);
+    }
+  };
+
+  const UploadFile = (e) => {
+		SetFileUpload(e.target.files[0]);
+		SetUploadStatus(true);
+    SetUrlFile(URL.createObjectURL(e.target.files[0]))
+
+	};
 
 
+  const handleChangeWa = (e) => {
+    SetChangeWa(e.target.value);
+  };
 
+  useEffect(() => {
+    loadReCaptcha();
+  }, []);
 
   return (
     <div>
@@ -84,81 +107,167 @@ const handleChangeWa =(e)=>{
             <label htmlFor="noPolis">
               Nomor Polis <span>*</span>
             </label>
-            <input onChange={handleChangeAll} type="text" id="noPolis" required/>
+            <input
+              onChange={handleChangeAll}
+              type="text"
+              id="noPolis"
+              placeholder="Masukan Nomer Polis"
+              required
+            />
           </div>
           {/* Nama Lengkap */}
           <div className="col nameWrap">
             <label htmlFor="Name">
               Nama Lengkap <span>*</span>
             </label>
-            <input onChange={handleChangeAll} type="text" id="Name" required />
+            <input
+              onChange={handleChangeAll}
+              type="text"
+              id="Name"
+              placeholder="masukan Nama Lengkap"
+              required
+            />
           </div>
           {/* Nomor Ponsel */}
           <div className="col nomorWrap">
-            <label  htmlFor="Nomor">
+            <label htmlFor="Nomor">
               Nomor Ponsel / HP <span>*</span>
             </label>
-            <input onChange={handleChangeAll}   type="number" id="Nomor" required />
-
+            <input
+              onChange={handleChangeAll}
+              placeholder="Masukan Nomer Hp Anda"
+              type="number"
+              id="Nomor"
+              required
+            />
           </div>
 
           {/* Alamat Email */}
           <div className="col emailWrap">
             <label htmlFor="Email">
-             Alamat E-mail<span>*</span>
+              Alamat E-mail<span>*</span>
             </label>
-            <input placeholder={"email sekarang = " } onChange={handleChangeAll} type="email" id="Email" required />
-
+            <input
+              placeholder="Masukan Alamat E-Mail"
+              onChange={handleChangeAll}
+              type="email"
+              id="Email"
+              required
+            />
           </div>
+        {/* Upoad Data */}
+        <div className="col dataUpload">
+          <label htmlFor="file">Upload Ktp <span>*</span></label>
+          <input onChange={UploadFile} type="file" name="file"  />
+          {UploadStatus ? (
+				<div>
+           <img src={UrlFile} />
+					<p>Filename: {FileUpload.name}</p>
+					<p>Filetype: {FileUpload.type}</p>
+					<p>Size in bytes: {FileUpload.size}</p>
+            {console.log (FileUpload)}
+					<p>
+						lastModifiedDate:{' '}
+						{FileUpload.lastModifiedDate.toLocaleDateString()}
+					</p>
+				</div>
+			) : (
+				<p>Select a file to show details</p>
+			)}
 
-          {/* Select  Perubahan Data*/}
+        </div>
+
+          {/* Perubahan Data  */}
+          <div className="PerubahanDataWrap">
+            <div className="PerbuahanDataCheck">
+              <label htmlFor="Email">
+              <b> Jika Ada  Peubahan Data</b>
+              </label>
+              <div className="checkboxwrap">
+                <label>
+                  <input
+                  id="NomorHpBaru"
+                    name="isGoing"
+                    type="checkbox"
+                    checked={HideCheck2 === "hide" ? false : true}
+                    onChange={ CheckbookAction }
+                  />
+                  <p>Nomor Hp Baru </p>
+                </label>
+
+                </div>
+                <div className={`col nomorWa1 ${ChangeNumber}`}>
+                  <label htmlFor="Nomor">
+                    Nomor Whatsapp Baru <span>*</span>
+                  </label>
+                  <input type="number" id="Nomor" />
 
 
+              </div>
+              <div className="checkboxwrap">
+                <label>
+                  <input
+                  id="EmailBaru"
+                    name="isGoing"
+                    type="checkbox"
+                    checked={HideCheck3 === "hide" ? false : true}
+                    onChange={CheckbookAction}
+                  />
+                  <p>E-mail Baru</p>
+                </label>
+              </div>
+              <div className={`col nomorWa1 ${ChangeEmail}`}>
+                  <label htmlFor="Nomor">
+                    Email Baru <span>*</span>
+                  </label>
+                  <input type="number" id="Nomor" />
 
 
-
+              </div>
+            </div>
+          </div>
+          {/* Perubahan Data End */}
           {/*Terhubung Wa  */}
           <div className="col selectlWrap">
             <label htmlFor="Email">
               Apakah no Hp anda Terhubung dengan No Whatsapp <span>*</span>
             </label>
-            <select
-             onChange={handleChangeWa} >
+            <select onChange={handleChangeWa}>
               <option value="hide"></option>
               <option selected id="option1" value="hide">
                 ya
               </option>
-              <option  id="option2" value="show">
+              <option id="option2" value="show">
                 Tidak
               </option>
-              
             </select>
           </div>
-            {/* no Wa baru  */}
-            <div className={`col nomorWrap2 ${ChangeWa}`}>
+          {/* no Wa baru  */}
+          <div className={`col nomorWrap2 ${ChangeWa}`}>
             <label htmlFor="Nomor">
-             Nomor Whatsapp  <span>*</span>
+              Nomor Whatsapp <span>*</span>
             </label>
-            <input type="number" id="Nomor"  />
+            <input type="number" id="Nomor" />
           </div>
           {/* Checkbox */}
           {/* Checkbook Triger */}
           <div className="col checkboxlWrap ">
             <label>
               <input
+              id="emailCheck"
                 name="isGoing"
                 type="checkbox"
-                checked={(Hide==="hide")?false:true}
-                onChange={TidakAdaEmailAction}
+                checked={Hide === "hide" ? false : true}
+                onChange={CheckbookAction}
               />
               <p>Tidak Ada Alamat Email</p>
             </label>
             {/* Checkboox From */}
 
-            <div className= {`col checkbookFrom ${Hide}`}>
-            <label htmlFor="checkbookFrom ">
-              Alamat Korespondensi <span> *</span>
-            </label>
+            <div className={`col checkbookFrom ${Hide}`}>
+              <label htmlFor="checkbookFrom ">
+                Alamat Korespondensi <span> *</span>
+              </label>
               {/* nama jaalan dan rumah  */}
               <input type="text" id="namaJalan" />
               <label htmlFor="namaJalan"> Nama Jalan,No Rumah/Umit</label>
@@ -183,57 +292,66 @@ const handleChangeWa =(e)=>{
           </div>
           {/* checkbook end  */}
           {/* persetujuan */}
-            <div className="Persetujuan">
-            <h4><b>Persetujuan ,</b></h4>
-            <br/>
-            <br/>
-            <p>Saya Menyatakan bahwa informasi yang tertera dalam formulir ini adalah benar dan</p>
-            <p>saya setuju untuk  menyesuaikan data Polis saya sesuai dengan informasi yang</p>
+          <div className="Persetujuan">
+            <h4>
+              <b>Persetujuan ,</b>
+            </h4>
+            <br />
+            <br />
+            <p>
+              Saya Menyatakan bahwa informasi yang tertera dalam formulir ini
+              adalah benar dan
+            </p>
+            <p>
+              saya setuju untuk menyesuaikan data Polis saya sesuai dengan
+              informasi yang
+            </p>
             <p>tercantum dalam formulir ini.</p>
-            <br/>
-            <p>Apabila data yang saya berikan tidak benar mmaka saya bertanggung jawab penuh atas  </p>
+            <br />
+            <p>
+              Apabila data yang saya berikan tidak benar mmaka saya bertanggung
+              jawab penuh atas{" "}
+            </p>
             <p>kesalahan tersebut.</p>
 
-
             <div className="checkboxlWrap">
-
-            <label>
+              <label>
                 <input
-                    name="isGoing"
-                    type="checkbox"
-                    // checked={this.state.isGoing}
-                    // onChange={this.handleInputChange}
+                  name="isGoing"
+                  type="checkbox"
+                  // checked={this.state.isGoing}
+                  // onChange={this.handleInputChange}
                 />
-                <p>Saya Menyetujui <span>*</span></p>
-                </label>
-
-                </div>
-
+                <p>
+                  Saya Menyetujui <span>*</span>
+                </p>
+              </label>
             </div>
-        {/* verivikasi Chapta */}
-        <div className="col nomorWrap">
+          </div>
+          {/* verivikasi Chapta */}
+          <div className="col nomorWrap">
             <label htmlFor="Nomor">
-           Mohon verivikasi Diri anda <span>*</span>
+              Mohon verivikasi Diri anda <span>*</span>
             </label>
 
             <ReCaptcha
-
-            ref={(el) => {"tes"}}
-            size="normal"
-            data-theme="dark"
-            render="explicit"
-            sitekey="6LeB9VwaAAAAAMRZDD8GPlr1-Wn9WPcJaRTGnXp-"
-            // onloadCallback={this.onLoadRecaptcha}
-            // verifyCallback={this.verifyCallback}
-        />
+              ref={(el) => {
+                "tes";
+              }}
+              size="normal"
+              data-theme="dark"
+              render="explicit"
+              sitekey="6LeB9VwaAAAAAMRZDD8GPlr1-Wn9WPcJaRTGnXp-"
+              // onloadCallback={this.onLoadRecaptcha}
+              // verifyCallback={this.verifyCallback}
+            />
           </div>
 
-
-            <button className="btn-Submit" type="submit">SUBMIT</button>
+          <button className="btn-Submit" type="submit">
+            SUBMIT
+          </button>
         </form>
       </div>
     </div>
   );
-}
-
-export default Page1;
+};
