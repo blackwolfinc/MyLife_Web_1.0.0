@@ -4,6 +4,7 @@ import Logo from "../Assets/Img/Logo.jpg";
 import { useState, useEffect } from "react";
 import { loadReCaptcha, ReCaptcha } from "react-recaptcha-google";
 export const Page1 = () => {
+  const [ErorInput, SetErorInput] = useState(false);
   const [Hide, SetHideAlternative] = useState("hide");
   const [HideCheck, SetAlternativeCheck] = useState(false);
   const [HideCheck2, SetAlternativeCheck2] = useState("hide");
@@ -23,43 +24,34 @@ export const Page1 = () => {
   const [DataEmail, SetDataEmail] = useState("");
 
   const CheckbookAction = (e) => {
-
-    if (e.target.id ==="NomorHpBaru"&&HideCheck2=="show") {
-
-      SetAlternativeCheck2("hide")
-      SetChangeNumber("hide")
+    if (e.target.id == "NomorHpBaru" && HideCheck2 == "show") {
+      SetAlternativeCheck2("hide");
+      SetChangeNumber("hide");
     }
-    if (e.target.id ==="NomorHpBaru"&&HideCheck2=="hide") {
-
-      SetAlternativeCheck2("show")
-      SetChangeNumber("show")
+    if (e.target.id == "NomorHpBaru" && HideCheck2 == "hide") {
+      SetAlternativeCheck2("show");
+      SetChangeNumber("show");
     }
-    if (e.target.id ==="EmailBaru"&&HideCheck3=="show") {
-      SetChangeEmail("hide")
-      SetAlternativeCheck3("hide")
+    if (e.target.id == "EmailBaru" && HideCheck3 == "show") {
+      SetChangeEmail("hide");
+      SetAlternativeCheck3("hide");
     }
-    if (e.target.id ==="EmailBaru"&&HideCheck3=="hide") {
-      SetChangeEmail("show")
-      SetAlternativeCheck3("show")
+    if (e.target.id =="EmailBaru" && HideCheck3 == "hide") {
+      SetChangeEmail("show");
+      SetAlternativeCheck3("show");
     }
-    if (e.target.id === "emailCheck"&& Hide=="hide") {
-
+    if (e.target.id == "emailCheck" && Hide == "hide") {
       SetHideAlternative("");
       SetAlternativeCheck("false");
     }
-    if (e.target.id === "emailCheck"&& Hide=="") {
-
+    if (e.target.id == "emailCheck" && Hide == "") {
       SetHideAlternative("hide");
       SetAlternativeCheck("true");
     }
-
-
-
-
   };
 
-
   const handleChangeAll = (e) => {
+
     if (e.target.id == "Email") {
       SetDataEmail(e.target.value);
     }
@@ -69,18 +61,51 @@ export const Page1 = () => {
     if (e.target.id == "noPolis") {
       SetDataPolis(e.target.value);
     }
-    if (e.target.id == "Name") {
+    if (e.target.id == "Name" && e.target.value.match(/^[A-Za-z ][A-Za-z ]*$/)) {
+
+
+
+      SetErorInput(false);
       SetDataNama(e.target.value);
+
+
+    }
+
+
+    else{
+
+
+      SetErorInput(true)
     }
   };
 
+
+
+
+
   const UploadFile = (e) => {
-		SetFileUpload(e.target.files[0]);
-		SetUploadStatus(true);
-    SetUrlFile(URL.createObjectURL(e.target.files[0]))
-
-	};
-
+    if (
+      e.target.files[0].type === "image/jpeg" ||
+      e.target.files[0].type === "image/png"
+    ) {
+      if (e.target.files[0].size >= 2097152) {
+        alert("File Terlalu Besar Max 2Mb");
+        SetUploadStatus(false);
+        e.target.value = null;
+      } else {
+        SetFileUpload(e.target.files[0]);
+        SetUploadStatus(true);
+        console.log(FileUpload);
+        SetUrlFile(URL.createObjectURL(e.target.files[0]));
+      }
+    } else {
+      alert(
+        `Format { ${e.target.files[0].type} } Tidak Di Dukung Gunakan Jpeg/Png`
+      );
+      SetUploadStatus(false);
+      e.target.value = null;
+    }
+  };
 
   const handleChangeWa = (e) => {
     SetChangeWa(e.target.value);
@@ -120,13 +145,18 @@ export const Page1 = () => {
             <label htmlFor="Name">
               Nama Lengkap <span>*</span>
             </label>
+
             <input
+            // /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/
+
               onChange={handleChangeAll}
               type="text"
               id="Name"
+              name="NamaLengkap"
               placeholder="masukan Nama Lengkap"
               required
             />
+              {ErorInput ? (DataNama.length > 1?<span>Inputan Salah Hanya boleh menggunakan Huruf </span>  :<span>Data Tidak Boleh Kosong </span>):""}
           </div>
           {/* Nomor Ponsel */}
           <div className="col nomorWrap">
@@ -155,59 +185,57 @@ export const Page1 = () => {
               required
             />
           </div>
-        {/* Upoad Data */}
-        <div className="col dataUpload">
-          <label htmlFor="file">Upload Ktp <span>*</span></label>
-          <input onChange={UploadFile} type="file" name="file"  />
-          {UploadStatus ? (
-				<div>
-           <img src={UrlFile} />
-					<p>Filename: {FileUpload.name}</p>
-					<p>Filetype: {FileUpload.type}</p>
-					<p>Size in bytes: {FileUpload.size}</p>
-            {console.log (FileUpload)}
-					<p>
-						lastModifiedDate:{' '}
-						{FileUpload.lastModifiedDate.toLocaleDateString()}
-					</p>
-				</div>
-			) : (
-				<p>Select a file to show details</p>
-			)}
-
-        </div>
+          {/* Upoad Data */}
+          <div className="col dataUpload">
+            <label htmlFor="file">
+              Upload Ktp <span>*</span>
+            </label>
+            <input onChange={UploadFile} type="file" name="file" />
+            {UploadStatus ? (
+              <div>
+                <img src={UrlFile} />
+                <p>Filename: {FileUpload.name}</p>
+                <p>Filetype: {FileUpload.type}</p>
+                <p>Size in bytes: {FileUpload.size}</p>
+                {console.log(FileUpload)}
+                <p>
+                  lastModifiedDate:{" "}
+                  {FileUpload.lastModifiedDate.toLocaleDateString()}
+                </p>
+              </div>
+            ) : (
+              <p>Select a file to show details</p>
+            )}
+          </div>
 
           {/* Perubahan Data  */}
           <div className="PerubahanDataWrap">
             <div className="PerbuahanDataCheck">
               <label htmlFor="Email">
-              <b> Jika Ada  Peubahan Data</b>
+                <b> Jika Ada Peubahan Data</b>
               </label>
               <div className="checkboxwrap">
                 <label>
                   <input
-                  id="NomorHpBaru"
+                    id="NomorHpBaru"
                     name="isGoing"
                     type="checkbox"
                     checked={HideCheck2 === "hide" ? false : true}
-                    onChange={ CheckbookAction }
+                    onChange={CheckbookAction}
                   />
                   <p>Nomor Hp Baru </p>
                 </label>
-
-                </div>
-                <div className={`col nomorWa1 ${ChangeNumber}`}>
-                  <label htmlFor="Nomor">
-                    Nomor Whatsapp Baru <span>*</span>
-                  </label>
-                  <input type="number" id="Nomor" />
-
-
+              </div>
+              <div className={`col nomorWa1 ${ChangeNumber}`}>
+                <label htmlFor="Nomor">
+                  Nomor Whatsapp Baru <span>*</span>
+                </label>
+                <input type="number" id="Nomor" />
               </div>
               <div className="checkboxwrap">
                 <label>
                   <input
-                  id="EmailBaru"
+                    id="EmailBaru"
                     name="isGoing"
                     type="checkbox"
                     checked={HideCheck3 === "hide" ? false : true}
@@ -217,12 +245,10 @@ export const Page1 = () => {
                 </label>
               </div>
               <div className={`col nomorWa1 ${ChangeEmail}`}>
-                  <label htmlFor="Nomor">
-                    Email Baru <span>*</span>
-                  </label>
-                  <input type="number" id="Nomor" />
-
-
+                <label htmlFor="Nomor">
+                  Email Baru <span>*</span>
+                </label>
+                <input type="email" id="Nomor" />
               </div>
             </div>
           </div>
@@ -254,7 +280,7 @@ export const Page1 = () => {
           <div className="col checkboxlWrap ">
             <label>
               <input
-              id="emailCheck"
+                id="emailCheck"
                 name="isGoing"
                 type="checkbox"
                 checked={Hide === "hide" ? false : true}
