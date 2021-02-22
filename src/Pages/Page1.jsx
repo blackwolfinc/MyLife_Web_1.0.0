@@ -1,9 +1,20 @@
 import React, { forwardRef } from "react";
+import axios from "axios";
 import "../Assets/Css/LandingPage.scss";
 import Logo from "../Assets/Img/Logo.jpg";
 import { useState, useEffect } from "react";
-import { loadReCaptcha, ReCaptcha } from "react-recaptcha-google";
+import ReCAPTCHA from "react-google-recaptcha";
+
 export const Page1 = () => {
+  // Token Login
+  const [TokenLogin, SetTokenLogin] = useState("");
+  // chapta
+  const [Chapta, SetChapta] = useState("");
+  const [Sitekey, SetSitekey] = useState("6LeB9VwaAAAAAMRZDD8GPlr1-Wn9WPcJaRTGnXp-");
+  const [SitekeyPost, SetSitekeypost] = useState("6LeB9VwaAAAAAMhoHFkA1O-nxCv3DDW10aqZqWxv");
+  const [Chaptainput, SetTChaptainput] = useState();
+  const recaptchaRef = React.createRef();
+  // Set Hide and Pop-UP
   const [ErorInput, SetErorInput] = useState(false);
   const [Hide, SetHideAlternative] = useState("hide");
   const [HideCheck, SetAlternativeCheck] = useState(false);
@@ -22,65 +33,64 @@ export const Page1 = () => {
   const [DataNama, SetDataNama] = useState("");
   const [DataNumber, SetDataNumber] = useState(0);
   const [DataEmail, SetDataEmail] = useState("");
+  // All Data Store
+
+  const SubmitFrom = () => {
+    // localStorage.clear();
+    alert(localStorage._grecaptcha);
+  };
 
   const CheckbookAction = (e) => {
-    if (e.target.id == "NomorHpBaru" && HideCheck2 == "show") {
+    if (e.target.id === "NomorHpBaru" && HideCheck2 === "show") {
       SetAlternativeCheck2("hide");
       SetChangeNumber("hide");
     }
-    if (e.target.id == "NomorHpBaru" && HideCheck2 == "hide") {
+    if (e.target.id === "NomorHpBaru" && HideCheck2 === "hide") {
       SetAlternativeCheck2("show");
       SetChangeNumber("show");
     }
-    if (e.target.id == "EmailBaru" && HideCheck3 == "show") {
+    if (e.target.id === "EmailBaru" && HideCheck3 === "show") {
       SetChangeEmail("hide");
       SetAlternativeCheck3("hide");
     }
-    if (e.target.id =="EmailBaru" && HideCheck3 == "hide") {
+    if (e.target.id === "EmailBaru" && HideCheck3 === "hide") {
       SetChangeEmail("show");
       SetAlternativeCheck3("show");
     }
-    if (e.target.id == "emailCheck" && Hide == "hide") {
+    if (e.target.id === "emailCheck" && Hide === "hide") {
       SetHideAlternative("");
       SetAlternativeCheck("false");
     }
-    if (e.target.id == "emailCheck" && Hide == "") {
+    if (e.target.id === "emailCheck" && Hide === "") {
       SetHideAlternative("hide");
       SetAlternativeCheck("true");
     }
   };
 
   const handleChangeAll = (e) => {
-
-    if (e.target.id == "Email") {
+    if (e.target.id === "Email") {
       SetDataEmail(e.target.value);
     }
-    if (e.target.id == "Nomor") {
+    if (e.target.id === "Nomor") {
       SetDataNumber(e.target.value);
     }
-    if (e.target.id == "noPolis") {
+    if (e.target.id === "noPolis") {
       SetDataPolis(e.target.value);
     }
-    if (e.target.id == "Name" && e.target.value.match(/^[A-Za-z ][A-Za-z ]*$/)) {
-
-
-
+    if (
+      e.target.id === "Name" &&
+      e.target.value.match(/^[A-Za-z ][A-Za-z ]*$/)
+    ) {
       SetErorInput(false);
       SetDataNama(e.target.value);
-
-
-    }
-
-
-    else{
-
-
-      SetErorInput(true)
+    } else {
+      SetErorInput(true);
     }
   };
 
-
-
+  const  ChaptaFrom = (e)=> {
+    SetChapta(e)
+  }
 
 
   const UploadFile = (e) => {
@@ -111,12 +121,63 @@ export const Page1 = () => {
     SetChangeWa(e.target.value);
   };
 
+  //Reload Data Pertama
   useEffect(() => {
-    loadReCaptcha();
+    
+    // get Token
+    let axios = require("axios");
+    let config = {
+      method: "post",
+      url: "http://fe-ws01.myequity.id:9003/api/v1/login",
+      data: TokenLogin,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(response.data.data.token);
+        localStorage.token = response.data.data.token;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
+
+  // Data polish On load
+  useEffect(() => {
+
+    console.log("tes");
+    // get polis
+    var axios = require("axios");
+
+    let config = {
+      method: "get",
+      url:
+        `http://fe-ws01.myequity.id:9003/api/v1/profile?search_query_1=${DataPolis}`,
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+      data: TokenLogin,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        localStorage.nama = response.data.data.policy_holder;
+        localStorage.noPonsel= response.data.data.mobile_no;
+        localStorage.Email= response.data.data.email;
+        console.log(localStorage)
+
+
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [DataPolis]);
 
   return (
     <div>
+    
       {/* header Page Start */}
       <div className="HeaderPage">
         <img className="LogoEquity" src={Logo} alt="" />
@@ -124,13 +185,15 @@ export const Page1 = () => {
           <b>From Pengkinian Data</b>
         </h2>
       </div>
+      <h4>Data Token</h4>
+      {/* <h5>{localStorage.token}</h5> */}
       {/* Header Page End */}
       <div className="FromIsi">
-        <form>
+        <form onSubmit={SubmitFrom}>
           {/* nomer Polis */}
           <div className="col nomerPolisWrap">
             <label htmlFor="noPolis">
-              Nomor Polis <span>*</span>
+              Nomor Polis [18.1012354.5] <span>*</span>
             </label>
             <input
               onChange={handleChangeAll}
@@ -147,16 +210,15 @@ export const Page1 = () => {
             </label>
 
             <input
-            // /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/
-
               onChange={handleChangeAll}
               type="text"
               id="Name"
               name="NamaLengkap"
               placeholder="masukan Nama Lengkap"
               required
+              disabled
             />
-              {ErorInput ? (DataNama.length > 1?<span>Inputan Salah Hanya boleh menggunakan Huruf </span>  :<span>Data Tidak Boleh Kosong </span>):""}
+
           </div>
           {/* Nomor Ponsel */}
           <div className="col nomorWrap">
@@ -360,16 +422,12 @@ export const Page1 = () => {
               Mohon verivikasi Diri anda <span>*</span>
             </label>
 
-            <ReCaptcha
-              ref={(el) => {
-                "tes";
-              }}
-              size="normal"
-              data-theme="dark"
-              render="explicit"
-              sitekey="6LeB9VwaAAAAAMRZDD8GPlr1-Wn9WPcJaRTGnXp-"
-              // onloadCallback={this.onLoadRecaptcha}
-              // verifyCallback={this.verifyCallback}
+            <ReCAPTCHA
+              onChange={ChaptaFrom}
+              theme="light"
+              type="image"
+              sitekey={Sitekey}
+        
             />
           </div>
 
