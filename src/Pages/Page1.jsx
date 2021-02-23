@@ -8,6 +8,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 export const Page1 = () => {
   // Token Login
   const [TokenLogin, SetTokenLogin] = useState("");
+  const [loginStatus, SetloginStatus] = useState(false);
+
   // chapta
   const [Chapta, SetChapta] = useState("");
   const [Sitekey, SetSitekey] = useState("6LeB9VwaAAAAAMRZDD8GPlr1-Wn9WPcJaRTGnXp-");
@@ -23,6 +25,13 @@ export const Page1 = () => {
   const [ChangeWa, SetChangeWa] = useState("hide");
   const [ChangeNumber, SetChangeNumber] = useState("hide");
   const [ChangeEmail, SetChangeEmail] = useState("hide");
+  const [AllFrom, SetAllFrom] = useState("hide");
+
+  //Pengaturan titik 
+  const [Titik1, SetTitik1] = useState(true);
+  const [Titik2, SetTitik2] = useState(true);
+
+
   // File Upload
   const [FileUpload, SetFileUpload] = useState();
   const [UploadStatus, SetUploadStatus] = useState(false);
@@ -75,7 +84,46 @@ export const Page1 = () => {
       SetDataNumber(e.target.value);
     }
     if (e.target.id === "noPolis") {
-      SetDataPolis(e.target.value);
+
+      if (DataPolis.length === 2 && Titik1 === true ) {
+        e.target.value = DataPolis + "." +e.target.value.substr(2)  ;
+        SetDataPolis (e.target.value)
+        console.log(DataPolis)
+        SetTitik1(false)
+        // alert("sentuh 1")
+      }
+      if (DataPolis.length < 1 && Titik1 === false ) {
+        SetDataPolis (DataPolis)
+        SetTitik1(true)
+        // alert("sentuh 2")
+
+      }
+      if (DataPolis.length === 10 && Titik2 === true ) {
+        e.target.value = DataPolis + "." + e.target.value.substr(10) ;
+        SetDataPolis (e.target.value)
+        console.log(DataPolis)
+        SetTitik2(false)
+        // alert("sentuh 1")
+      }
+      if (DataPolis.length < 10 && Titik2 === false ) {
+        SetDataPolis (DataPolis)
+        SetTitik2(true)
+        // alert("sentuh 2")
+
+      }
+    
+
+      
+      
+      
+      else {
+    
+        SetDataPolis( e.target.value);  
+        console.log(DataPolis)
+        // alert("sentuh 3")
+
+      }
+      // SetDataPolis(e.target.value);
     }
     if (
       e.target.id === "Name" &&
@@ -124,28 +172,42 @@ export const Page1 = () => {
   //Reload Data Pertama
   useEffect(() => {
     
+    if (loginStatus === false) {
+      
     // get Token
     let axios = require("axios");
     let config = {
       method: "post",
       url: "http://fe-ws01.myequity.id:9003/api/v1/login",
-      data: TokenLogin,
+   
+      data: 
+      {
+        username : "hudakhoirul16",
+        password : "huda12345"
+      },
     };
 
     axios(config)
       .then(function (response) {
-        console.log(response.data.data.token);
-        localStorage.token = response.data.data.token;
+        // console.log(response.data.data.token);
+        SetTokenLogin(response.data.data.token)
+        SetloginStatus(true)
       })
       .catch(function (error) {
         console.log(error);
+        
       });
-  }, []);
+    
+    }
+   
+  }, );
 
   // Data polish On load
+
   useEffect(() => {
 
-    console.log("tes");
+
+  if (DataPolis.length == 12) {
     // get polis
     var axios = require("axios");
 
@@ -154,7 +216,7 @@ export const Page1 = () => {
       url:
         `http://fe-ws01.myequity.id:9003/api/v1/profile?search_query_1=${DataPolis}`,
       headers: {
-        Authorization: `Bearer ${localStorage.token}`,
+        Authorization: `Bearer ${TokenLogin}`,
       },
       data: TokenLogin,
     };
@@ -166,13 +228,23 @@ export const Page1 = () => {
         localStorage.noPonsel= response.data.data.mobile_no;
         localStorage.Email= response.data.data.email;
         console.log(localStorage)
-
+        if (response.data.data.customer_id != "") {
+          SetAllFrom("")
+                } else {
+          alert("salah")
+        }
 
 
       })
       .catch(function (error) {
-        console.log(error);
+        alert("data tidak di temukan")
+        
+        SetAllFrom("hide")
       });
+    }else{
+      SetAllFrom("hide")
+    }
+
   }, [DataPolis]);
 
   return (
@@ -185,7 +257,7 @@ export const Page1 = () => {
           <b>From Pengkinian Data</b>
         </h2>
       </div>
-      <h4>Data Token</h4>
+      {/* <h4>Data Token</h4> */}
       {/* <h5>{localStorage.token}</h5> */}
       {/* Header Page End */}
       <div className="FromIsi">
@@ -197,12 +269,15 @@ export const Page1 = () => {
             </label>
             <input
               onChange={handleChangeAll}
+              maxlength="12"
               type="text"
               id="noPolis"
               placeholder="Masukan Nomer Polis"
               required
             />
           </div>
+
+<div className={`ContainerShow ${AllFrom}`}>        
           {/* Nama Lengkap */}
           <div className="col nameWrap">
             <label htmlFor="Name">
@@ -214,6 +289,7 @@ export const Page1 = () => {
               type="text"
               id="Name"
               name="NamaLengkap"
+              value={localStorage.nama}
               placeholder="masukan Nama Lengkap"
               required
               disabled
@@ -228,8 +304,10 @@ export const Page1 = () => {
             <input
               onChange={handleChangeAll}
               placeholder="Masukan Nomer Hp Anda"
+              value={localStorage.noPonsel}
               type="number"
               id="Nomor"
+              disabled
               required
             />
           </div>
@@ -244,8 +322,11 @@ export const Page1 = () => {
               onChange={handleChangeAll}
               type="email"
               id="Email"
+              disabled
               required
             />
+          </div>
+
           </div>
           {/* Upoad Data */}
           <div className="col dataUpload">
