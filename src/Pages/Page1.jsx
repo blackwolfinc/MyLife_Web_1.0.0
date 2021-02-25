@@ -27,7 +27,7 @@ export const Page1 = () => {
   const [ChangeEmail, SetChangeEmail] = useState("hide");
   const [AllFrom, SetAllFrom] = useState("hide");
 
-  //Pengaturan titik 
+  //Pengaturan titik
   const [Titik1, SetTitik1] = useState(true);
   const [Titik2, SetTitik2] = useState(true);
 
@@ -47,6 +47,10 @@ export const Page1 = () => {
   const SubmitFrom = () => {
     // localStorage.clear();
     alert(localStorage._grecaptcha);
+
+
+
+
   };
 
   const CheckbookAction = (e) => {
@@ -111,14 +115,14 @@ export const Page1 = () => {
         // alert("sentuh 2")
 
       }
-    
 
-      
-      
-      
+
+
+
+
       else {
-    
-        SetDataPolis( e.target.value);  
+
+        SetDataPolis( e.target.value);
         console.log(DataPolis)
         // alert("sentuh 3")
 
@@ -136,8 +140,12 @@ export const Page1 = () => {
     }
   };
 
+
+
+
   const  ChaptaFrom = (e)=> {
     SetChapta(e)
+ console.log(e)
   }
 
 
@@ -171,19 +179,19 @@ export const Page1 = () => {
 
   //Reload Data Pertama
   useEffect(() => {
-    
+
     if (loginStatus === false) {
-      
+
     // get Token
     let axios = require("axios");
     let config = {
       method: "post",
-      url: "http://fe-ws01.myequity.id:9003/api/v1/login",
-   
-      data: 
+      url: "https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/login",
+
+      data:
       {
-        username : "hudakhoirul16",
-        password : "huda12345"
+        username : "george",
+        password : "george12345"
       },
     };
 
@@ -195,11 +203,11 @@ export const Page1 = () => {
       })
       .catch(function (error) {
         console.log(error);
-        
+
       });
-    
+
     }
-   
+
   }, );
 
   // Data polish On load
@@ -214,7 +222,7 @@ export const Page1 = () => {
     let config = {
       method: "get",
       url:
-        `http://fe-ws01.myequity.id:9003/api/v1/profile?search_query_1=${DataPolis}`,
+        `https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/profile?search_query_1=${DataPolis}`,
       headers: {
         Authorization: `Bearer ${TokenLogin}`,
       },
@@ -238,7 +246,7 @@ export const Page1 = () => {
       })
       .catch(function (error) {
         alert("data tidak di temukan")
-        
+
         SetAllFrom("hide")
       });
     }else{
@@ -247,9 +255,45 @@ export const Page1 = () => {
 
   }, [DataPolis]);
 
+  // validasi Chapta
+  useEffect(() => {
+
+    let axios = require("axios");
+    let config = {
+      method: "post",
+      url: "https://www.google.com/recaptcha/api/siteverify",
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*',
+
+
+      },
+      data:
+      {
+        secret : "6LeB9VwaAAAAAMhoHFkA1O-nxCv3DDW10aqZqWxv",
+        response : Chapta
+      },
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(response);
+
+      })
+      .catch(function (error) {
+        console.log(error);
+
+      });
+
+
+
+
+
+  }, [Chapta])
   return (
     <div>
-    
+
       {/* header Page Start */}
       <div className="HeaderPage">
         <img className="LogoEquity" src={Logo} alt="" />
@@ -277,7 +321,7 @@ export const Page1 = () => {
             />
           </div>
 
-<div className={`ContainerShow ${AllFrom}`}>        
+<div className={`ContainerShow ${AllFrom}`}>
           {/* Nama Lengkap */}
           <div className="col nameWrap">
             <label htmlFor="Name">
@@ -429,7 +473,7 @@ export const Page1 = () => {
                 checked={Hide === "hide" ? false : true}
                 onChange={CheckbookAction}
               />
-              <p>Tidak Ada Alamat Email</p>
+              <p>Jika Ada Perubahan Pada Alamat Korespondensi </p>
             </label>
             {/* Checkboox From */}
 
@@ -508,7 +552,7 @@ export const Page1 = () => {
               theme="light"
               type="image"
               sitekey={Sitekey}
-        
+
             />
           </div>
 
