@@ -4,9 +4,13 @@ import "../Assets/Css/LandingPage.scss";
 import Logo from "../Assets/Img/Logo.jpg";
 import { useState, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { useHistory } from "react-router-dom";
 
 export const Page1 = () => {
-  // Token Login
+  // Token 
+  const history = useHistory();
+
   const [TokenLogin, SetTokenLogin] = useState("");
   const [loginStatus, SetloginStatus] = useState(false);
 
@@ -18,8 +22,7 @@ export const Page1 = () => {
   const [SitekeyPost, SetSitekeypost] = useState(
     "6LeB9VwaAAAAAMhoHFkA1O-nxCv3DDW10aqZqWxv"
   );
-  const [Chaptainput, SetTChaptainput] = useState();
-  const recaptchaRef = React.createRef();
+
   // Set Hide and Pop-UP
   const [ErorInput, SetErorInput] = useState(false);
   const [Hide, SetHideAlternative] = useState("hide");
@@ -31,6 +34,10 @@ export const Page1 = () => {
   const [ChangeNumber, SetChangeNumber] = useState("hide");
   const [ChangeEmail, SetChangeEmail] = useState("hide");
   const [AllFrom, SetAllFrom] = useState("hide");
+ //Set Hide and pop Up Modals 
+ const [ModalState, SetModalState] = useState(false);
+ const [ModalStateTes, SetModalStateTes] = useState(false);
+
 
   //Pengaturan titik
   const [Titik1, SetTitik1] = useState(true);
@@ -46,6 +53,15 @@ export const Page1 = () => {
   const [DataNama, SetDataNama] = useState("");
   const [DataNumber, SetDataNumber] = useState(0);
   const [DataEmail, SetDataEmail] = useState("");
+  const [NamaJalanKodePos, SetNamaJalanKodePos] = useState("");
+  const [NamaJalanKota, SetNamaJalanKota] = useState("");
+  const [NamaJalanProfinsi, SetNamaJalanProfinsi] = useState("");
+  const [NamaJalanKecamatan, SetNamaJalanKecamatan] = useState("");
+  const [NamaJalanRumah, SetNamaJalanRumah] = useState("");
+  
+  // Data Otp 
+  const [OtpValue, SetOtpValue] = useState("");
+
   // Untuk Data Update
   const [DataNumberBaru, SetDataNumberBaru] = useState(0);
   const [DataEmailBaru, SetDataEmailBaru] = useState("");
@@ -79,10 +95,7 @@ export const Page1 = () => {
     if (e.target.id === "emailCheck" && Hide === "hide") {
       SetHideAlternative("");
       SetAlternativeCheck("false");
-    //  localStorage.removeItem("NamaJalanRumah");
-    //  localStorage.removeItem("NamaJalanKota");
-    //  localStorage.removeItem("NamaJalanProfinsi");
-    //  localStorage.removeItem("NamaJalanKodePos");
+    
     }
     if (e.target.id === "emailCheck" && Hide === "") {
       SetHideAlternative("hide");
@@ -90,18 +103,25 @@ export const Page1 = () => {
     }
     if (e.target.id === "Persetujuan" && CheckPersetujuan === "hide") {
       SetCheckPersetujuan("");
-      SetPersetujuanValid(true);}
-
+      SetPersetujuanValid(true);
+    
+    }
     if (e.target.id === "Persetujuan" && CheckPersetujuan === "") {
       SetCheckPersetujuan("hide");
       SetPersetujuanValid(false);
-
+  
 
     }
 
   };
 
   const handleChangeAll = (e) => {
+    //OTP Input 
+
+    if (e.target.id === "InputOTP") {
+      SetOtpValue(e.target.value);
+    
+    }
     // perubahan Data
     if (e.target.id === "NumberChange") {
       SetDataNumberBaru(e.target.value);
@@ -116,29 +136,29 @@ export const Page1 = () => {
     // nama jalan
 
     if (e.target.id === "namaJalan" && Hide === "") {
-      localStorage.NamaJalanRumah = e.target.value;
+      SetNamaJalanRumah(e.target.value); 
 
-      console.log(localStorage.NamaJalanRumah);
+      console.log(NamaJalanRumah);
     }
     if (e.target.id === "namaJalan2" && Hide === "") {
-      localStorage.NamaJalanKecamatan = e.target.value;
+      SetNamaJalanKecamatan(e.target.value) ;
 
-      console.log(localStorage.NamaJalanKecamatan);
+      console.log(NamaJalanKecamatan);
     }
     if (e.target.id === "namaJalan3" && Hide === "") {
-      localStorage.NamaJalanKota = e.target.value;
+      SetNamaJalanKota(e.target.value);
 
-      console.log(localStorage.NamaJalanKota);
+      console.log(NamaJalanKota);
     }
     if (e.target.id === "namaJalan4" && Hide === "") {
-      localStorage.NamaJalanProfinsi = e.target.value;
+      SetNamaJalanProfinsi(e.target.value) ;
 
-      console.log(localStorage.NamaJalanProfinsi);
+      console.log(NamaJalanProfinsi);
     }
     if (e.target.id === "namaJalan5" && Hide === "") {
-      localStorage.NamaJalanKodePos = e.target.value;
+      SetNamaJalanKodePos(e.target.value) ;
 
-      console.log(localStorage.NamaJalanKodePos);
+      console.log(NamaJalanKodePos);
     }
 
     if (e.target.id === "Email") {
@@ -248,7 +268,7 @@ export const Page1 = () => {
           console.log(error);
         });
     }
-  });
+  },[]);
 
   // Data polish On load
 
@@ -269,15 +289,15 @@ export const Page1 = () => {
       axios(config)
         .then(function (response) {
           console.log(JSON.stringify(response.data));
-          localStorage.nama = response.data.data.policy_holder;
-          localStorage.noPonsel = response.data.data.mobile_no;
-          localStorage.Email = response.data.data.email;
-          localStorage.NamaJalanRumah=response.data.data.address;
-          localStorage.NamaJalanKota=response.data.data.city;
-          localStorage.NamaJalanProfinsi=response.data.data.province;
-          localStorage.NamaJalanKodePos=response.data.data.postal_code;
+          SetDataNama(response.data.data.policy_holder) 
+          SetDataNumber( response.data.data.mobile_no);
+          SetDataEmail( response.data.data.email);
+      SetNamaJalanRumah(response.data.data.address);
+          SetNamaJalanKota(response.data.data.city);
+          SetNamaJalanProfinsi(response.data.data.province);
+          SetNamaJalanKodePos(response.data.data.postal_code);
           console.log(localStorage);
-          if (response.data.data.customer_id != "") {
+          if (response.data.data.customer_id !=="") {
             SetAllFrom("");
           } else {
             alert("salah");
@@ -297,13 +317,89 @@ export const Page1 = () => {
 const SubmitFrom = () => {
 
 
+if (Chapta  !== "" && PersetujuanValid === true && DataPolis.length >=12 && DataNama !=="" && UploadStatus === true) {
 
-localStorage.clear()
+  SetModalState(true)
+
+} 
+if (DataPolis.length <12) {
+  alert("Isi Nomer Polis Terlebih Dahulu")
+}
+if (UploadStatus===false) {
+  alert("Silakan Upload Foto Dahulu ")
+}
+if (PersetujuanValid===false) {
+  alert("Silakan Click Tanda Persetujuan ")
+}
+if (Chapta==="") {
+  alert("Silakan Isi Chapta ")
+}
+
+
+
+else{
+  
+}
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
   };
 
+  // OTP Section 
+const ModalTogller = () => {
+
+  if (ModalState === false) {
+    SetModalState(true)
+  } else {
+    SetModalState(false)
+  }
+
+
+} 
+
+const OtpEmail =()=> {
+  alert("OTP Dikirimkan Lewat E-mail")
+
+
+}
+
+const OtpSMS =()=> {
+  alert("OTP Dikirimkan Lewat SMS / whatsaap")
+
+
+}
+
+
+const OtpValidation =() => {
+
+
+ if (OtpValue ==="1234" && ModalState ===true && Chapta !=="" && PersetujuanValid ===true) {
+  alert("Kode OTP Benar")
+  localStorage.clear()
+  history.push('TanksPage')
+ } 
+ if (OtpValue !=="1234" && ModalState ===true && Chapta !=="" && PersetujuanValid ===true) {
+  alert("kode OTP salah ")
+ } 
 
 
 
+}
 
 
 
@@ -373,7 +469,7 @@ localStorage.clear()
       {/* <h5>{localStorage.token}</h5> */}
       {/* Header Page End */}
       <div className="FromIsi">
-        <form onSubmit={SubmitFrom}>
+       
           {/* nomer Polis */}
           <div className="col nomerPolisWrap">
             <label htmlFor="noPolis">
@@ -401,7 +497,7 @@ localStorage.clear()
                 type="text"
                 id="Name"
                 name="NamaLengkap"
-                value={localStorage.nama}
+                value={DataNama}
                 placeholder="masukan Nama Lengkap"
                 required
                 disabled
@@ -415,7 +511,7 @@ localStorage.clear()
               <input
                 onChange={handleChangeAll}
                 placeholder="Masukan Nomer Hp Anda"
-                value={localStorage.noPonsel}
+                value={DataNumber}
                 type="number"
                 id="Nomor"
                 disabled
@@ -433,6 +529,8 @@ localStorage.clear()
                 onChange={handleChangeAll}
                 type="email"
                 id="Email"
+                value={DataEmail}
+
                 disabled
                 required
               />
@@ -661,10 +759,48 @@ localStorage.clear()
             />
           </div>
 
-          <button className="btn-Submit" type="submit">
+          <button className="btn-Submit" type="submit"
+          
+          onClick={SubmitFrom}>
             SUBMIT
           </button>
-        </form>
+                
+                {/* Modal  */}
+        <MDBModal isOpen={ModalState}  centered>
+          <MDBModalHeader  centered >Input OTP Code</MDBModalHeader>
+          <MDBModalBody>
+                <div
+                className="OtpInputWrap"
+                >
+                <h5>  Masukan Kode OTP</h5>
+                <input 
+                className="InputOTP"
+                type="number"
+                name="InputOTP"
+                id="InputOTP"
+                onChange={handleChangeAll}
+                ></input>
+
+
+                </div>
+              
+                
+                <div  className="btnModalGroup">
+                <button  onClick={OtpEmail}>  Send By Email</button>
+                <button onClick={OtpSMS}> Send By No Handpone</button>
+                </div>
+                
+
+
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" onClick={ModalTogller}>Close</MDBBtn>
+            <MDBBtn color="primary" onClick={OtpValidation}>Save changes</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>
+
+
+
       </div>
     </div>
   );

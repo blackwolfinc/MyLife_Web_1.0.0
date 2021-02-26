@@ -74,11 +74,14 @@
         p {
             margin-left: 1rem;
             font-weight: 100;
+            margin-top: 1.5rem !important;
         }
 
         span {
             color: red;
         }
+
+     
     }
 }
 
@@ -167,6 +170,7 @@ img{
 
                 p {
                     margin-left: 1rem;
+                    margin-top: 1rem;
                 }
             }
 
@@ -175,4 +179,22 @@ img{
 
     input:disabled {
         background-color: gray;}
+}
+.OtpInputWrap {
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.btnModalGroup{
+ display: flex;
+ justify-content: left;
+margin-top: 1rem;
+  button {
+      padding: 0.5rem ;
+      border-radius: 5px;
+      margin: 0 0.3rem ;
+  }
 }
