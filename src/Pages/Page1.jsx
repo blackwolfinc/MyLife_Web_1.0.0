@@ -292,7 +292,7 @@ export const Page1 = () => {
           SetDataNama(response.data.data.policy_holder) 
           SetDataNumber( response.data.data.mobile_no);
           SetDataEmail( response.data.data.email);
-      SetNamaJalanRumah(response.data.data.address);
+          SetNamaJalanRumah(response.data.data.address);
           SetNamaJalanKota(response.data.data.city);
           SetNamaJalanProfinsi(response.data.data.province);
           SetNamaJalanKodePos(response.data.data.postal_code);
@@ -327,6 +327,8 @@ if (DataPolis.length <12) {
 }
 if (UploadStatus===false) {
   alert("Silakan Upload Foto Dahulu ")
+
+  document.getElementById("UploadFileInput").focus();
 }
 if (PersetujuanValid===false) {
   alert("Silakan Click Tanda Persetujuan ")
@@ -457,7 +459,7 @@ const OtpValidation =() => {
 
   // }, [Chapta])
   return (
-    <div>
+    <div className="WrapperPage1">
       {/* header Page Start */}
       <div className="HeaderPage">
         <img className="LogoEquity" src={Logo} alt="" />
@@ -477,6 +479,7 @@ const OtpValidation =() => {
             </label>
             <input
               onChange={handleChangeAll}
+              autoFocus
               maxlength="12"
               type="text"
               id="noPolis"
@@ -541,7 +544,7 @@ const OtpValidation =() => {
             <label htmlFor="file">
               Upload Ktp <span>*</span>
             </label>
-            <input onChange={UploadFile} type="file" name="file" />
+            <input  id="UploadFileInput" className="fileInputCostum" onChange={UploadFile} type="file" name="file" />
             {UploadStatus ? (
               <div>
                 <img src={UrlFile} />
@@ -552,7 +555,7 @@ const OtpValidation =() => {
               
               </div>
             ) : (
-              <p>Select a file to show details</p>
+              <p></p>
             )}
           </div>
 
@@ -562,7 +565,8 @@ const OtpValidation =() => {
               <label htmlFor="Email">
                 <b> Jika Ada Peubahan Data</b>
               </label>
-              <div className="checkboxwrap">
+              <hr/>
+                <div className="checkboxwrap">
                 <label>
                   <input
                     id="NomorHpBaru"
@@ -575,9 +579,7 @@ const OtpValidation =() => {
                 </label>
               </div>
               <div className={`col nomorWa1 ${ChangeNumber}`}>
-                <label htmlFor="Nomor">
-                  Nomor Whatsapp Baru <span>*</span>
-                </label>
+            
                 <input
                   type="number"
                   onChange={handleChangeAll}
@@ -598,9 +600,7 @@ const OtpValidation =() => {
                 </label>
               </div>
               <div className={`col nomorWa1 ${ChangeEmail}`}>
-                <label htmlFor="Nomor">
-                  Email Baru <span>*</span>
-                </label>
+               
                 <input
                   type="email"
                   onChange={handleChangeAll}
@@ -608,39 +608,8 @@ const OtpValidation =() => {
                   id="EmailChange"
                 />
               </div>
-            </div>
-          </div>
-          {/* Perubahan Data End */}
-          {/*Terhubung Wa  */}
-          <div className="col selectlWrap">
-            <label htmlFor="Email">
-              Apakah no Hp anda Terhubung dengan No Whatsapp <span>*</span>
-            </label>
-            <select onChange={handleChangeWa}>
-              <option value="hide"></option>
-              <option selected id="option1" value="hide">
-                ya
-              </option>
-              <option id="option2" value="show">
-                Tidak
-              </option>
-            </select>
-          </div>
-          {/* no Wa baru  */}
-          <div className={`col nomorWrap2 ${ChangeWa}`}>
-            <label htmlFor="Nomor">
-              Nomor Whatsapp <span>*</span>
-            </label>
-            <input
-              type="number"
-              onChange={handleChangeAll}
-              name="NomerWhatsappTerbaru"
-              id="NomerWhatsappTerbaru"
-            />
-          </div>
-          {/* Checkbox */}
-          {/* Checkbook Triger */}
-          <div className="col checkboxlWrap ">
+              {/* Checkbook Triger */}
+          <div className=" checkboxlWrap ">
             <label>
               <input
                 id="emailCheck"
@@ -704,8 +673,44 @@ const OtpValidation =() => {
               <label htmlFor="namaJalan5"> Kode Pos</label>
             </div>
           </div>
+          
           {/* checkbook end  */}
+            </div>
+          <hr/>
+          {/* Perubahan Data End */}
+          {/*Terhubung Wa  */}
+          <div className="col selectlWrap">
+            <label htmlFor="Email">
+              Apakah no Hp anda Terhubung dengan No Whatsapp <span>*</span>
+            </label>
+            <select onChange={handleChangeWa}>
+             
+              <option selected id="option1" value="hide">
+                ya
+              </option>
+              <option id="option2" value="show">
+                Tidak
+              </option>
+            </select>
+          </div>
+          {/* no Wa baru  */}
+          <div className={`col nomorWrap2 ${ChangeWa}`}>
+            <label htmlFor="Nomor">
+              Nomor Whatsapp <span>*</span>
+            </label>
+            <input
+              type="number"
+              onChange={handleChangeAll}
+              name="NomerWhatsappTerbaru"
+              id="NomerWhatsappTerbaru"
+            />
+          </div>
+          {/* Checkbox */}
+       
+          </div>
           {/* persetujuan */}
+         
+        <hr/>
           <div className="Persetujuan">
             <h4>
               <b>Persetujuan ,</b>
@@ -745,6 +750,7 @@ const OtpValidation =() => {
               </label>
             </div>
           </div>
+          <hr/>
           {/* verivikasi Chapta */}
           <div className="col nomorWrap">
             <label htmlFor="Nomor">

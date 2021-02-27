@@ -1,13 +1,21 @@
-.HeaderPage {
+.WrapperPage1{
+    background: #f7f2e0;
+    box-shadow:  20px 20px 60px #d5d5d5,
+    -20px -20px 60px #ffffff;
+    padding: 2.5rem;
+    .HeaderPage {
     display: flex;
     justify-content: center;
     flex-direction: column;
     text-align: center;
     align-items: center;
-
+        color: #909090;
+   
 
     .LogoEquity {
         width: 17rem;
+        margin-top: 1rem;
+        opacity: 75%;
     }
 
     .HeaderTitle {
@@ -28,10 +36,12 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding: 0px !important;
 
     label {
         margin: 20px 0px;
         font-weight: bold;
+        color: #909090;
 
         span {
             color: red;
@@ -39,7 +49,7 @@
     }
 
     select {
-        width: 30%;
+        width: 50%;
         padding: 0.5rem 2rem;
         border: 1px solid grey;
         border-radius: 5px;
@@ -52,18 +62,27 @@
 
     input {
         padding: 0.5rem;
-        border: 1px solid grey;
+        // border: 1px solid grey;
         border-radius: 5px;
+     
+        box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+        inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+        padding: 1rem;
+        border: none;
 
 
     }
-
-
+    input:focus{ box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+        inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);}
+    input:hover{
+        box-shadow: 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+         -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+    }
 }
 
 .checkboxlWrap {
 
-    margin-top: 1rem;
+ 
 
     label {
         display: flex;
@@ -121,13 +140,14 @@
 }
 
 .btn-Submit {
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding: 20px;
     background-color: green;
+    
     color: white;
     border: none;
     border-radius: 5px;
-    width: 20%;
+    width: 100%;
 }
 
 .hide {
@@ -149,13 +169,15 @@ img{
     border: 1px solid gray;
     padding: 1rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     border-radius: 5px;
     .PerbuahanDataCheck {
         .nomorWa1 {
-            border: 1px solid gray;
-            padding: 1rem;
+            // border: 1px solid gray;
+            // padding: 1rem;
             border-radius: 5px;
-            margin-top: 1rem;
+            // margin-top: -3rem;?
+            // margin-left: 0.8rem;np
         }
 
         .checkboxwrap {
@@ -197,4 +219,16 @@ margin-top: 1rem;
       border-radius: 5px;
       margin: 0 0.3rem ;
   }
+}
+
+.Persetujuan {
+    margin-top: 4rem;
+}
+
+.fileInputCostum{
+    // background-color: #349a46c7;
+    padding: 1rem;
+//    color: white;
+}
+
 }
