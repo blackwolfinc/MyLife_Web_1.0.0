@@ -1,7 +1,7 @@
-.WrapperPage1{
+.WrapperPage1 {
     background: #f7f2e0;
-    box-shadow:  20px 20px 60px #d5d5d5,
-    -20px -20px 60px #ffffff;
+    box-shadow: 20px 20px 60px #d5d5d5,
+        -20px -20px 60px #ffffff;
     padding: 2.5rem;
     animation-name: example;
     animation-duration: 0.8s;
@@ -10,255 +10,270 @@
 
 
 
-      
+
     @keyframes example {
-        0%   {
-       
-            transform: rotateZ(12deg);}
+        0% {
+
+            transform: rotateZ(12deg);
+        }
+
         // 25%   {transform: rotateX(35deg);}
         // 50%   {transform: rotateX(25deg);}
         // 75%   {transform: rotateX(15deg);}
         100% {
-            
-            transform: rotateZ(0deg);}
-      }
+
+            transform: rotateZ(0deg);
+        }
+    }
 
 
 
 
     .HeaderPage {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-        color: #909090;
-
-
-
-    .LogoEquity {
-        width: 17rem;
-        margin-top: 1rem;
-        opacity: 75%;
-    }
-
-    .HeaderTitle {
-        // background-color: aqua;
-        width: 100%;
-        padding: 3% 1%;
-        border-bottom: 1px solid gray;
-    }
-}
-
-.FromIsi {
-
-
-    width: 100%;
-}
-
-.col {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0px !important;
-
-    label {
-        margin: 20px 0px;
-        font-weight: bold;
-        color: #909090;
-
-        span {
-            color: red;
-        }
-    }
-
-    select {
-        width: 70%;
-        padding: 0.8rem 2rem;
-        border: 1px solid grey;
-        border-radius: 5px;
-
-        option {
-            // background-color: red;
-            margin: 0rem;
-        }
-    }
-
-    input {
-        padding: 0.5rem;
-        // border: 1px solid grey;
-        border-radius: 5px;
-     
-        box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-        inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
-        padding: 1rem;
-        border: none;
-
-
-    }
-    input:focus{ box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-        inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);}
-    input:hover{
-        box-shadow: 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-         -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
-    }
-}
-
-.checkboxlWrap {
-
- 
-
-    label {
         display: flex;
-        justify-content: left;
-        flex-direction: row;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
         align-items: center;
+        color: #909090;
 
-        p {
-            margin-left: 1rem;
-            font-weight: 100;
-            margin-top: 1.5rem !important;
+
+
+        .LogoEquity {
+            width: 17rem;
+            margin-top: 1rem;
+            opacity: 75%;
         }
 
-        span {
-            color: red;
+        .HeaderTitle {
+            // background-color: aqua;
+            width: 100%;
+            padding: 3% 1%;
+            border-bottom: 1px solid gray;
         }
-
-     
-    }
-}
-
-
-.checkbookFrom {
-
-    //  background-color: red;
-    label {
-        font-weight: 50;
-        margin-top: 0.5rem;
     }
 
-    .KotaProf {
+    .FromIsi {
+
+
+        width: 100%;
+    }
+
+    .col {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0px !important;
 
-        .kota,
-        .prof {
-            width: 50%;
+        label {
+            margin: 20px 0px;
+            font-weight: bold;
+            color: #909090;
 
-            input {
-                width: 95%;
+            span {
+                color: red;
             }
         }
 
-        .kota {
-            input {
-                width: 90%;
-            }
-        }
-    }
-
-    .kodePos {
-        width: 45%;
-    }
-
-}
-
-.btn-Submit {
-    margin-top: 2rem;
-    padding: 20px;
-    background-color: green;
-    
-    color: white;
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.hide {
-    display: none;
-}
-
-
-.dataUpload{
-
-img{
-    height: 100px;
-    margin-top: 1rem;
-    border-radius: 5px;
-    border: 2px solid gray;
-}
-
-
-}
-.PerubahanDataWrap {
-    border: 1px solid gray;
-    padding: 1rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 5px;
-    .PerbuahanDataCheck {
-        .nomorWa1 {
-            // border: 1px solid gray;
-            // padding: 1rem;
+        select {
+            width: 70%;
+            padding: 0.8rem 2rem;
+            border: 1px solid grey;
             border-radius: 5px;
-            // margin-top: -3rem;?
-            // margin-left: 0.8rem;np
+
+            option {
+                // background-color: red;
+                margin: 0rem;
+            }
         }
 
-        .checkboxwrap {
+        input {
+            padding: 0.5rem;
+            // border: 1px solid grey;
+            border-radius: 5px;
+
+            box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+                inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+            padding: 1rem;
+            border: none;
+
+
+        }
+
+        input:focus {
+            box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+                inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        input:hover {
+            box-shadow: 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+                -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    .checkboxlWrap {
+
+
+
+        label {
             display: flex;
             justify-content: left;
             flex-direction: row;
-            // border-bottom: 1px solid gray;
+            align-items: center;
 
-            label {
-                display: flex;
-                align-items: center;
-
-                p {
-                    margin-left: 1rem;
-                    margin-top: 1rem;
-                }
+            p {
+                margin-left: 1rem;
+                font-weight: 100;
+                margin-top: 1.5rem !important;
             }
+
+            span {
+                color: red;
+            }
+
 
         }
     }
 
-    input:disabled {
-        background-color: gray;}
-}
-.OtpInputWrap {
 
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
+    .checkbookFrom {
+
+        //  background-color: red;
+        label {
+            font-weight: 50;
+            margin-top: 0.5rem;
+        }
+
+        .KotaProf {
+            display: flex;
+            justify-content: space-between;
+
+            .kota,
+            .prof {
+                width: 50%;
+
+                input {
+                    width: 95%;
+                }
+            }
+
+            .kota {
+                input {
+                    width: 90%;
+                }
+            }
+        }
+
+        .kodePos {
+            width: 45%;
+        }
+
+    }
+
+    .btn-Submit {
+        margin-top: 2rem;
+        padding: 20px;
+        background-color: green;
+
+        color: white;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .hide {
+        display: none;
+    }
 
 
-.btnModalGroup{
- display: flex;
- justify-content: left;
-margin-top: 1rem;
-  button {
-      padding: 0.5rem ;
-      border-radius: 5px;
-      margin: 0 0.3rem ;
-  }
+    .dataUpload {
+
+        img {
+            height: 100px;
+            margin-top: 1rem;
+            border-radius: 5px;
+            border: 2px solid gray;
+        }
+
+
+    }
+
+    .PerubahanDataWrap {
+        border: 1px solid gray;
+        padding: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 5px;
+
+        .PerbuahanDataCheck {
+            .nomorWa1 {
+                // border: 1px solid gray;
+                // padding: 1rem;
+                border-radius: 5px;
+                // margin-top: -3rem;?
+                // margin-left: 0.8rem;np
+            }
+
+            .checkboxwrap {
+                display: flex;
+                justify-content: left;
+                flex-direction: row;
+                // border-bottom: 1px solid gray;
+
+                label {
+                    display: flex;
+                    align-items: center;
+
+                    p {
+                        margin-left: 1rem;
+                        margin-top: 1rem;
+                    }
+                }
+
+            }
+        }
+
+        input:disabled {
+            background-color: gray;
+        }
+    }
+
+    .OtpInputWrap {
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+
+    .btnModalGroup {
+        display: flex;
+        justify-content: left;
+        margin-top: 1rem;
+
+        button {
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin: 0 0.3rem;
+        }
+    }
+
+    .Persetujuan {
+        margin-top: 4rem;
+    }
+
+    .fileInputCostum {
+        // background-color: #349a46c7;
+        padding: 1rem;
+        //    color: white;
+    }
+
 }
 
-.Persetujuan {
-    margin-top: 4rem;
-}
-
-.fileInputCostum{
-    // background-color: #349a46c7;
-    padding: 1rem;
-//    color: white;
-}
-
-}
- input:hover ,input:active ,input:focus {
-outline: 3px solid green;
-outline-style: auto;
-border-radius :10px ;
+input:hover,
+input:active,
+input:focus {
+    outline: 3px solid green;
+    outline-style: auto;
+    border-radius: 10px;
 }
