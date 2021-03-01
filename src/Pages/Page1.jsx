@@ -322,19 +322,24 @@ if (Chapta  !== "" && PersetujuanValid === true && DataPolis.length >=12 && Data
   SetModalState(true)
 
 } 
-if (DataPolis.length <12) {
-  alert("Isi Nomer Polis Terlebih Dahulu")
+if (Chapta==="") {
+  alert("Silakan Isi Chapta ")
+  document.getElementById("RechaptaFrom").focus();
+}
+if (PersetujuanValid===false) {
+  alert("Silakan Click Tanda Persetujuan ")
+  document.getElementById("Persetujuan").focus();
 }
 if (UploadStatus===false) {
   alert("Silakan Upload Foto Dahulu ")
 
   document.getElementById("UploadFileInput").focus();
 }
-if (PersetujuanValid===false) {
-  alert("Silakan Click Tanda Persetujuan ")
-}
-if (Chapta==="") {
-  alert("Silakan Isi Chapta ")
+
+
+if (DataPolis.length <12) {
+  alert("Isi Nomer Polis Terlebih Dahulu")
+  document.getElementById("noPolis").focus();
 }
 
 
@@ -562,10 +567,16 @@ const OtpValidation =() => {
           {/* Perubahan Data  */}
           <div className="PerubahanDataWrap">
             <div className="PerbuahanDataCheck">
-              <label htmlFor="Email">
-                <b> Jika Ada Peubahan Data</b>
-              </label>
-              <hr/>
+           
+       
+
+{/* 
+
+                <fieldset>
+                <legend>   <b> Jika Ada Peubahan Data</b></legend> */}
+                <fieldset>
+  <legend>Personalia:</legend>
+              
                 <div className="checkboxwrap">
                 <label>
                   <input
@@ -628,13 +639,13 @@ const OtpValidation =() => {
               </label>
               {/* nama jaalan dan rumah  */}
               <input type="text"
-              placeholder={"Tempat Tinggal Sekarag  : " +  (localStorage.NamaJalanRumah !==undefined ? localStorage.NamaJalanRumah : "Data Kosong") }
+              placeholder={"Tempat Tinggal Sekarag  : " +  (NamaJalanRumah !==undefined ? NamaJalanRumah : "Data Kosong") }
               onChange={handleChangeAll}
               id="namaJalan" />
               <label htmlFor="namaJalan"> Nama Jalan,No Rumah/Unit</label>
               {/* kecamatan */}
               <input type="text" onChange={handleChangeAll}
-                placeholder={"Kecamatan Tinggal Sekarag  : " +  (localStorage.NamaJalanKecamatan !==undefined ? localStorage.NamaJalanKecamatan : "Data Kosong") }
+                placeholder={"Kecamatan Tinggal Sekarag  : " +  (NamaJalanKecamatan !==undefined ? NamaJalanKecamatan : "Data Kosong") }
               id="namaJalan2" />
               <label htmlFor="namaJalan2"> Kecamatan</label>
               {/* kota */}
@@ -643,7 +654,7 @@ const OtpValidation =() => {
                   <input
                     type="text"
                     placeholder={"Kota Tinggal Sekarag  : " +
-                    (localStorage.NamaJalanKota !==undefined ?     localStorage.NamaJalanKota : "Data Kosong")  }
+                    (NamaJalanKota !==undefined ?    NamaJalanKota : "Data Kosong")  }
                     onChange={handleChangeAll}
                     id="namaJalan3"
                   />
@@ -653,7 +664,7 @@ const OtpValidation =() => {
                   <input
                     type="text"
                     placeholder={"Provinsi Tinggal Sekarag  : " +
-                 (   localStorage.NamaJalanProfinsi !==undefined ?     localStorage.NamaJalanProfinsi : "Data Kosong" )}
+                 (   NamaJalanProfinsi !==undefined ?  NamaJalanProfinsi : "Data Kosong" )}
                     onChange={handleChangeAll}
                     id="namaJalan4"
                   />
@@ -665,7 +676,7 @@ const OtpValidation =() => {
                 className="kodePos"
                 type="text"
                 placeholder={"Kode Pos Sekarag  : " +
-               ( localStorage.NamaJalanKodePos !==undefined ?     localStorage.NamaJalanKodePos : "Data Kosong")
+               (NamaJalanKodePos !==undefined ?     NamaJalanKodePos : "Data Kosong")
                 }
                 onChange={handleChangeAll}
                 id="namaJalan5"
@@ -675,6 +686,7 @@ const OtpValidation =() => {
           </div>
           
           {/* checkbook end  */}
+          </fieldset>
             </div>
           <hr/>
           {/* Perubahan Data End */}
@@ -686,10 +698,10 @@ const OtpValidation =() => {
             <select onChange={handleChangeWa}>
              
               <option selected id="option1" value="hide">
-                ya
+              Terhubung dengan No Whatsapp
               </option>
               <option id="option2" value="show">
-                Tidak
+                Tidak Terhubung dengan No Whatsapp
               </option>
             </select>
           </div>
@@ -761,6 +773,7 @@ const OtpValidation =() => {
               onChange={ChaptaFrom}
               theme="light"
               type="image"
+              id="RechaptaFrom"
               sitekey={Sitekey}
             />
           </div>
