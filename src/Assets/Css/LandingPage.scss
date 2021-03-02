@@ -14,12 +14,9 @@
     @keyframes example {
         0% {
 
-            transform: rotateZ(12deg);
+            transform: rotateZ(4deg);
         }
 
-        // 25%   {transform: rotateX(35deg);}
-        // 50%   {transform: rotateX(25deg);}
-        // 75%   {transform: rotateX(15deg);}
         100% {
 
             transform: rotateZ(0deg);
@@ -46,7 +43,6 @@
         }
 
         .HeaderTitle {
-            // background-color: aqua;
             width: 100%;
             padding: 3% 1%;
             border-bottom: 1px solid gray;
@@ -78,22 +74,32 @@
         select {
             width: 70%;
             padding: 0.8rem 2rem;
-            border: 1px solid grey;
+            border: none;
             border-radius: 5px;
+            background: floralwhite;
+            outline: none;
+            box-shadow: 1px 1px 7px 2px rgba(0, 0, 0, 0.2), -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+            ;
 
             option {
-                // background-color: red;
+
                 margin: 0rem;
             }
         }
 
+        select:hover,
+        select:focus {
+
+            box-shadow: inset 1px 1px 7px 2px rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+            ;
+            ;
+        }
+
         input {
             padding: 0.5rem;
-            // border: 1px solid grey;
             border-radius: 5px;
-
-            box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-                inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+            box-shadow: 1px 1px 7px 2px rgba(0, 0, 0, 0.2),
+                -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
             padding: 1rem;
             border: none;
 
@@ -106,8 +112,8 @@
         }
 
         input:hover {
-            box-shadow: 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-                -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+            box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+                inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
         }
     }
 
@@ -138,7 +144,7 @@
 
     .checkbookFrom {
 
-        //  background-color: red;
+
         label {
             font-weight: 50;
             margin-top: 0.5rem;
@@ -199,26 +205,27 @@
     }
 
     .PerubahanDataWrap {
-        border: 1px solid gray;
+        // border: 1px solid gray;
         padding: 1rem;
         margin-top: 2rem;
         margin-bottom: 2rem;
         border-radius: 5px;
 
+        box-shadow: 1px 1px 7px 2px rgba(0, 0, 0, 0.2),
+            -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+
+
         .PerbuahanDataCheck {
             .nomorWa1 {
-                // border: 1px solid gray;
-                // padding: 1rem;
                 border-radius: 5px;
-                // margin-top: -3rem;?
-                // margin-left: 0.8rem;np
+
             }
 
             .checkboxwrap {
                 display: flex;
                 justify-content: left;
                 flex-direction: row;
-                // border-bottom: 1px solid gray;
+
 
                 label {
                     display: flex;
@@ -263,9 +270,7 @@
     }
 
     .fileInputCostum {
-        // background-color: #349a46c7;
         padding: 1rem;
-        //    color: white;
     }
 
 }
@@ -273,7 +278,7 @@
 input:hover,
 input:active,
 input:focus {
-    outline: 3px solid green;
+    outline: none !important;
     outline-style: auto;
     border-radius: 10px;
 }

@@ -4,7 +4,7 @@ import "../Assets/Css/LandingPage.scss";
 import Logo from "../Assets/Img/Logo.jpg";
 import { useState, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { MDBBtn, MDBModal, MDBModalBody, MDBModalFooter } from 'mdbreact';
 import { useHistory } from "react-router-dom";
 
 export const Page1 = () => {
@@ -60,6 +60,7 @@ export const Page1 = () => {
 
   // Data Otp
   const [OtpValue, SetOtpValue] = useState("");
+  const [SendDataFinal, SetSendDataFinal] = useState(false);
 
   // Untuk Data Update
   const [DataNumberBaru, SetDataNumberBaru] = useState(0);
@@ -80,19 +81,23 @@ export const Page1 = () => {
     if (e.target.id === "EmailBaru" && HideCheck3 === "show") {
       SetChangeEmail("hide");
       SetAlternativeCheck3("hide");
+
     }
     if (e.target.id === "EmailBaru" && HideCheck3 === "hide") {
       SetChangeEmail("show");
       SetAlternativeCheck3("show");
+
     }
     if (e.target.id === "emailCheck" && Hide === "hide") {
       SetHideAlternative("");
       SetAlternativeCheck("false");
 
+
     }
     if (e.target.id === "emailCheck" && Hide === "") {
       SetHideAlternative("hide");
       SetAlternativeCheck("true");
+
     }
     if (e.target.id === "Persetujuan" && CheckPersetujuan === "hide") {
       SetCheckPersetujuan("");
@@ -274,6 +279,7 @@ export const Page1 = () => {
         url: `https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/profile?search_query_1=${DataPolis}`,
         headers: {
           Authorization: `Bearer ${TokenLogin}`,
+          contentType: "application/json"
         },
         data: TokenLogin,
       };
@@ -305,11 +311,90 @@ export const Page1 = () => {
     }
   }, [DataPolis]);
 
+
+
+  // sumbit Data Baru Setelah OTp
+  useEffect(() => {
+    if (SendDataFinal === true) {
+      // Api Untuk Send KE form
+      var formdata = new FormData();
+      formdata.append("changeAddressCode", "001");
+      formdata.append("policyNo", "1234567");
+      formdata.append("policyHolder", DataNama);
+      formdata.append("handphoneNo", DataNumber);
+      formdata.append("emailAddress", DataEmail);
+      formdata.append("changeData", "1");
+      formdata.append("newHandphoneNo", DataNumberBaru);
+      formdata.append("whatsappNumber", "1");
+      formdata.append("whatsappNo", NomerWhatsapp);
+      formdata.append("newEmailAddress", DataEmailBaru);
+      formdata.append("changeAddress", "1");
+      formdata.append("address1", NamaJalanRumah);
+      formdata.append("address2", NamaJalanRumah);
+      formdata.append("address3", NamaJalanRumah);
+      formdata.append("cityCode", NamaJalanKota);
+      formdata.append("stateCode", "001");
+      formdata.append("postalCode", NamaJalanKodePos);
+      formdata.append("countryCode", "001");
+      formdata.append("faxNo", "0215432");
+      formdata.append("phoneNo", DataNumber);
+      formdata.append("file", FileUpload);
+      formdata.append("active", "1");
+      formdata.append("transactionCode", "001");
+      formdata.append("transactionStatus", "active");
+
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+      };
+
+      fetch("https://myelife-web-customer.herokuapp.com/api/v1/change-address", requestOptions)
+        .then(response => response.text())
+        .then(function (response){
+          SetAllFrom("");
+          localStorage.clear()
+          alert(response)
+          history.push('TanksPage')
+         console.log(response.message)
+        }
+
+        )
+        .catch(error => console.log('error', error));
+
+
+
+
+
+
+
+
+      } else {
+      //  alert("eror Post")
+      }
+
+
+
+
+
+
+
+  }, [SendDataFinal]);
+
+
+
   // Final Submit
   const SubmitFrom = () => {
     if (Chapta !== "" && PersetujuanValid === true && DataPolis.length >= 12 && DataNama !== "" && UploadStatus === true) {
 
       SetModalState(true)
+
+      // data yang di submit
+
+
+
+
+
 
     }
     if (Chapta === "") {
@@ -370,8 +455,8 @@ export const Page1 = () => {
 
     if (OtpValue === "1234" && ModalState === true && Chapta !== "" && PersetujuanValid === true) {
       alert("Kode OTP Benar")
-      localStorage.clear()
-      history.push('TanksPage')
+      SetSendDataFinal(true)
+
     }
     if (OtpValue !== "1234" && ModalState === true && Chapta !== "" && PersetujuanValid === true) {
       alert("kode OTP salah ")
@@ -399,7 +484,7 @@ export const Page1 = () => {
           <input
             onChange={handleChangeAll}
             autoFocus
-            maxlength="12"
+            maxLength="12"
             type="text"
             id="noPolis"
             placeholder="Masukan Nomer Polis"
@@ -600,7 +685,7 @@ export const Page1 = () => {
             </label>
             <select onChange={handleChangeWa}>
 
-              <option selected id="option1" value="hide">
+              <option defaultValue id="option1" value="hide">
                 Terhubung dengan No Whatsapp
               </option>
               <option id="option2" value="show">
