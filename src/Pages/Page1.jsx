@@ -362,23 +362,9 @@ export const Page1 = () => {
         )
         .catch(error => console.log('error', error));
 
-
-
-
-
-
-
-
       } else {
       //  alert("eror Post")
       }
-
-
-
-
-
-
-
   }, [SendDataFinal]);
 
 
@@ -562,7 +548,7 @@ export const Page1 = () => {
         <div className="PerubahanDataWrap">
           <div className="PerbuahanDataCheck">
             <fieldset>
-              <legend>Personalia:</legend>
+              <legend>Jika Terdapat Perubahan Data :</legend>
               <div className="checkboxwrap">
                 <label>
                   <input
@@ -784,25 +770,17 @@ export const Page1 = () => {
                 id="InputOTP"
                 onChange={handleChangeAll}
               ></input>
-
-
             </div>
-
-
             <div className="btnModalGroup">
               <button onClick={OtpEmail}>  Send By Email</button>
               <button onClick={OtpSMS}> Send By No Handpone</button>
             </div>
-
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={ModalTogller}>Close</MDBBtn>
             <MDBBtn color="primary" onClick={OtpValidation}>Validation</MDBBtn>
           </MDBModalFooter>
         </MDBModal>
-
-
-
       </div>
     </div>
   );
