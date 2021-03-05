@@ -14,7 +14,7 @@
     @keyframes example {
         0% {
 
-            transform: rotateZ(4deg);
+            transform: rotateZ(2deg);
         }
 
         100% {
@@ -203,6 +203,46 @@
 
 
     }
+    .PerubahanDataWrap2{
+          // border: 1px solid gray;
+          padding: 1rem;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+          border-radius: 5px;
+
+
+
+          .PerbuahanDataCheck {
+              .nomorWa1 {
+                  border-radius: 5px;
+
+              }
+
+              .checkboxwrap {
+                  display: flex;
+                  justify-content: left;
+                  flex-direction: row;
+
+
+                  label {
+                      display: flex;
+                      align-items: center;
+
+                      p {
+                          margin-left: 1rem;
+                          margin-top: 1rem;
+                      }
+                  }
+
+              }
+          }
+
+          input:disabled {
+              background-color: gray;
+          }
+
+
+    }
 
     .PerubahanDataWrap {
         // border: 1px solid gray;
@@ -267,6 +307,9 @@
 
     .Persetujuan {
         margin-top: 4rem;
+        padding: 2rem;
+        border: 1px solid #80808070;
+        border-radius: 5px;
     }
 
     .fileInputCostum {
