@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import axios from "axios";
 import "../Assets/Css/LandingPage.scss";
 import "../Assets/Css/Checklist.scss";
+import "../Assets/Css/Validation.scss";
 import Logo from "../Assets/Img/Logo.jpg";
 import { useState, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -36,6 +37,7 @@ export const Page1 = () => {
   const [AllFrom, SetAllFrom] = useState("hide");
   const [Loader, SetLoader] = useState("hide");
   const [LoaderWrap, SetLoaderWrap] = useState("hide");
+  const [CheckboxPersetujuan, SetCheckboxPersetujuan] = useState("hide");
 
   //Set Hide and pop Up Modals
   const [ModalState, SetModalState] = useState(false);
@@ -100,10 +102,12 @@ export const Page1 = () => {
     if (e.target.id === "Persetujuan" && CheckPersetujuan === "hide") {
       SetCheckPersetujuan("");
       SetPersetujuanValid(true);
+      SetCheckboxPersetujuan("check-icon")
     }
     if (e.target.id === "Persetujuan" && CheckPersetujuan === "") {
       SetCheckPersetujuan("hide");
       SetPersetujuanValid(false);
+      SetCheckboxPersetujuan("hide")
     }
   };
 
@@ -429,6 +433,8 @@ export const Page1 = () => {
   };
   return (
     <>
+      {/* check Validation */}
+
       <div className={`${LoaderWrap}`}>
         <div class={`${Loader}`}></div>
       </div>
@@ -530,14 +536,13 @@ export const Page1 = () => {
               <p></p>
             )}
           </div>
-
+          <hr />
           {/* Perubahan Data  */}
           <div className="PerubahanDataWrap2">
-
             <div className="PerbuahanDataCheck">
               <fieldset>
                 <legend>Jika Ada Perubahan Data :</legend>
-                <br/>
+                <br />
                 <div className="checkboxwrap">
                   <label>
                     <input
@@ -709,8 +714,21 @@ export const Page1 = () => {
 
           <hr />
           <div className="Persetujuan PerubahanDataWrap">
+            {/* wraper ctg   */}
+
+            <div className="CheckiconWrap">
+              <div class="success-checkmark">
+                <div class={` ${CheckboxPersetujuan}` }>
+                  <span class="icon-line line-tip"></span>
+                  <span class="icon-line line-long"></span>
+                  <div class="icon-circle"></div>
+                  <div class="icon-fix"></div>
+                </div>
+              </div>
+            </div>
+            {/* end */}
             <h4>
-              <b>Persetujuan ,</b>
+              <b>Persetujuan </b>
             </h4>
             <br />
             <br />
@@ -743,7 +761,8 @@ export const Page1 = () => {
                   Saya Menyetujui <span>*</span>
                 </p>
               </label>
-              {/* check Validation */}
+
+
             </div>
           </div>
           <hr />
