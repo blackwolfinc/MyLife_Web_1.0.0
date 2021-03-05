@@ -505,7 +505,7 @@ export const Page1 = () => {
                 Alamat E-mail<span>*</span>
               </label>
               <input
-                placeholder="Masukan Alamat E-Mail"
+                placeholder=" tidak ada E-mail , Input E-mail Baru"
                 onChange={handleChangeAll}
                 type="email"
                 id="Email"
@@ -748,7 +748,8 @@ export const Page1 = () => {
             </p>
             <p>kesalahan tersebut.</p>
             <hr />
-            <div className="checkboxlWrap">
+            <div className={`checkboxlWrap ${CheckPersetujuan !=="hide" ? "hide": "tes"} ` }>
+
               <label>
                 <input
                   name="Persetujuan"
