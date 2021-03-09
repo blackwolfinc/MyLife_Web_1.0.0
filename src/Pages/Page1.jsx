@@ -370,7 +370,27 @@ export const Page1 = () => {
       DataNama !== "" &&
       UploadStatus === true
     ) {
-      SetModalState(true);
+      if (HideCheck2 === "show" && DataNumberBaru !== DataNumber &&  DataNumberBaru.length < 10 ) {
+          alert("hit")
+          alert(DataNumberBaru)
+          document.getElementById("NumberChange").focus();
+      } 
+      if (HideCheck3 === "show" && DataEmailBaru !== DataEmail &&  DataEmailBaru.length < 5 ) {
+        
+        alert(DataEmailBaru)
+        document.getElementById("EmailChange").focus();
+      }
+      else{
+        SetModalState(true);
+
+      }
+
+
+
+
+
+
+      // 
 
       // data yang di submit
     }
@@ -557,11 +577,13 @@ export const Page1 = () => {
                 </div>
                 <div className={`col nomorWa1 ${ChangeNumber}`}>
                   <input
+                    
                     placeholder={`Nomor Hp Lama : ${DataNumber}`}
                     type="number"
                     onChange={handleChangeAll}
                     name="NumberChange"
                     id="NumberChange"
+                    required
                   />
                 </div>
                 <div className="checkboxwrap">
@@ -578,11 +600,13 @@ export const Page1 = () => {
                 </div>
                 <div className={`col nomorWa1 ${ChangeEmail}`}>
                   <input
+                    maxLength="50"
                     placeholder={`Email Lama : ${DataEmail} `}
                     type="email"
                     onChange={handleChangeAll}
                     name="EmailChange"
                     id="EmailChange"
+                    required
                   />
                 </div>
                 {/* Checkbook Triger */}
@@ -799,7 +823,18 @@ export const Page1 = () => {
                   onChange={handleChangeAll}
                 ></input>
               </div>
+              <div className="DataOtp">
+              <div className="otpCon">
+                <p>Nomor Tujuan Otp  :  </p> 
+                <p>{DataNumber}</p>
+                </div>
 
+                <hr/>
+                <div className="otpCon">
+                <p>Email Tujuan Otp  :  </p>
+                <p>{DataEmail}</p>
+                </div>
+              </div>
               <div className="btnModalGroup">
                 <button onClick={OtpEmail}> Send By Email</button>
                 <button onClick={OtpSMS}> Send By No Handpone</button>

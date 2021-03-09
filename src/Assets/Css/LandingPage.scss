@@ -24,7 +24,7 @@
     }
 
 
-
+        
 
     .HeaderPage {
         display: flex;
@@ -295,6 +295,20 @@
         flex-direction: column;
     }
 
+    .otpCon{
+        display: flex;
+        justify-content:space-between;
+        flex-direction: row;
+    }
+    .DataOtp{
+     
+  
+        padding: 1rem;
+        border: 1px solid gray ;
+        width: 100%;
+        margin-top: 1rem;
+        border-radius: 5px;
+    }
 
     .btnModalGroup {
         display: flex;
