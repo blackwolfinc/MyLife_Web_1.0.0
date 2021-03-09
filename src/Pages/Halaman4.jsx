@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const OtpPage = () => {
+export const Halaman4 = () => {
     return (
         <div>
-            
+            End Page 
         </div>
     )
 }

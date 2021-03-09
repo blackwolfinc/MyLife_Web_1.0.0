@@ -1,0 +1,75 @@
+.ContainerDefault {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    height: 50rem;
+    background-color: aqua;
+    .ContainerKiri {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-color: green;
+        width: 60%;
+        height: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+
+        .ContainerCrausel{
+            background-color: red;
+            width: 100%;
+            height: 80%;
+            
+        }
+    }
+
+    .ContainerKanan{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-color:floralwhite;
+        width: 40%;
+        height: 100%;
+        padding: 3rem;
+    }
+
+
+}
+
+.ContainerDefaultSec {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    height: 50rem;
+    background-color: aqua;
+    .ContainerKiri {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-color: green;
+        width: 30%;
+        height: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+
+        .ContainerCrausel{
+            background-color: red;
+            width: 100%;
+            height: 80%;
+            
+        }
+    }
+
+    .ContainerKanan{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-color:floralwhite;
+        width: 70%;
+        height: 100%;
+        padding: 3rem;
+    }
+
+
+}
