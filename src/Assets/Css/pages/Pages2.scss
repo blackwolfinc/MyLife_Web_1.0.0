@@ -11,6 +11,34 @@
         padding-left: 2rem;
         margin-bottom: 4rem;
     }
+.PerubahanDataPemegangPolis {
+    padding: 1rem;
+    // background-color: #349a46;
+
+    border-radius: 8px;
+    border: 1px solid gray;
+
+
+    .PerubahanDataPemegangPolis-Check {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        justify-content: left;
+        h4{
+            padding-top: 0.5rem;
+        }
+        input{
+            margin-right: 2rem;
+
+        }
+
+        input[type='radio'] { transform: scale(1.2);
+
+        }
+        }
+    }
 
     .ShowDataDiri {
         border: 1px solid #e4e7ee;
@@ -20,6 +48,8 @@
         flex-direction: column;
         border-radius: 8px;
         margin-bottom: 2rem;
+
+
 
         .DataDiriTerakhir {
             display: flex;

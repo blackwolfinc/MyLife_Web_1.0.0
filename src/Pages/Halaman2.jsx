@@ -50,6 +50,17 @@ export const Halaman2 = () => {
             </div>
           </div>
         </div>
+      {/* Perubahan Data Pemegang Polis */}
+      <div className="PerubahanDataPemegangPolis">
+        <div className="PerubahanDataPemegangPolis-Check">
+        <input type="radio" /> <h4>Perubahan Nama Pemegang Polis</h4>
+        </div>
+
+      </div>
+
+
+
+
         {/* Pembaruan Data Diri */}
         <div className="PembaruhanDataDiri">
           <div className="PBDTitle">
