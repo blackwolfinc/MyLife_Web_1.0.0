@@ -1,0 +1,86 @@
+.EndpageWrapeer {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    width: 100%;
+    height: 60rem;
+    background-image: url("../../Img/Svg/Background.svg")
+    // background-color: #248535
+    ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 34rem -5rem;
+
+
+
+    .cardEnd {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+        margin-left: 5rem;
+        // background-color: aliceblue;
+        width: 40%;
+        height: 30rem;
+        margin-bottom: -8rem;
+
+        .cardheader{
+            margin-bottom: 5rem;
+
+            img{
+                width: 6rem;
+                border: 2px solid #ffffff;
+                border-radius: 2px;
+                opacity: 90%;
+            }
+
+        }
+
+        .seloganEndpage{
+            font-size: 42px;
+            font-weight: bold;
+            color: #1c1f24;
+        }
+
+
+    }
+
+    .buttonWrap {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 40%;
+
+        // background-color: aqua;
+        margin-left: 5rem;
+        margin-top: 5rem;
+
+        p{
+            padding: 1rem;
+            color: #1c1f24;
+            margin-bottom: -0.4rem;
+            line-height: 16px;
+            font-weight: 200;
+        }
+    }
+
+    .btn-Done {
+        background-color: #ffffff;
+        border: 1px solid green;
+
+
+    }
+    .btn-BackTo {
+        border: none;
+        background-color: #FFB629;
+    }
+    .btn-BackTo , .btn-Done{
+        padding: 0.5rem;
+        width: 15rem;
+        border-radius: 20px;
+        font-weight: 600;
+        color: #1c1f24;
+        margin: 0 0.6rem;
+    }
+}

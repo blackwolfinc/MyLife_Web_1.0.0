@@ -1,0 +1,17 @@
+.thumbs-wrapper ,.carousel-status {
+    display: none  !important;
+}
+
+.carousel-slider ,.ContainerCrausel{
+    border-radius: 1rem;
+}
+
+.carousel .slide {
+    display: flex;
+    justify-content: center;
+    background-color: none !important;
+   .legend {
+       background-color: rgba(128, 128, 128, 0.082) !important;
+
+   }
+}

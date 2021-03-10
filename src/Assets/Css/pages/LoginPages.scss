@@ -2,8 +2,8 @@
  display: flex;
  justify-content: center;
  flex-direction: column;
- background-color: gray;
- text-align: center;
+//  background-color: gray;
+ text-align: left;
  align-items: center;
  width: 100%;
  height: 100%;
@@ -14,20 +14,62 @@
     justify-content: center;
     flex-direction: column;
     margin-bottom: 2rem;
-    background-color: aliceblue;
+    // background-color: aliceblue;
+    border-left: 3px solid green;
+    padding-left: 1rem;
     width: 100%;
     height: 20%;
 
+    h3 {
+        font-weight: 00;
+    }
 }
 .CardLoginBody {
     display: flex;
-    justify-content: center;
+
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     align-items: center;
-    background-color: blue;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow:  20px 20px 65px #b5b5b5,
+             -20px -20px 65px #ffffff;
     width: 100%;
     height: 100%;
+    padding: 5rem 2rem;
+    input{
+        padding: 1.5rem;
+        width: 100%;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        border: 1px solid #e4e7ee;
+    }
+    .rechaptaFrom {
+        width:100%;
+
+        margin-bottom: 3rem;
+
+    }
+
+    .BtnLanjutkan {
+        padding: 0.7rem 7rem;
+        border: none;
+        border-radius: 200px;
+        font-weight: 600;
+        background-color: #349a46;
+        color: #ffffff;
+    }
 }
 
 }
+
+.logo-Container{
+    margin-bottom: 2rem;
+    img{width: 6rem;
+        border: 2px solid #ffffff;
+        border-radius: 2px;
+        opacity: 90%;
+    }
+
+}
+
