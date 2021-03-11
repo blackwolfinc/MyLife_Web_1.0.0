@@ -3,6 +3,8 @@ import "../Assets/Css/GlobalScss.scss";
 import "../Assets/Css/pages/LoginPages.scss"
 import logo from "../Assets/Img/Logo.jpg"
 import "../Assets/Css/Validation.scss"
+import icon1 from "../Assets/Img/Icon/ico-polis-24x24_2021-03-11/ico-polis-24x24@3x.png"
+import icon2 from "../Assets/Img/Icon/ico-calendar-24x24_2021-03-11/ico-calendar-24x24@3x.png"
 
 import ReCAPTCHA from "react-google-recaptcha";
 import { MainCrausel } from "./Components/MainCrausel";
@@ -25,14 +27,26 @@ export const LoginPage = () => {
             <p>Silahkan lengkapi data dibawah ini untuk melanjutkan</p>
           </div>
           <div className="CardLoginBody">
+                <div className="input-Container">
+                <img src={icon1}></img>
+                <label>Nomor Polis</label>
                 <input
-                placeholder="No Polis"
+                placeholder="Masukan No.Polis"
                 type="text">
 
                 </input>
-                <input type="date">
+                </div>
+           
+                <div className="input-Container">
+                <img src={icon2}></img>
+                <label>Tgl. Lahir</label>
+                <input
+                placeholder="Masukan No.Polis"
+                type="date">
 
                 </input>
+                </div>
+               
 
                     <div className="rechaptaFrom">
                      <ReCAPTCHA
