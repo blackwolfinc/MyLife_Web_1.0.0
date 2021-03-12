@@ -1,250 +1,277 @@
 .ContainerKanan {
-    background-color: #ffffff !important;
-    padding: 5rem;
-    margin: 3rem 5rem;
-    text-align: left;
-    border-radius: 10px;
-    height: 100% !important;
+  background-color: #ffffff !important;
+  padding: 5rem;
+  margin: 3rem 5rem;
+  text-align: left;
+  border-radius: 10px;
+  height: 100% !important;
 
-    .TitlePage {
-        border-left: 2px solid #349a46;
-        padding-left: 2rem;
-        margin-bottom: 4rem;
-    }
-.PerubahanDataPemegangPolis {
-    padding: 1rem;
+  .TitlePage {
+    border-left: 2px solid #349a46;
+    padding-left: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .PerubahanDataCheck {
+    padding: 0.5rem 1rem;
     // background-color: #349a46;
-
+    margin-bottom: 2rem;
     border-radius: 8px;
-    border: 1px solid gray;
+    border: 1px solid #e4e7ee;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.04);
 
+    .PerubahanDataPemegangPolis-Check,
+    .PerubahanKontakPemegangPolis-Check,
+    .PerubahanAlamatPemegangPolis-Check {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      justify-content: left;
 
-    .PerubahanDataPemegangPolis-Check {
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        align-items: center;
-        text-align: center;
-        justify-content: left;
-        h4{
-            padding-top: 0.5rem;
-        }
-        input{
-            margin-right: 2rem;
+      h4 {
+        padding-top: 0.5rem;
+        font-size: 14px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+      }
 
-        }
+      input {
+        margin-right: 2rem;
+      }
 
-        input[type='radio'] { transform: scale(1.2);
+      input[type="radio"] {
+        transform: scale(1.2);
+      }
+    }
+  }
 
-        }
-        }
+  .DataDiriTerakhir {
+    display: flex;
+    justify-content: left;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    background-color: #ccffd5;
+    height: 2.7rem;
+    padding-left: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+
+    span {
+      margin-right: 1rem;
     }
 
-    .ShowDataDiri {
-        border: 1px solid #e4e7ee;
-        padding: 1rem;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        border-radius: 8px;
-        margin-bottom: 2rem;
-
-
-
-        .DataDiriTerakhir {
-            display: flex;
-            justify-content: left;
-            text-align: left;
-            align-items: left;
-            align-content: left;
-            background-color: #ccffd5;
-            padding-top: 1rem;
-            padding-left: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-
-            span {
-                margin-right: 1rem;
-            }
-
-            p {
-                color: #349a46;
-                font-weight: 500;
-            }
-
-
-
-        }
-
-        .Datadiri {
-            .showData {
-
-                display: flex;
-                justify-content: space-between;
-                text-align: justify;
-                p.hasil {
-                    width:40%;
-                    text-align: right !important;
-                }
-            }
-        }
-
+    p {
+      color: #349a46;
+      font-weight: 500;
+      margin-top: revert;
+      font-size: 12px;          
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
     }
+  }
 
-    .PembaruhanDataDiri {
-        display: flex;
-        flex-direction: column;
+  .ShowDataDiri {
+    border: 1px solid #e4e7ee;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.04);
 
-        .PBDTitle {
-            border-bottom: 1px solid gray;
-            margin-bottom: 2rem;
-        }
-
-        .PBDisiContainer {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-
-            input {
-                border: 1px solid gray;
-                border-radius: 10px;
-                width: 60%;
-                padding: 0.2rem;
-            }
-
-
-        }
-
-        .WaCheck {
-            display: flex;
-            justify-content: flex-end;
-            flex-direction: row;
-            width: 100%;
-            text-align: center;
-            padding-top: 0.5rem;
-
-            input {
-                margin-right: 1rem;
-                margin-top: 0.4rem;
-            }
-
-            margin-left: -8.7rem;
-        }
-    }
-
-    .KRTitle {
-        margin-bottom: 2rem;
-        margin-top: 2rem;
-
-
-
-    }
-
-    .KRButtonGrup {
-        display: flex;
-        margin: 0 auto;
-        justify-content:space-between;
-        width: 70%;
-        padding: 2rem;
-        // background-color: #349a46;
-
-        button{
-            padding: 0.6rem 6rem;
-            border-radius: 200px;
-            border: none;
-            background-color: #CCFFD5;
-        }
-    }
-
-
-    .KREmailHiden {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 5rem;
-        .KREmailHiden-input {
-            display: flex;
-            // background-color: #349a46;
-            width: 100%;
-            justify-content: space-between;
-            input{width: 60%;
-                border: 1px solid gray;
-            border-radius: 8px;}
-        }
-    }
-
-    .KRAlamatHiden {
-        display: flex;
-        flex-direction: column;
-
-        .KRAlamatHiden-input {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-
-            .KRAlamatHiden-inputGroup{
-                width: 60%;
-
-                input{
-                    margin-bottom: 1rem;
-                    width: 100%;
-                    padding: 0.3rem;
-                }
-            }
-            input{width: 60%;
-            border-radius: 8px;
-            border: 1px solid gray;
-            }
-        }
-    }
-
-
-    .UKButtonGroup {display: flex;
-        margin-bottom: 2rem;
-        button{
-            padding: 0.3rem 3rem;
-            margin-right: 2rem;
-            border: none;
-            background-color: #349a46;
-            color: #ffffff;
-            font-weight: 500;
-            border-radius: 20px;
-
-        }
-
-    }
-
-    .UKDragDropFile {
-        display: flex;
-        background-color: #349a46;
-        height: 20rem;
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-        border-radius: 20px;
-        color: #ffffff;
-        margin-bottom: 5rem;
-    }
-
-    .ButtonGroupNav{
+    .Datadiri {
+      .showData {
         display: flex;
         justify-content: space-between;
+        text-align: justify;
 
-        button{
-            padding: 0.5rem 3rem;
-            border-radius: 20px;
-
+        p.hasil {
+          width: 40%;
+          text-align: right !important;
+          font-size: 14px;
+          font-weight: 300;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
         }
 
-        :first-child{
-            border: 1.5px solid #349a46;
-            color: #349a46;
-            background-color: #ffffff;
+        p:first-child {
+          font-size: 12px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #73767f;
         }
-
-        :nth-child(2){
-            background-color: #349a46;
-            color: #ffffff;
-            border: none;
-        }
+      }
     }
+  }
+
+  .PembaruhanDataDiri {
+    display: flex;
+    flex-direction: column;
+
+    .PBDTitle {
+      border-bottom: 1px solid gray;
+      margin-bottom: 2rem;
+    }
+
+    .PBDisiContainer {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      input {
+        border: 1px solid gray;
+        border-radius: 10px;
+        width: 60%;
+        padding: 0.2rem;
+      }
+    }
+
+    .WaCheck {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+      width: 100%;
+      text-align: center;
+      padding-top: 0.5rem;
+
+      input {
+        margin-right: 1rem;
+        margin-top: 0.4rem;
+      }
+
+      margin-left: -8.7rem;
+    }
+  }
+
+  .KRTitle {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
+  .KRButtonGrup {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    width: 70%;
+    padding: 2rem;
+    // background-color: #349a46;
+
+    button {
+      padding: 0.6rem 6rem;
+      border-radius: 200px;
+      border: none;
+      background-color: #ccffd5;
+    }
+  }
+
+  .KREmailHiden {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+
+    .KREmailHiden-input {
+      display: flex;
+      // background-color: #349a46;
+      width: 100%;
+      justify-content: space-between;
+
+      input {
+        width: 60%;
+        border: 1px solid gray;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .KRAlamatHiden {
+    display: flex;
+    flex-direction: column;
+
+    .KRAlamatHiden-input {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+
+      .KRAlamatHiden-inputGroup {
+        width: 60%;
+
+        input {
+          margin-bottom: 1rem;
+          width: 100%;
+          padding: 0.3rem;
+        }
+      }
+
+      input {
+        width: 60%;
+        border-radius: 8px;
+        border: 1px solid gray;
+      }
+    }
+  }
+
+  .UKButtonGroup {
+    display: flex;
+    margin-bottom: 2rem;
+
+    button {
+      padding: 0.3rem 3rem;
+      margin-right: 2rem;
+      border: none;
+      background-color: #349a46;
+      color: #ffffff;
+      font-weight: 500;
+      border-radius: 20px;
+    }
+  }
+
+  .UKDragDropFile {
+    display: flex;
+    background-color: #349a46;
+    height: 20rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #ffffff;
+    margin-bottom: 5rem;
+  }
+
+  .ButtonGroupNav {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      padding: 0.5rem 3rem;
+      border-radius: 20px;
+    }
+
+    :first-child {
+      border: 1.5px solid #349a46;
+      color: #349a46;
+      background-color: #ffffff;
+    }
+
+    :nth-child(2) {
+      background-color: #349a46;
+      color: #ffffff;
+      border: none;
+    }
+  }
 }
