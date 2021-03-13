@@ -30,6 +30,7 @@
       align-items: center;
       text-align: center;
       justify-content: left;
+      
 
       h4 {
         padding-top: 0.5rem;
@@ -274,4 +275,112 @@
       border: none;
     }
   }
+
+
+
+
+
+}
+
+
+.InputWrap{
+  padding: 1rem ;
+  margin-top: 1rem;
+  border-top: 1px dashed #80808040 ;
+margin-left: -1rem;
+  p{font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+  color: #73767f;}
+    i{
+      position:absolute ; 
+    
+    padding: 0.5rem 0.7rem ;}
+
+    input{
+      width: 100%;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-left: 4rem;
+      border-radius: 8px;
+      border: none;
+      background-color: #f7f9f8;
+    }
+
+
+}
+
+.PerubahanAlamatPemegangPolis-Check{
+  border-bottom: 1px dashed rgba(128, 128, 128, 0.233);
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+}
+
+.AlamatWraper {
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+
+p{
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #73767f;
+}
+input{
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  background-color: #f7f9f8;
+  border: none;
+::placeholder{
+  color: #d0d8e1;
+}
+}
+
+}
+
+.AlamatWrapProf{
+  margin-top: 1rem;
+  display: flex;
+  justify-content:space-between;
+  flex-direction: row;
+
+  input{
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #f7f9f8;
+  }
+
+  p{
+    margin-bottom: 0.2rem;
+    font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+color: #73767f;
+  }
+  .AlamatKanan{
+   input{
+    width: 90%;
+   }
+   width: 90%;
+  }
+  .AlamatKiri {
+   input{ width: 100%;}
+   width: 100%;
+  }
+  
 }
