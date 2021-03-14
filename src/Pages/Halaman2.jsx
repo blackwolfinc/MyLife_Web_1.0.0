@@ -3,6 +3,7 @@ import logo from "../Assets/Img/Logo.jpg";
 import "../Assets//Css/pages/Pages2.scss";
 import Select from 'react-select';
 import { UploadFileDrop } from "./Components/UploadFileDrop";
+import { MiniCrausel } from "./Components/MiniCrausel";
 
 
 export const Halaman2 = () => {
@@ -20,7 +21,10 @@ export const Halaman2 = () => {
         <div className="logo-Container">
           <img src={logo} alt="" />
         </div>
-        <div className="ContainerCrausel"></div>
+        <div className="ContainerCrausel">
+    <MiniCrausel/>
+
+        </div>
       </div>
 
       <div className="ContainerKanan">
