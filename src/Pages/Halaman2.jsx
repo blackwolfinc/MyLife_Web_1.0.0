@@ -4,6 +4,8 @@ import "../Assets//Css/pages/Pages2.scss";
 import Select from 'react-select';
 import { UploadFileDrop } from "./Components/UploadFileDrop";
 import { MiniCrausel } from "./Components/MiniCrausel";
+import logoKecil1 from "../Assets/Img/Icon/ico-user-12-x-12.png"
+
 
 
 export const Halaman2 = () => {
@@ -36,7 +38,7 @@ export const Halaman2 = () => {
         {/* Show Data diri  */}
         <div className="ShowDataDiri">
           <div className="DataDiriTerakhir">
-            <span>icon</span> <p>Data Nasabah Terakhir</p>
+            <span> <i class="fas fa-user"></i></span> <p>Data Nasabah Terakhir</p>
           </div>
 
           <div className="Datadiri">
@@ -88,7 +90,7 @@ export const Halaman2 = () => {
             <p for="InputNamaPemegangPolis">Nama Lengkap Pemegang Polis</p>
 
             <div className="inputanWraperIsi">
-              <i>icon</i>
+            <i class="fas fa-user"></i>
               <input
                 name="InputNamaPemegangPolis"
                 type="text"
@@ -106,7 +108,7 @@ export const Halaman2 = () => {
             <p for="InputNamaPemegangPolis">Nomor Handphone Pemegang Polis</p>
 
             <div className="inputanWraperIsi">
-              <i>icon</i>
+            <i class="fas fa-phone-alt"></i>
               <input
                 name="InputNamaPemegangPolis"
                 type="text"
@@ -118,7 +120,7 @@ export const Halaman2 = () => {
             <p for="InputNamaPemegangPolis">Nomor WhatsApp Pemegang Polis</p>
 
             <div className="inputanWraperIsi">
-              <i>icon</i>
+            <i class="fas fa-phone-alt"></i>
               <input
                 name="InputNamaPemegangPolis"
                 type="text"
@@ -134,7 +136,7 @@ export const Halaman2 = () => {
             <p for="InputNamaPemegangPolis">Email Pemegang Polis</p>
 
             <div className="inputanWraperIsi">
-              <i>icon</i>
+            <i class="fas fa-envelope"></i>
               <input
                 name="InputNamaPemegangPolis"
                 type="text"
@@ -183,7 +185,7 @@ export const Halaman2 = () => {
             <p for="InputNamaPemegangPolis">Kode Pos</p>
 
             <div className="inputanWraperIsi">
-              <i>icon</i>
+             
               <input
                 name="InputNamaPemegangPolis"
                 type="text"
@@ -196,7 +198,7 @@ export const Halaman2 = () => {
 
         <div className="PerubahanDataCheck">
           <div className="DataDiriTerakhir">
-            <span>icon</span> <p>Data Nasabah Terakhir</p>
+            <span><i class="fas fa-id-card"></i></span> <p>Data Nasabah Terakhir</p>
           </div>
        
           <div className="UKGroup">
@@ -207,14 +209,16 @@ export const Halaman2 = () => {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* btn Lanjut Dan back  */}
+           {/* btn Lanjut Dan back  */}
 
       <div className="ButtonGroupNav">
-        <button>Kembali</button>
-        <button>Lanjutkan</button>
+      <button>Kembali</button>
+      <button>Lanjutkan</button>
+    </div>
       </div>
+
+   
     </div>
   );
 };
