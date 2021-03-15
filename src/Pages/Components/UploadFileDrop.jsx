@@ -12,7 +12,11 @@ export const UploadFileDrop = () => {
           <section className="container">
             <div {...getRootProps({className: 'dropzone'})}>
               <input {...getInputProps()} />
-              <p>Drag 'n' drop some files here, or click to select files</p>
+              <div className="iconTengah">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <p> Drag and Drop File
+</p>
+</div>
             </div>
             <aside>
               <h4></h4>
@@ -25,7 +29,7 @@ export const UploadFileDrop = () => {
     )
 }
 
-  
-  
+
+
 
 

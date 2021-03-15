@@ -1,0 +1,500 @@
+.ContainerKanan {
+  background-color: #ffffff !important;
+  padding: 5rem;
+  margin: 3rem 5rem;
+  text-align: left;
+  border-radius: 10px;
+  height: 100% !important;
+
+  .TitlePage {
+    border-left: 2px solid #349a46;
+    padding-left: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .PerubahanDataCheck {
+    padding: 0.5rem 1rem;
+    // background-color: #349a46;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e4e7ee;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.04);
+
+    .PerubahanDataPemegangPolis-Check,
+    .PerubahanKontakPemegangPolis-Check,
+    .PerubahanAlamatPemegangPolis-Check {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      justify-content: left;
+
+      h4 {
+        padding-top: 0.5rem;
+        font-size: 14px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+      }
+
+      input {
+        margin-right: 2rem;
+      }
+
+      input[type="radio"] {
+        transform: scale(1.2);
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .DataDiriTerakhir {
+    display: flex;
+    justify-content: left;
+    text-align: center;
+    align-items: center;
+
+    align-content: center;
+    background-color: #ccffd5;
+    // height: 2.7rem;
+    padding-left: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+
+      margin-right: 1rem;
+      background-color: #ffffff;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12);
+
+      i {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        color: #349a46;
+      }
+      img {
+        transform: scale(0.5);
+      }
+    }
+
+    p {
+      color: #349a46;
+      font-weight: 500;
+      margin-top: 1rem;
+      font-size: 12px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+    }
+  }
+
+  .ShowDataDiri {
+    border: 1px solid #e4e7ee;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.04);
+
+    .Datadiri {
+      .showData {
+        display: flex;
+        justify-content: space-between;
+        text-align: justify;
+
+        p.hasil {
+          width: 40%;
+          text-align: right !important;
+          font-size: 14px;
+          font-weight: 300;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+        }
+
+        p:first-child {
+          font-size: 12px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #73767f;
+        }
+      }
+    }
+  }
+
+  .PembaruhanDataDiri {
+    display: flex;
+    flex-direction: column;
+
+    .PBDTitle {
+      border-bottom: 1px solid gray;
+      margin-bottom: 2rem;
+    }
+
+    .PBDisiContainer {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      input {
+        border: 1px solid gray;
+        border-radius: 10px;
+        width: 60%;
+        padding: 0.2rem;
+      }
+    }
+
+    .WaCheck {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+      width: 100%;
+      text-align: center;
+      padding-top: 0.5rem;
+
+      input {
+        margin-right: 1rem;
+        margin-top: 0.4rem;
+      }
+
+      margin-left: -8.7rem;
+    }
+  }
+
+  .KRTitle {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
+  .KRButtonGrup {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    width: 70%;
+    padding: 2rem;
+    // background-color: #349a46;
+
+    button {
+      padding: 0.6rem 6rem;
+      border-radius: 200px;
+      border: none;
+      background-color: #ccffd5;
+    }
+  }
+
+  .KREmailHiden {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+
+    .KREmailHiden-input {
+      display: flex;
+      // background-color: #349a46;
+      width: 100%;
+      justify-content: space-between;
+
+      input {
+        width: 60%;
+        border: 1px solid gray;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .KRAlamatHiden {
+    display: flex;
+    flex-direction: column;
+
+    .KRAlamatHiden-input {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+
+      .KRAlamatHiden-inputGroup {
+        width: 60%;
+
+        input {
+          margin-bottom: 1rem;
+          width: 100%;
+          padding: 0.3rem;
+        }
+      }
+
+      input {
+        width: 60%;
+        border-radius: 8px;
+        border: 1px solid gray;
+      }
+    }
+  }
+
+  .UKButtonGroup {
+    display: flex;
+    margin-bottom: 2rem;
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .btn-Unggah {
+      padding: 0.8rem 2.5rem;
+      margin-right: 2rem;
+      border: none;
+      background-color: #349a46;
+      color: #ffffff;
+      font-weight: 500;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+    }
+    label {
+      display: flex;
+      p {
+        margin-top: 1rem;
+        color: #73767f;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .UKDragDropFile {
+    display: flex;
+    background-color: #349a46;
+    height: 20rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #ffffff;
+    margin-bottom: 5rem;
+  }
+}
+
+.ButtonGroupNav {
+  display: flex;
+  justify-content: space-between;
+
+  .button1 {
+    padding: 0.5rem 3rem 0.5rem 1.5rem;
+    border-radius: 20px;
+  }
+  .button2 {
+    padding: 0.7rem 1.5rem 0.7rem 3rem;
+    border-radius: 20px;
+  }
+
+  :first-child {
+    border: 1.5px solid #349a46;
+    color: #349a46;
+    background-color: #ffffff;
+    text-align: end;
+    font-weight: 600;
+    i {
+      background: none;
+      color: #349a46;
+      margin-right: 2rem;
+      border: none !important;
+      margin-left: -2rem;
+    }
+  }
+
+  :nth-child(2) {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    background-color: #349a46;
+    margin-right: -2rem;
+    color: #ffffff;
+    border: none;
+    font-weight: 500;
+    i {
+      background: none;
+      color: #e4e7ee;
+      margin-left: 2rem;
+      margin-right: -2rem;
+    }
+  }
+}
+
+.InputWrap {
+  padding: 1rem;
+  margin-top: 1rem;
+  border-top: 1px dashed #80808040;
+  margin-left: -1rem;
+  p {
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #73767f;
+  }
+  i {
+    display: flex;
+    position: absolute;
+    padding: 0.9rem 1.5rem;
+    p {
+      font-size: 14px;
+      margin-left: 0.7rem;
+      color: #1c1f24;
+      font-weight: 400;
+      letter-spacing: normal;
+      font-family: Roboto;
+    }
+    img {
+      transform: scale(0.8);
+    }
+  }
+
+  .nameKhusus {
+    input {
+      margin-left: -2rem;
+    }
+    input::placeholder {
+      color: red;
+      padding-right: -2rem !important;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.7rem;
+    padding-left: 5.5rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #f7f9f8;
+  }
+  input::placeholder {
+    color: #d0d8e1;
+  }
+}
+
+.PerubahanAlamatPemegangPolis-Check {
+  border-bottom: 1px dashed rgba(128, 128, 128, 0.233);
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+}
+
+.AlamatWraper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #73767f;
+  }
+  input {
+    padding: 0.6rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    background-color: #f7f9f8;
+    border: none;
+    ::placeholder {
+      color: #d0d8e1;
+    }
+  }
+}
+
+.AlamatWrapProf {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+  input {
+    padding: 0.6rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #f7f9f8;
+  }
+
+  p {
+    margin-bottom: 0.2rem;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #73767f;
+  }
+  .AlamatKanan {
+    input {
+      width: 90%;
+    }
+    width: 90%;
+  }
+  .AlamatKiri {
+    input {
+      width: 100%;
+    }
+    width: 100%;
+  }
+}
+
+// icon
+.fa-phone-alt,
+.fa-envelope,
+.fa-user {
+  color: #349a46;
+}
+
+.css-yk16xz-control {
+  border-radius: 8px !important;
+  background-color: #f7f9f8 !important;
+}
+::placeholder {
+  color: #d0d8e1;
+}
+
+.SetujuValidator {
+  display: flex;
+  p {
+    margin-bottom: 0;
+    margin-left: 1rem;
+  }
+}
+
+.UKGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 2rem;
+  //   background-color: #349a46;
+  img {
+    width: 30rem;
+    height: 20rem;
+    border-radius: 20px;
+    border: 3px solid #d0d8e1;
+  }
+}

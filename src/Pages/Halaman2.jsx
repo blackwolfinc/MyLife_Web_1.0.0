@@ -5,17 +5,63 @@ import Select from 'react-select';
 import { UploadFileDrop } from "./Components/UploadFileDrop";
 import { MiniCrausel } from "./Components/MiniCrausel";
 import logoKecil1 from "../Assets/Img/Icon/ico-user-12-x-12.png"
-
+import {useState} from "react"
 
 
 export const Halaman2 = () => {
+
+  //
+
+const [HidePerubahanPP, setHidePerubahanPP] = useState("hide")
+const [HidePerubahanKK, setHidePerubahanKK] = useState("hide")
+const [HidePerubahanAL, setHidePerubahanAL] = useState("hide")
+
+
+
+// Hendel Hide And popup
+const ChaneAllTrans=(e)=>{
+
+  if (e.target.id === "PemegangPolis" && HidePerubahanPP === "show") {
+    setHidePerubahanPP("hide");
+
+  }
+  if (e.target.id === "PemegangPolis" && HidePerubahanPP === "hide") {
+    setHidePerubahanPP("show");
+
+  }
+  if (e.target.id === "PerubahanKontak" && HidePerubahanKK === "show") {
+    setHidePerubahanKK("hide");
+
+  }
+  if (e.target.id === "PerubahanKontak" && HidePerubahanKK === "hide") {
+    setHidePerubahanKK("show");
+
+  }
+  if (e.target.id === "PerubahanAlamat" && HidePerubahanAL === "show") {
+    setHidePerubahanAL("hide");
+
+  }
+  if (e.target.id === "PerubahanAlamat" && HidePerubahanAL === "hide") {
+    setHidePerubahanAL("show");
+
+  }
+
+
+
+
+
+
+}
+
+
+
 
   const options = [
     { value: 'Indonesia', label: 'Indonesia' },
     { value: 'Amerika', label: 'Amerika' },
     { value: 'Engris', label: 'Engris' }
   ]
-  
+
 
   return (
     <div className="ContainerDefaultSec">
@@ -83,13 +129,15 @@ export const Halaman2 = () => {
         </div>
         {/* Perubahan Data Pemegang Polis */}
         <div className="PerubahanDataCheck">
-          <div className="PerubahanDataPemegangPolis-Check">
-            <input type="radio" /> <h4>Perubahan Nama Pemegang Polis</h4>
+          <div className="PerubahanDataPemegangPolis-Check ">
+            <input
+            checked={HidePerubahanPP === "hide" ? false : true}
+             name="PemegangPolis" id="PemegangPolis" onChange={ChaneAllTrans} type="checkbox" /> <h4>Perubahan Nama Pemegang Polis</h4>
           </div>
-          <div className="InputWrap">
+          <div className={`InputWrap ${HidePerubahanPP}`}>
             <p for="InputNamaPemegangPolis">Nama Lengkap Pemegang Polis</p>
 
-            <div className="inputanWraperIsi">
+            <div className="inputanWraperIsi nameKhusus">
             <i class="fas fa-user"></i>
               <input
                 name="InputNamaPemegangPolis"
@@ -102,40 +150,41 @@ export const Halaman2 = () => {
         {/* Perubahan Data Pemegang Polis2 */}
         <div className="PerubahanDataCheck">
           <div className="PerubahanKontakPemegangPolis-Check">
-            <input type="radio" /> <h4>Perubahan Kontak Pemegang Polis</h4>
+            <input type="checkbox"  onChange={ChaneAllTrans}  name="PerubahanKontak" id="PerubahanKontak" /> <h4>Perubahan Kontak Pemegang Polis</h4>
           </div>
-          <div className="InputWrap">
+          <div className={`InputWrap ${HidePerubahanKK}`}>
             <p for="InputNamaPemegangPolis">Nomor Handphone Pemegang Polis</p>
 
             <div className="inputanWraperIsi">
-            <i class="fas fa-phone-alt"></i>
+            <i class="fas fa-phone-alt"><p>+62</p></i>
               <input
+
                 name="InputNamaPemegangPolis"
                 type="text"
-                placeholder="Masukkan Nama Lengkap Pemegang Polis"
+                placeholder="Masukkan Nama  Kontak Pemegang Polis"
               ></input>
             </div>
           </div>
-          <div className="InputWrap">
+          <div className={`InputWrap ${HidePerubahanKK}`}>
             <p for="InputNamaPemegangPolis">Nomor WhatsApp Pemegang Polis</p>
 
             <div className="inputanWraperIsi">
-            <i class="fas fa-phone-alt"></i>
+            <i class="fas fa-phone-alt"> <p>+62</p></i>
               <input
                 name="InputNamaPemegangPolis"
                 type="text"
-                placeholder="Masukkan Nama Lengkap Pemegang Polis"
+                placeholder="Masukkan  Kontak Pemegang Polis"
               ></input>
             </div>
           </div>
-          <div className="PerubahanKontakPemegangPolis-Check">
-            <input type="radio" />{" "}
+          <div className= {`PerubahanKontakPemegangPolis-Check  ${HidePerubahanKK}`}>
+            <input type="checkbox" />{" "}
             <h4>Nomor WhatsApp sama dengan Nomor Handphone</h4>
           </div>
-          <div className="InputWrap">
+          <div className={`InputWrap ${HidePerubahanKK}`}>
             <p for="InputNamaPemegangPolis">Email Pemegang Polis</p>
 
-            <div className="inputanWraperIsi">
+            <div className="inputanWraperIsi ">
             <i class="fas fa-envelope"></i>
               <input
                 name="InputNamaPemegangPolis"
@@ -146,12 +195,14 @@ export const Halaman2 = () => {
           </div>
         </div>
         {/* Perubahan Data Pemegang Polis3ß */}
+
         <div className="PerubahanDataCheck">
-          <div className="PerubahanAlamatPemegangPolis-Check">
-            <input type="radio" />{" "}
+          <div className="PerubahanAlamatPemegangPolis-Check" >
+            <input  onChange={ChaneAllTrans}  name="PerubahanAlamat" id="PerubahanAlamat" type="checkbox"   checked={HidePerubahanAL === "hide" ? false : true} />
             <h4>Perubahan Alamat Korespondensi Pemegang Polis</h4>
           </div>
-          <div className="AlamatWraper">
+          <div className={HidePerubahanAL}>
+          <div className= {`AlamatWraper `}>
             <p>Alamat Korespondensi Pemegang Polis</p>
             <input placeholder="Masukkan Alamat Rumah"></input>
             <input placeholder ="Masukkan RT/RW atau Nama Bangunan/Gedung"></input>
@@ -165,7 +216,7 @@ export const Halaman2 = () => {
             </div>
             <div className="AlamatKiri">
             <p>Kota</p>
-              <input type="text" placeholder="Masukkan Nama Kota"></input> 
+              <input type="text" placeholder="Masukkan Nama Kota"></input>
             </div>
 
             </div>
@@ -176,7 +227,7 @@ export const Halaman2 = () => {
             </div>
             <div className="AlamatKiri">
             <p>Kelurahan</p>
-              <input type="text" placeholder="Masukkan Nama Kelurahan"></input> 
+              <input type="text" placeholder="Masukkan Nama Kelurahan"></input>
             </div>
 
             </div>
@@ -185,7 +236,7 @@ export const Halaman2 = () => {
             <p for="InputNamaPemegangPolis">Kode Pos</p>
 
             <div className="inputanWraperIsi">
-             
+
               <input
                 name="InputNamaPemegangPolis"
                 type="text"
@@ -193,19 +244,23 @@ export const Halaman2 = () => {
               ></input>
             </div>
           </div>
-
+          </div>
         </div>
 
         <div className="PerubahanDataCheck">
           <div className="DataDiriTerakhir">
-            <span><i class="fas fa-id-card"></i></span> <p>Data Nasabah Terakhir</p>
+            <span><i class="fas fa-id-card"></i></span> <p>Unggah Kartu Identitas Penduduk</p>
           </div>
-       
+
           <div className="UKGroup">
-            <div className="UKDragDropFile"><UploadFileDrop/></div>
+            <UploadFileDrop/>
             <div className="UKButtonGroup">
-              <button>Unggah Ktp</button>
-              <p>Tidak ada File Yang di Pilih</p>
+              <label >
+                <input type="file"></input>
+              <span class="btn-Unggah">Unggah KTP</span>
+              <p>Tidak ada file yang dIpilih</p>
+              </label>
+
             </div>
           </div>
         </div>
@@ -213,12 +268,12 @@ export const Halaman2 = () => {
            {/* btn Lanjut Dan back  */}
 
       <div className="ButtonGroupNav">
-      <button>Kembali</button>
-      <button>Lanjutkan</button>
+      <button className="button2"> <i class="far fa-arrow-alt-circle-left"></i> Kembali  </button>
+      <button className="button1">Lanjutkan  <i class="far fa-arrow-alt-circle-right"></i></button>
     </div>
       </div>
 
-   
+
     </div>
   );
 };

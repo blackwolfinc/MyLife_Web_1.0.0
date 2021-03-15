@@ -30,7 +30,6 @@
       align-items: center;
       text-align: center;
       justify-content: left;
-      
 
       h4 {
         padding-top: 0.5rem;
@@ -58,7 +57,7 @@
     justify-content: left;
     text-align: center;
     align-items: center;
-    
+
     align-content: center;
     background-color: #ccffd5;
     // height: 2.7rem;
@@ -78,15 +77,14 @@
       border-radius: 50%;
       box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12);
 
-
-      i{
+      i {
         display: flex;
         justify-content: center;
         align-self: center;
         color: #349a46;
       }
-      img{
-       transform: scale(0.5);
+      img {
+        transform: scale(0.5);
       }
     }
 
@@ -94,15 +92,13 @@
       color: #349a46;
       font-weight: 500;
       margin-top: 1rem;
-      font-size: 12px;          
+      font-size: 12px;
       font-weight: 500;
       font-stretch: normal;
       font-style: normal;
       line-height: normal;
       letter-spacing: normal;
     }
-
-
   }
 
   .ShowDataDiri {
@@ -255,15 +251,29 @@
     display: flex;
     margin-bottom: 2rem;
 
-    button {
-      padding: 0.3rem 3rem;
+    input[type=file] {
+        display:none;
+      }
+
+      .btn-Unggah {
+      padding: 0.8rem 2.5rem;
       margin-right: 2rem;
       border: none;
       background-color: #349a46;
       color: #ffffff;
       font-weight: 500;
       border-radius: 20px;
+      margin-bottom: 2rem;
     }
+    label {
+        display: flex;
+        p{
+            margin-top: 1rem;
+            color: #73767f;
+            font-size: 14px;
+        }
+    }
+
   }
 
   .UKDragDropFile {
@@ -277,20 +287,18 @@
     color: #ffffff;
     margin-bottom: 5rem;
   }
-
-  
-
-
-
-
 }
 
 .ButtonGroupNav {
   display: flex;
   justify-content: space-between;
 
-  button {
-    padding: 0.5rem 3rem;
+  .button1 {
+    padding: 0.5rem 3rem 0.5rem 1.5rem;
+    border-radius: 20px;
+  }
+  .button2 {
+    padding: 0.7rem 1.5rem 0.7rem 3rem;
     border-radius: 20px;
   }
 
@@ -298,137 +306,178 @@
     border: 1.5px solid #349a46;
     color: #349a46;
     background-color: #ffffff;
+    text-align: end;
+    font-weight: 600;
+    i{
+        background: none;
+        color: #349a46;
+        margin-right: 2rem;
+        border: none !important;
+        margin-left: -2rem;
+    }
   }
 
   :nth-child(2) {
+      display: flex;
+      text-align: center;
+      align-items: center;
+      align-content: center;
     background-color: #349a46;
+    margin-right: -2rem;
     color: #ffffff;
     border: none;
+    font-weight: 500;
+    i{
+        background: none;
+        color: #e4e7ee;
+        margin-left: 2rem;
+        margin-right: -2rem;
+    }
+
   }
 }
 
-
-
-.InputWrap{
-  padding: 1rem ;
+.InputWrap {
+  padding: 1rem;
   margin-top: 1rem;
-  border-top: 1px dashed #80808040 ;
-margin-left: -1rem;
-  p{font-size: 12px;
+  border-top: 1px dashed #80808040;
+  margin-left: -1rem;
+  p {
+    font-size: 12px;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-  color: #73767f;}
-    i{
-      position:absolute ; 
-    
-    padding: 0.9rem 1.5rem ;
-  
-  img{
-    transform: scale(0.8);
+    color: #73767f;
   }
+  i {
+    display: flex;
+    position: absolute;
+    padding: 0.9rem 1.5rem;
+    p{
+        font-size: 14px;
+        margin-left: 0.7rem;
+        color: #1c1f24;
+        font-weight: 400;
+        letter-spacing: normal;
+        font-family: Roboto;
+    }
+    img {
+      transform: scale(0.8);
+    }
   }
 
-    input{
-      width: 100%;
-      padding-top: 0.7rem;
-      padding-bottom: 0.7rem;
-      padding-left: 4rem;
-      border-radius: 8px;
-      border: none;
-      background-color: #f7f9f8;
-      
+  .nameKhusus{
+      input{
+          margin-left: -2rem;
       }
       input::placeholder{
-        color: #d0d8e1;
+        color: red;
+        padding-right: -2rem !important;
     }
+  }
 
-
+  input {
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.7rem;
+    padding-left: 5.5rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #f7f9f8;
+  }
+  input::placeholder {
+    color: #d0d8e1;
+  }
 }
 
-.PerubahanAlamatPemegangPolis-Check{
+.PerubahanAlamatPemegangPolis-Check {
   border-bottom: 1px dashed rgba(128, 128, 128, 0.233);
   margin-bottom: 1rem;
   padding: 1rem 0;
 }
 
 .AlamatWraper {
-display: flex;
-justify-content: center;
-flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
-
-p{
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #73767f;
-}
-input{
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 8px;
-  background-color: #f7f9f8;
-  border: none;
-::placeholder{
-  color: #d0d8e1;
-}
-}
-
+  p {
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #73767f;
+  }
+  input {
+    padding: 0.6rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    background-color: #f7f9f8;
+    border: none;
+    ::placeholder {
+      color: #d0d8e1;
+    }
+  }
 }
 
-.AlamatWrapProf{
+.AlamatWrapProf {
   margin-top: 1rem;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   flex-direction: row;
 
-  input{
-    padding: 1rem;
+  input {
+    padding: 0.6rem;
     border: none;
     border-radius: 8px;
     background-color: #f7f9f8;
   }
 
-  p{
+  p {
     margin-bottom: 0.2rem;
     font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-color: #73767f;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #73767f;
   }
-  .AlamatKanan{
-   input{
+  .AlamatKanan {
+    input {
+      width: 90%;
+    }
     width: 90%;
-   }
-   width: 90%;
   }
   .AlamatKiri {
-   input{ width: 100%;}
-   width: 100%;
+    input {
+      width: 100%;
+    }
+    width: 100%;
   }
-  
 }
 
-// icon 
-.fa-phone-alt ,.fa-envelope ,.fa-user {
-color: #349a46;
+// icon
+.fa-phone-alt,
+.fa-envelope,
+.fa-user {
+  color: #349a46;
 }
 
 .css-yk16xz-control {
   border-radius: 8px !important;
   background-color: #f7f9f8 !important;
+    :first-child{
+        padding: -1rem;
+        margin: 0rem;
+    }
 }
-::placeholder{
+::placeholder {
   color: #d0d8e1;
 }
