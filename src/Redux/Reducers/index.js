@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import postReducer from './postReducer';
+
+// Import  Reducer Yang akan di guanakan
+import GetDataReducer from './GetDataReducer'
+//
 
 export default combineReducers({
-  posts: postReducer
+// inisialisasi Reducer
+  getdataAll : GetDataReducer
 });
