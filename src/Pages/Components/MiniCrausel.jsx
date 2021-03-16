@@ -33,9 +33,9 @@ export const MiniCrausel = () => {
               <p >Dalam upaya selalu meningkatkan pelayanan kepada Nasabah  <br/> Equity Life Indonesia.</p> */}
             </div>
           </div>
-         
-         
-          
+
+
+
         </Carousel>
       </div>
     )

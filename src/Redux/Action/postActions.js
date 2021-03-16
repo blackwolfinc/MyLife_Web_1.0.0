@@ -1,31 +1,37 @@
-import { FETCH_POST, NEW_POST } from './types';
+import  axios from "axios"
+import {
+GET_DATA_POLIS,
+GET_DATA_TOKEN
 
-function fetchPosts() {
-  return (dispatch) => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(res => res.json())
-      .then(posts => dispatch({
-        type: FETCH_POST,
-        payload: posts
-      }));
-  }
-}
+} from "./actionTypes"
 
-function createPost(post) {
-  return (dispatch) => {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
+
+
+import React from 'react'
+
+export const GetDataToken = () => {
+  return ( )=>{
+
+    let config = {
+      method: "post",
+      url: "https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/login",
+
+      data: {
+        username: "george",
+        password: "george12345",
       },
-      body: JSON.stringify(post)
-    })
-      .then(res => res.json())
-      .then(data => dispatch({
-        type: NEW_POST,
-        payload: data
-      }));
+    };
+
+    axios(config)
+      .then(function (response) {
+        alert(response.data.data.token);
+        // SetloginStatus(true);
+        // SetTokenLogin(response.data.data.token);
+        // SetloginStatus(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
   }
 }
-
-export { fetchPosts, createPost };

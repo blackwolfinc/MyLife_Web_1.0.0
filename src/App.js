@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Page2 } from "./Pages/Page2";
 import { Halaman4 } from "./Pages/Halaman4";
 import { Halaman2 } from "./Pages/Halaman2";
-import { LoginPage } from "./Pages/LoginPage";
+import  LoginPage  from "./Pages/LoginPage";
 import { Halaman3 } from "./Pages/Halaman3";
 
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
 
-    
+
     <BrowserRouter>
       <Switch>
         <Route path="/Endpage">
