@@ -1,40 +1,12 @@
 import React from "react";
 import logo from "../Assets/Img/Logo.jpg";
 import "../Assets//Css/pages/Pages3.scss";
-import Select from "react-select";
-import { UploadFileDrop } from "./Components/UploadFileDrop";
 import { MiniCrausel } from "./Components/MiniCrausel";
 import { useState } from "react";
 
 export const Halaman3 = () => {
-  //
-
-  const [HidePerubahanPP, setHidePerubahanPP] = useState("hide");
-  const [HidePerubahanKK, setHidePerubahanKK] = useState("hide");
-  const [HidePerubahanAL, setHidePerubahanAL] = useState("hide");
-
-  // Hendel Hide And popup
-  const ChaneAllTrans = (e) => {
-    if (e.target.id === "PemegangPolis" && HidePerubahanPP === "show") {
-      setHidePerubahanPP("hide");
-    }
-    if (e.target.id === "PemegangPolis" && HidePerubahanPP === "hide") {
-      setHidePerubahanPP("show");
-    }
-    if (e.target.id === "PerubahanKontak" && HidePerubahanKK === "show") {
-      setHidePerubahanKK("hide");
-    }
-    if (e.target.id === "PerubahanKontak" && HidePerubahanKK === "hide") {
-      setHidePerubahanKK("show");
-    }
-    if (e.target.id === "PerubahanAlamat" && HidePerubahanAL === "show") {
-      setHidePerubahanAL("hide");
-    }
-    if (e.target.id === "PerubahanAlamat" && HidePerubahanAL === "hide") {
-      setHidePerubahanAL("show");
-    }
-  };
-
+  
+  // hide anda pop up parameter
   const options = [
     { value: "Indonesia", label: "Indonesia" },
     { value: "Amerika", label: "Amerika" },
@@ -55,8 +27,8 @@ export const Halaman3 = () => {
       <div className="ContainerKanan">
         {/* Title page */}
         <div className="TitlePage">
-          <h3>Formulir Pengkinian Data</h3>
-          <p>Harap isi seluruh field dibawah</p>
+          <h3>Ringkasan Data Nasabah</h3>
+          <p>Pastikan kembali data dan informasi sudah sesuai.</p>
         </div>
         {/* Show Data diri  */}
         <div className="ShowDataDiri">

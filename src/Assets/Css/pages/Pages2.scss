@@ -251,11 +251,11 @@
     display: flex;
     margin-bottom: 2rem;
 
-    input[type=file] {
-        display:none;
-      }
+    input[type="file"] {
+      display: none;
+    }
 
-      .btn-Unggah {
+    .btn-Unggah {
       padding: 0.8rem 2.5rem;
       margin-right: 2rem;
       border: none;
@@ -266,14 +266,13 @@
       margin-bottom: 2rem;
     }
     label {
-        display: flex;
-        p{
-            margin-top: 1rem;
-            color: #73767f;
-            font-size: 14px;
-        }
+      display: flex;
+      p {
+        margin-top: 1rem;
+        color: #73767f;
+        font-size: 14px;
+      }
     }
-
   }
 
   .UKDragDropFile {
@@ -308,32 +307,31 @@
     background-color: #ffffff;
     text-align: end;
     font-weight: 600;
-    i{
-        background: none;
-        color: #349a46;
-        margin-right: 2rem;
-        border: none !important;
-        margin-left: -2rem;
+    i {
+      background: none;
+      color: #349a46;
+      margin-right: 2rem;
+      border: none !important;
+      margin-left: -2rem;
     }
   }
 
   :nth-child(2) {
-      display: flex;
-      text-align: center;
-      align-items: center;
-      align-content: center;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    align-content: center;
     background-color: #349a46;
     margin-right: -2rem;
     color: #ffffff;
     border: none;
     font-weight: 500;
-    i{
-        background: none;
-        color: #e4e7ee;
-        margin-left: 2rem;
-        margin-right: -2rem;
+    i {
+      background: none;
+      color: #e4e7ee;
+      margin-left: 2rem;
+      margin-right: -2rem;
     }
-
   }
 }
 
@@ -355,26 +353,26 @@
     display: flex;
     position: absolute;
     padding: 0.9rem 1.5rem;
-    p{
-        font-size: 14px;
-        margin-left: 0.7rem;
-        color: #1c1f24;
-        font-weight: 400;
-        letter-spacing: normal;
-        font-family: Roboto;
+    p {
+      font-size: 14px;
+      margin-left: 0.7rem;
+      color: #1c1f24;
+      font-weight: 400;
+      letter-spacing: normal;
+      font-family: Roboto;
     }
     img {
       transform: scale(0.8);
     }
   }
 
-  .nameKhusus{
-      input{
-          margin-left: -2rem;
-      }
-      input::placeholder{
-        color: red;
-        padding-right: -2rem !important;
+  .nameKhusus {
+    input {
+      margin-left: -2rem;
+    }
+    input::placeholder {
+      color: red;
+      padding-right: -2rem !important;
     }
   }
 
@@ -473,11 +471,30 @@
 .css-yk16xz-control {
   border-radius: 8px !important;
   background-color: #f7f9f8 !important;
-    :first-child{
-        padding: -1rem;
-        margin: 0rem;
-    }
+  :first-child {
+    padding: -1rem;
+    margin: 0rem;
+  }
 }
 ::placeholder {
   color: #d0d8e1;
+}
+
+.ContainerImageUpload {
+  // background-color: red;
+  display: flex;
+  justify-content: center;
+  height: 19rem;
+
+  border-radius: 10px;
+  margin-bottom: 3rem;
+
+  img {
+    height: 20rem;
+    width: fit-content;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border: 3px solid #73767f;
+    padding: 1rem;
+  }
 }

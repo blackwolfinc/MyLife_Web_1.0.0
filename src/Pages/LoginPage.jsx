@@ -14,37 +14,42 @@ const LoginPage = (getdataAll) => {
   // useEffect(() => {
 
   // }, []);
-  console.log(getdataAll.getdataAll.token)
+  console.log(getdataAll.getdataAll.token);
   return (
     <div className="ContainerDefault">
       <div className="ContainerKiri">
+        {/* Logo Atas Kiri*/}
         <div className="logo-Container">
           <img src={logo} alt="" />
         </div>
+        {/* Crausel Gerak */}
         <div className="ContainerCrausel">
           <MainCrausel />
         </div>
       </div>
-
+      {/*Login Card*/}
       <div className="ContainerKanan">
         <div className="CardLogin">
+          {/* Hader Login*/}
           <div className="CardLoginHeader">
             <h3>Formulir Pengkinian Data </h3>
             <p>Silahkan lengkapi data dibawah ini untuk melanjutkan</p>
           </div>
+          {/* body login From  */}
           <div className="CardLoginBody">
+            {/* inputan Body */}
             <div className="input-Container">
               <img src={icon1}></img>
               <label>Nomor Polis</label>
               <input placeholder="Masukan No.Polis" type="text"></input>
             </div>
-
+            {/* Inputan Tanggal Lahir */}
             <div className="input-Container">
               <img src={icon2}></img>
               <label>Tgl. Lahir</label>
               <input placeholder="Masukan No.Polis" type="date"></input>
             </div>
-
+            {/* Goggle ReChapta  */}
             <div className="rechaptaFrom">
               <ReCAPTCHA
                 // onChange={ChaptaFrom}
@@ -54,7 +59,7 @@ const LoginPage = (getdataAll) => {
                 sitekey="6LeB9VwaAAAAAMRZDD8GPlr1-Wn9WPcJaRTGnXp-"
               />
             </div>
-
+            {/* Btn  Validasi  */}
             <button className="BtnLanjutkan">LANJUTKAN</button>
           </div>
         </div>
@@ -68,7 +73,6 @@ const mapStateToProps = (state) => {
     getdataAll: state.getdataAll,
   };
 };
-
 
 // const mapDispatchToProps=(dispatch)=> {
 //   return (
