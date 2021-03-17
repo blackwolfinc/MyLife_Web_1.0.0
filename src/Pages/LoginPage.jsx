@@ -8,10 +8,15 @@ import icon2 from "../Assets/Img/Icon/ico-calendar-24x24_2021-03-11/ico-calendar
 import ReCAPTCHA from "react-google-recaptcha";
 import { useHistory } from "react-router-dom";
 import { MainCrausel } from "./Components/MainCrausel";
-import { connect } from "react-redux";
+import { connect , useDispatch ,useSelector } from "react-redux";
+import { getData, GetDataPolis } from '../Redux/Action/getData'
+
+
 
 const LoginPage = (getdataAll) => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const token =useSelector(state => state.getdataAll.token)
   // ==============================================================
   // Login Paramater
   // ==============================================================
@@ -26,7 +31,6 @@ const LoginPage = (getdataAll) => {
   // ==============================================================
   // Master data
   // ==============================================================
-
   const [DataPolis, SetDataPolis] = useState("");
   const [DataNama, SetDataNama] = useState("");
   const [DataNumber, SetDataNumber] = useState(0);
@@ -124,77 +128,32 @@ const LoginPage = (getdataAll) => {
   //===============================================================
   //Reload Data Pertama
   //===============================================================
-  useEffect(() => {
-    if (loginStatus === false) {
-      // get Token
-      let axios = require("axios");
-      let config = {
-        method: "post",
-        url: "https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/login",
-        data: {
-          username: "george",
-          password: "george12345",
-        },
-      };
+useEffect(() => {
+  
+  dispatch(getData({
+    username : "george" ,
+    password :"george12345"
+  }))
 
-      axios(config)
-        .then(function (response) {
-          SetTokenLogin(response.data.data.token);
-          SetloginStatus(true);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-  }, []);
+ }, [])
+
+
+  
   //===============================================================
   // Data Get Polis Sementara
   //===============================================================
   useEffect(() => {
     if (DataPolis.length == 12) {
-      var axios = require("axios");
+      
+      dispatch(GetDataPolis(DataPolis,"Bearer "+token))
 
-      let config = {
-        method: "get",
-        url: `https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/profile?search_query_1=${DataPolis}`,
-        headers: {
-          Authorization: `Bearer ${TokenLogin}`,
-          contentType: "application/json",
-        },
-        data: TokenLogin,
-      };
-
-      axios(config)
-        .then(function (response) {
-          // console.log(JSON.stringify(response.data));
-          // Penempatan Data Pada Hook
-          SetDataNama(response.data.data.policy_holder);
-          SetDataNumber(response.data.data.mobile_no);
-          SetDataEmail(response.data.data.email);
-          SetNamaJalanRumah(response.data.data.address);
-          SetNamaJalanKota(response.data.data.city);
-          SetNamaJalanProfinsi(response.data.data.province);
-          SetNamaJalanKodePos(response.data.data.postal_code);
-          console.log(response.data.data);
-          if (response.data.data.customer_id !== "") {
-            // SetAllFrom("");
-          } else {
-            alert("salah");
-          }
-        })
-        .catch(function (error) {
-          alert("data tidak di temukan");
-          console.log(DataNumber);
-
-          // SetAllFrom("hide");
-        });
     } else {
       // SetAllFrom("hide");
       // console.log(response.data.data)
     }
   }, [DataPolis]);
 
-  console.log(getdataAll.getdataAll.token);
+  // console.log(getdataAll.getdataAll.token);
   return (
     <div className="ContainerDefault">
       <div className="ContainerKiri">

@@ -1,32 +1,64 @@
 import {
 GET_DATA_POLIS,
-GET_DATA_TOKEN
+GET_DATA_TOKEN,
+GET_DATA_AWAL,
+GET_DATA_SUCSSES,
+GET_DATA_FAIL
+
 
 } from "../Action/actionTypes"
 
 const initialState = {
-    token : "weqweqweqweqwwe",
-    userPolis : []
-
-
+    // token : "",
+    userPolis : [],
+    loading : false ,
+    error : false ,
+    token : [] , 
+    errorMessage : ""
 
 };
 
-const GetDataReducer = (state = initialState, action)=> {
-    switch (action.type) {
-        case GET_DATA_TOKEN:
-            return{...state, token : action.token}
 
-        case GET_DATA_POLIS:
-        return{...state, userPolis : action.userPolis}
+export const getDataReducer = (state = initialState , action) => {
+ 
+    const {type} = action 
+    switch (type) {
+        case GET_DATA_AWAL:
+          return{
+            ...state,loading : true  
 
+          }  
+        
+          case GET_DATA_SUCSSES:
+            return{
+              ...state,
+              loading : false  ,
+            //   token : action.data.token ,
+              token : action.payload.data.token
+                
+            }  
 
+            case GET_DATA_FAIL:
+                return{
+                  ...state,
+                  loading : false  ,
+                  token : "" ,
+                  data : [] ,
+                  error : true, 
+                 errorMessage : action.data
+
+                }  
+    
         default:
-        return state;
+            return{
+                ...state 
+            }
             break;
     }
 
 
 }
 
-export default GetDataReducer;
+
+
+export default getDataReducer;
