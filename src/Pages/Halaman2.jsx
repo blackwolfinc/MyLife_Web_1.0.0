@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../Assets/Img/Logo.jpg";
+import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import { UploadFileDrop } from "./Components/UploadFileDrop";
 import { MiniCrausel } from "./Components/MiniCrausel";
@@ -7,43 +8,78 @@ import { useState, useEffect } from "react";
 import logoKecil1 from "../Assets/Img/Icon/ico-user-12-x-12.png";
 import "../Assets//Css/pages/Pages2.scss";
 
-
-
 export const Halaman2 = () => {
-  //Upload File 
-  const [FileUpload, SetFileUpload] = useState();
+  const history = useHistory();
+
+  // ==============================================================
+  // Data Master
+  // ==============================================================
+  //Upload File
+  const [FileUpload, SetFileUpload] = useState({});
   const [UploadStatus, SetUploadStatus] = useState(false);
-  const [UrlFile, SetUrlFile] = useState(false);
+  const [UrlFile, SetUrlFile] = useState();
   // hide anda pop up parameter
   const [HidePerubahanPP, setHidePerubahanPP] = useState("hide");
   const [HidePerubahanKK, setHidePerubahanKK] = useState("hide");
   const [HidePerubahanAL, setHidePerubahanAL] = useState("hide");
 
-// Hendle Upload FIle
-const UploadFile = (e) => {
-  if (
-    e.target.files[0].type === "image/jpeg" ||
-    e.target.files[0].type === "image/png"
-  ) {
-    if (e.target.files[0].size >= 2097152) {
-      alert("File Terlalu Besar Max 2Mb");
+  // Value Select 2
+  const options = [
+    { value: "Indonesia", label: "Indonesia" },
+    { value: "Amerika", label: "Amerika" },
+    { value: "Engris", label: "Engris" },
+  ];
+
+  // ==============================================================
+  // Fungsi Fungsi
+  // ==============================================================
+
+  const onDropCostum = (e) => {
+    e.preventDefault();
+
+    SetFileUpload(e.dataTransfer.files[0]);
+    SetUrlFile(URL.createObjectURL(e.dataTransfer.files[0]));
+    console.log(FileUpload);
+    console.log(UrlFile);
+    SetUploadStatus(true);
+  };
+
+  // Anti Bypas
+  const AntiBypass = () => {
+    if (localStorage.LoginStatusValid !== "true") {
+      history.push("");
+    }
+  };
+
+  // Hendle Upload FIle
+  const UploadFile = (e) => {
+    if (
+      e.target.files[0].type === "image/jpeg" ||
+      e.target.files[0].type === "image/png"
+    ) {
+      if (e.target.files[0].size >= 2097152) {
+        alert("File Terlalu Besar Max 2Mb");
+        SetUploadStatus(false);
+        e.target.value = null;
+      } else {
+        SetFileUpload(e.target.files[0]);
+        SetUploadStatus(true);
+        // console.log(FileUpload);
+        SetUrlFile(URL.createObjectURL(e.target.files[0]));
+        // console.log(UrlFile);
+      }
+    } else {
+      alert(
+        `Format { ${e.target.files[0].type} } Tidak Di Dukung Gunakan Jpeg/Png`
+      );
       SetUploadStatus(false);
       e.target.value = null;
-    } else {
-      SetFileUpload(e.target.files[0]);
-      SetUploadStatus(true);
-      // console.log(FileUpload);
-      SetUrlFile(URL.createObjectURL(e.target.files[0]));
     }
-  } else {
-    alert(
-      `Format { ${e.target.files[0].type} } Tidak Di Dukung Gunakan Jpeg/Png`
-    );
-    SetUploadStatus(false);
-    e.target.value = null;
-  }
-};
+  };
 
+  // ==============================================================
+  // Fungsi Frontend
+  // ==============================================================
   // Hendel Hide And popup
   const ChaneAllTrans = (e) => {
     if (e.target.id === "PemegangPolis" && HidePerubahanPP === "show") {
@@ -66,15 +102,9 @@ const UploadFile = (e) => {
     }
   };
 
-  // Value Select 2
-  const options = [
-    { value: "Indonesia", label: "Indonesia" },
-    { value: "Amerika", label: "Amerika" },
-    { value: "Engris", label: "Engris" },
-  ];
-
   return (
     <div className="ContainerDefaultSec">
+      {AntiBypass()}
       {/* Container Kiri  */}
       <div className="ContainerKiri">
         {/* Logo Container*/}
@@ -305,30 +335,32 @@ const UploadFile = (e) => {
           </div>
           {/* Attach  Component File Upload*/}
           <div className="UKGroup">
-          {UploadStatus ? (
-            <div className="ContainerImageUpload">
-              <img src={UrlFile} />
-            </div>
-          ) : (
-            <UploadFileDrop />
-          
-          )}
-           
+            {UploadStatus ? (
+              <div className="ContainerImageUpload">
+                <img src={UrlFile} />
+              </div>
+            ) : (
+              <UploadFileDrop />
+            )}
+
             <div className="UKButtonGroup">
               <label>
-              <input
-              id="UploadFileInput"
-              className="fileInputCostum"
-              onChange={UploadFile}
-              type="file"
-              name="file"
-            />
+                <input
+                  id="UploadFileInput"
+                  className="fileInputCostum"
+                  onChange={UploadFile}
+                  type="file"
+                  name="file"
+                />
                 <span class="btn-Unggah">Unggah KTP</span>
                 <p>Tidak ada file yang dIpilih</p>
               </label>
             </div>
           </div>
         </div>
+
+        {/*DRAG AND DROP COSTUM  */}
+        <div onDrop={onDropCostum} className="DragCostum"></div>
 
         {/* btn Lanjut Dan back  */}
         <div className="ButtonGroupNav">

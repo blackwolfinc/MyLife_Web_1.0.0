@@ -11,6 +11,7 @@ export const UploadFileDrop = () => {
 
     return (
         <div>
+        <section className="container">
         <Dropzone onDrop={handleDrop}>
         {({ getRootProps, getInputProps }) => (
           <div {...getRootProps({ className: "dropzone" })}>
@@ -27,6 +28,7 @@ export const UploadFileDrop = () => {
           ))}
         </ul>
       </div>
+      </section>
         </div>
     )
 }

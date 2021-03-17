@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../Assets/Css/GlobalScss.scss";
 import "../Assets/Css/pages/LoginPages.scss";
 import logo from "../Assets/Img/Logo.jpg";
@@ -6,14 +6,194 @@ import "../Assets/Css/Validation.scss";
 import icon1 from "../Assets/Img/Icon/ico-polis-24x24_2021-03-11/ico-polis-24x24@3x.png";
 import icon2 from "../Assets/Img/Icon/ico-calendar-24x24_2021-03-11/ico-calendar-24x24@3x.png";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useHistory } from "react-router-dom";
 import { MainCrausel } from "./Components/MainCrausel";
 import { connect } from "react-redux";
 
 const LoginPage = (getdataAll) => {
-  // ambil data token
-  // useEffect(() => {
+  const history = useHistory();
+  // ==============================================================
+  // Login Paramater
+  // ==============================================================
 
-  // }, []);
+  const [TokenLogin, SetTokenLogin] = useState("");
+  const [loginStatus, SetloginStatus] = useState(false);
+  // ChaptaF
+  const [Chapta, SetChapta] = useState("");
+  // Data Validator '
+  const [DatatanggalPolis, setDatatanggalPolis] = useState("2012-09-23");
+  const [DataTanggalInputan, setDataTanggalInputan] = useState("");
+  // ==============================================================
+  // Master data
+  // ==============================================================
+
+  const [DataPolis, SetDataPolis] = useState("");
+  const [DataNama, SetDataNama] = useState("");
+  const [DataNumber, SetDataNumber] = useState(0);
+  const [DataEmail, SetDataEmail] = useState("");
+  const [NamaJalanKodePos, SetNamaJalanKodePos] = useState("");
+  const [NamaJalanKota, SetNamaJalanKota] = useState("");
+  const [NamaJalanProfinsi, SetNamaJalanProfinsi] = useState("");
+  const [NamaJalanKecamatan, SetNamaJalanKecamatan] = useState("");
+  const [NamaJalanRumah, SetNamaJalanRumah] = useState("");
+  // ==============================================================
+  // Eror Hedle
+  // ==============================================================
+  const [ErorInput, SetErorInput] = useState(false);
+
+  // configurasi  Input Data Polis
+  const [Titik1, SetTitik1] = useState(true);
+  const [Titik2, SetTitik2] = useState(true);
+  // ==============================================================
+  // Fungsi Fungsi
+  // ==============================================================
+
+  //==========================================Verivikasi Login
+  const LoadValidation = () => {
+    //  Validation TGl data polis sama dengan inputan
+    if (DatatanggalPolis === DataTanggalInputan) {
+      // Kodisi Submit Login
+      if (Chapta === "") {
+        alert("masukan Chapta Terlebih Dahulu");
+      }
+      if (Chapta !== "") {
+        localStorage.LoginStatusValid = "true" ;
+        history.push("page2");
+      }
+    } else {
+      alert("Data Polis Dan Tanggal lahir TIDAK COCOK ");
+    }
+
+    // if (loginStatus === true  &&  Chapta !== ""  && ) {
+
+    // } else {
+
+    // }
+  };
+
+  //==========================================Hendle Inputan Chapta
+  const ChaptaFrom = (e) => {
+    SetChapta(e);
+    console.log(e);
+  };
+  //============================================Perubahan Data
+  const handleChangeAll = (e) => {
+    if (e.target.id === "datePolis") {
+      setDataTanggalInputan(e.target.value)
+    }
+
+    // Setup Auto Titik Pada Nomer Polis
+    if (e.target.id === "noPolis") {
+      if (DataPolis.length === 2 && Titik1 === true) {
+        e.target.value = DataPolis + "." + e.target.value.substr(2);
+        SetDataPolis(e.target.value);
+        SetTitik1(false);
+      }
+      if (DataPolis.length < 1 && Titik1 === false) {
+        SetDataPolis(DataPolis);
+        SetTitik1(true);
+      }
+      if (DataPolis.length === 10 && Titik2 === true) {
+        e.target.value = DataPolis + "." + e.target.value.substr(10);
+        SetDataPolis(e.target.value);
+        SetTitik2(false);
+      }
+      if (DataPolis.length < 10 && Titik2 === false) {
+        SetDataPolis(DataPolis);
+        SetTitik2(true);
+      } else {
+        SetDataPolis(e.target.value);
+      }
+    }
+    //  PEmbatasn Carachter Pada Input Nama
+    if (
+      e.target.id === "Name" &&
+      e.target.value.match(/^[A-Za-z ][A-Za-z ]*$/)
+    ) {
+      SetErorInput(false);
+      SetDataNama(e.target.value);
+    } else {
+      SetErorInput(true);
+    }
+  };
+
+  // ###########################
+  // UseEffect React Hook ######
+  // ###########################
+
+  //===============================================================
+  //Reload Data Pertama
+  //===============================================================
+  useEffect(() => {
+    if (loginStatus === false) {
+      // get Token
+      let axios = require("axios");
+      let config = {
+        method: "post",
+        url: "https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/login",
+        data: {
+          username: "george",
+          password: "george12345",
+        },
+      };
+
+      axios(config)
+        .then(function (response) {
+          SetTokenLogin(response.data.data.token);
+          SetloginStatus(true);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }, []);
+  //===============================================================
+  // Data Get Polis Sementara
+  //===============================================================
+  useEffect(() => {
+    if (DataPolis.length == 12) {
+      var axios = require("axios");
+
+      let config = {
+        method: "get",
+        url: `https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/profile?search_query_1=${DataPolis}`,
+        headers: {
+          Authorization: `Bearer ${TokenLogin}`,
+          contentType: "application/json",
+        },
+        data: TokenLogin,
+      };
+
+      axios(config)
+        .then(function (response) {
+          // console.log(JSON.stringify(response.data));
+          // Penempatan Data Pada Hook
+          SetDataNama(response.data.data.policy_holder);
+          SetDataNumber(response.data.data.mobile_no);
+          SetDataEmail(response.data.data.email);
+          SetNamaJalanRumah(response.data.data.address);
+          SetNamaJalanKota(response.data.data.city);
+          SetNamaJalanProfinsi(response.data.data.province);
+          SetNamaJalanKodePos(response.data.data.postal_code);
+          console.log(response.data.data);
+          if (response.data.data.customer_id !== "") {
+            // SetAllFrom("");
+          } else {
+            alert("salah");
+          }
+        })
+        .catch(function (error) {
+          alert("data tidak di temukan");
+          console.log(DataNumber);
+
+          // SetAllFrom("hide");
+        });
+    } else {
+      // SetAllFrom("hide");
+      // console.log(response.data.data)
+    }
+  }, [DataPolis]);
+
   console.log(getdataAll.getdataAll.token);
   return (
     <div className="ContainerDefault">
@@ -41,18 +221,33 @@ const LoginPage = (getdataAll) => {
             <div className="input-Container">
               <img src={icon1}></img>
               <label>Nomor Polis</label>
-              <input placeholder="Masukan No.Polis" type="text"></input>
+              <input
+                autoFocus
+                maxLength="12"
+                onChange={handleChangeAll}
+                id="noPolis"
+                name="noPolis"
+                placeholder="Masukan No.Polis"
+                type="text"
+                required
+              ></input>
             </div>
             {/* Inputan Tanggal Lahir */}
             <div className="input-Container">
               <img src={icon2}></img>
               <label>Tgl. Lahir</label>
-              <input placeholder="Masukan No.Polis" type="date"></input>
+              <input
+                onChange={handleChangeAll}
+                id="datePolis"
+                name="datepolis"
+                placeholder="Masukan No.Polis"
+                type="date"
+              ></input>
             </div>
             {/* Goggle ReChapta  */}
             <div className="rechaptaFrom">
               <ReCAPTCHA
-                // onChange={ChaptaFrom}
+                onChange={ChaptaFrom}
                 theme="light"
                 type="image"
                 id="RechaptaFrom"
@@ -60,7 +255,7 @@ const LoginPage = (getdataAll) => {
               />
             </div>
             {/* Btn  Validasi  */}
-            <button className="BtnLanjutkan">LANJUTKAN</button>
+            <button onClick={LoadValidation} className="BtnLanjutkan">LANJUTKAN</button>
           </div>
         </div>
       </div>
