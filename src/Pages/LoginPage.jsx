@@ -8,15 +8,13 @@ import icon2 from "../Assets/Img/Icon/ico-calendar-24x24_2021-03-11/ico-calendar
 import ReCAPTCHA from "react-google-recaptcha";
 import { useHistory } from "react-router-dom";
 import { MainCrausel } from "./Components/MainCrausel";
-import { connect , useDispatch ,useSelector } from "react-redux";
-import { getData, GetDataPolis } from '../Redux/Action/getData'
-
-
+import { connect, useDispatch, useSelector } from "react-redux";
+import { getData, GetDataPolis } from "../Redux/Action/getData";
 
 const LoginPage = (getdataAll) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const token =useSelector(state => state.getdataAll.token)
+  const token = useSelector((state) => state.getdataAll.token);
   // ==============================================================
   // Login Paramater
   // ==============================================================
@@ -61,7 +59,7 @@ const LoginPage = (getdataAll) => {
         alert("masukan Chapta Terlebih Dahulu");
       }
       if (Chapta !== "") {
-        localStorage.LoginStatusValid = "true" ;
+        localStorage.LoginStatusValid = "true";
         history.push("page2");
       }
     } else {
@@ -83,7 +81,7 @@ const LoginPage = (getdataAll) => {
   //============================================Perubahan Data
   const handleChangeAll = (e) => {
     if (e.target.id === "datePolis") {
-      setDataTanggalInputan(e.target.value)
+      setDataTanggalInputan(e.target.value);
     }
 
     // Setup Auto Titik Pada Nomer Polis
@@ -128,25 +126,21 @@ const LoginPage = (getdataAll) => {
   //===============================================================
   //Reload Data Pertama
   //===============================================================
-useEffect(() => {
-  
-  dispatch(getData({
-    username : "george" ,
-    password :"george12345"
-  }))
+  useEffect(() => {
+    dispatch(
+      getData({
+        username: "george",
+        password: "george12345",
+      })
+    );
+  }, []);
 
- }, [])
-
-
-  
   //===============================================================
   // Data Get Polis Sementara
   //===============================================================
   useEffect(() => {
     if (DataPolis.length == 12) {
-      
-      dispatch(GetDataPolis(DataPolis,"Bearer "+token))
-
+      dispatch(GetDataPolis(DataPolis, `${token}`));
     } else {
       // SetAllFrom("hide");
       // console.log(response.data.data)
@@ -214,7 +208,9 @@ useEffect(() => {
               />
             </div>
             {/* Btn  Validasi  */}
-            <button onClick={LoadValidation} className="BtnLanjutkan">LANJUTKAN</button>
+            <button onClick={LoadValidation} className="BtnLanjutkan">
+              LANJUTKAN
+            </button>
           </div>
         </div>
       </div>

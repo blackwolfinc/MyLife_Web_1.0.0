@@ -55,17 +55,22 @@ export const getData = (data) => (dispatch) => {
 };
 //===========================================
 
-export const GetDataPolis = (data ,token ) => (dispatch) => {
+export const GetDataPolis = (data, token) => (dispatch) => {
   dispatch({
     type: GET_POLIS_AWAL,
     Loading: true,
     Error: null,
   });
   axios
+
+  // header ditaruh di action
     .get(
-        
-      `https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/profile?search_query_1=${data}`,token
-       
+      `https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/profile?search_query_1=${data}`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
     )
     .then((response) => {
       dispatch({
