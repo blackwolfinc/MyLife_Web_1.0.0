@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 // Import  Reducer Yang akan di guanakan
-import getDataReducer from "./GetDataReducer"
+import getDataReducer from "./getDataReducer"
 //
 
 export default combineReducers({

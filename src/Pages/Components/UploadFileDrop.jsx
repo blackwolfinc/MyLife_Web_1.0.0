@@ -38,11 +38,11 @@ export const UploadFileDrop = () => {
 //   <section className="container">
 //     <div {...getRootProps({className: 'dropzone'})}>
 //       <input {...getInputProps()} />
-//       <div className="iconTengah">
-//       <i class="fas fa-cloud-upload-alt"></i>
-//       <p> Drag and Drop File
-// </p>
-// </div>
+      <div className="iconTengah">
+      <i className="fas fa-cloud-upload-alt"></i>
+      <p> Drag and Drop File
+</p>
+</div>
 //     </div>
 //     <aside>
 //     {fileNames.map(fileName => (

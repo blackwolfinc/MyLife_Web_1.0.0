@@ -35,7 +35,7 @@ export const Halaman3 = () => {
           <div className="DataDiriTerakhir">
             <span>
               {" "}
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
             </span>{" "}
             <p>Data Nasabah Terakhir</p>
           </div>
@@ -61,7 +61,7 @@ export const Halaman3 = () => {
           <div className="DataDiriTerakhir">
             <span>
               {" "}
-              <i class="fas fa-phone-alt"></i>
+              <i className="fas fa-phone-alt"></i>
             </span>{" "}
             <p>Kontak Nasabah</p>
           </div>
@@ -94,7 +94,7 @@ export const Halaman3 = () => {
           <div className="DataDiriTerakhir">
             <span>
               {" "}
-              <i class="fas fa-map-marker-alt"></i>
+              <i className="fas fa-map-marker-alt"></i>
             </span>{" "}
             <p>Alamat Korespondensi </p>
           </div>
@@ -156,7 +156,7 @@ export const Halaman3 = () => {
         <div className="PerubahanDataCheck">
           <div className="DataDiriTerakhir">
             <span>
-              <i class="fas fa-id-card"></i>
+              <i className="fas fa-id-card"></i>
             </span>{" "}
             <p>Kartu Tanda Penduduk</p>
           </div>
@@ -171,7 +171,7 @@ export const Halaman3 = () => {
           <div className="DataDiriTerakhir">
             <span>
               {" "}
-              <i class="fas fa-exclamation-circle"></i>
+              <i className="fas fa-exclamation-circle"></i>
             </span>{" "}
             <p>Pernyataan</p>
           </div>
@@ -199,10 +199,10 @@ export const Halaman3 = () => {
         <div className="ButtonGroupNav">
           <button className="button2">
             {" "}
-            <i class="far fa-arrow-alt-circle-left"></i> Kembali{" "}
+            <i className="far fa-arrow-alt-circle-left"></i> Kembali{" "}
           </button>
           <button className="button1">
-            Lanjutkan <i class="far fa-arrow-alt-circle-right"></i>
+            Lanjutkan <i className="far fa-arrow-alt-circle-right"></i>
           </button>
         </div>
       </div>

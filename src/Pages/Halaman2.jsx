@@ -36,13 +36,18 @@ export const Halaman2 = () => {
 
   const onDropCostum = (e) => {
     e.preventDefault();
-
     SetFileUpload(e.dataTransfer.files[0]);
     SetUrlFile(URL.createObjectURL(e.dataTransfer.files[0]));
-    console.log(FileUpload);
-    console.log(UrlFile);
     SetUploadStatus(true);
   };
+  
+
+
+  const onDropCostum2 = (e) => {
+    e.preventDefault();
+    console.log(e.dataTransfer.files[0])
+  };
+  
 
   // Anti Bypas
   const AntiBypass = () => {
@@ -128,7 +133,7 @@ export const Halaman2 = () => {
           <div className="DataDiriTerakhir">
             <span>
               {" "}
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
             </span>{" "}
             <p>Data Nasabah Terakhir</p>
           </div>
@@ -188,10 +193,10 @@ export const Halaman2 = () => {
           </div>
           {/* Inputan Perubahan Data  */}
           <div className={`InputWrap ${HidePerubahanPP}`}>
-            <p for="InputNamaPemegangPolis">Nama Lengkap Pemegang Polis</p>
+            <p >Nama Lengkap Pemegang Polis</p>
 
             <div className="inputanWraperIsi nameKhusus">
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
               <input
                 name="InputNamaPemegangPolis"
                 type="text"
@@ -215,9 +220,9 @@ export const Halaman2 = () => {
           {/* Inputan Perubahan Data  2 */}
           {/* Inputan Nomor Handpone   */}
           <div className={`InputWrap ${HidePerubahanKK}`}>
-            <p for="InputNamaPemegangPolis">Nomor Handphone Pemegang Polis</p>
+            <p htmlFor="InputNamaPemegangPolis">Nomor Handphone Pemegang Polis</p>
             <div className="inputanWraperIsi">
-              <i class="fas fa-phone-alt">
+              <i className="fas fa-phone-alt">
                 <p>+62</p>
               </i>
               <input
@@ -229,9 +234,9 @@ export const Halaman2 = () => {
           </div>
           {/* Inputan Nomor wa   */}
           <div className={`InputWrap ${HidePerubahanKK}`}>
-            <p for="InputNamaPemegangPolis">Nomor WhatsApp Pemegang Polis</p>
+            <p htmlFor="InputNamaPemegangPolis">Nomor WhatsApp Pemegang Polis</p>
             <div className="inputanWraperIsi">
-              <i class="fas fa-phone-alt">
+              <i className="fas fa-phone-alt">
                 {" "}
                 <p>+62</p>
               </i>
@@ -250,9 +255,9 @@ export const Halaman2 = () => {
             <h4>Nomor WhatsApp sama dengan Nomor Handphone</h4>
           </div>
           <div className={`InputWrap ${HidePerubahanKK}`}>
-            <p for="InputNamaPemegangPolis">Email Pemegang Polis</p>
+            <p htmlFor="InputNamaPemegangPolis">Email Pemegang Polis</p>
             <div className="inputanWraperIsi ">
-              <i class="fas fa-envelope"></i>
+              <i className="fas fa-envelope"></i>
               <input
                 name="InputNamaPemegangPolis"
                 type="text"
@@ -314,7 +319,7 @@ export const Halaman2 = () => {
             </div>
             {/* Alamat  kode pos*/}
             <div className="InputWrap">
-              <p for="InputNamaPemegangPolis">Kode Pos</p>
+              <p htmlFor="InputNamaPemegangPolis">Kode Pos</p>
               <div className="inputanWraperIsi">
                 <input
                   name="InputNamaPemegangPolis"
@@ -329,20 +334,24 @@ export const Halaman2 = () => {
         <div className="PerubahanDataCheck">
           <div className="DataDiriTerakhir">
             <span>
-              <i class="fas fa-id-card"></i>
+              <i className="fas fa-id-card"></i>
             </span>{" "}
             <p>Unggah Kartu Identitas Penduduk</p>
           </div>
           {/* Attach  Component File Upload*/}
           <div className="UKGroup">
-            {UploadStatus ? (
-              <div className="ContainerImageUpload">
-                <img src={UrlFile} />
-              </div>
-            ) : (
-              <UploadFileDrop />
-            )}
-
+          {UploadStatus ? (
+            <div className="ContainerImageUpload">
+              <img src={UrlFile} />
+            </div>
+          ) : (
+            <div onDragOver={onDropCostum2} onDrop={onDropCostum} className="DragCostum">
+            <div className="iconTengah">
+            <i className="fas fa-cloud-upload-alt"></i>
+            <p> Drag and Drop File
+      </p>
+      </div>   </div>  
+          )}
             <div className="UKButtonGroup">
               <label>
                 <input
@@ -352,24 +361,27 @@ export const Halaman2 = () => {
                   type="file"
                   name="file"
                 />
-                <span class="btn-Unggah">Unggah KTP</span>
+                <span className="btn-Unggah">Unggah KTP</span>
                 <p>Tidak ada file yang dIpilih</p>
               </label>
             </div>
           </div>
         </div>
 
-        {/*DRAG AND DROP COSTUM  */}
-        <div onDrop={onDropCostum} className="DragCostum"></div>
+      
+        
+
+        
+      
 
         {/* btn Lanjut Dan back  */}
         <div className="ButtonGroupNav">
           <button className="button2">
             {" "}
-            <i class="far fa-arrow-alt-circle-left"></i> Kembali{" "}
+            <i className="far fa-arrow-alt-circle-left"></i> Kembali{" "}
           </button>
           <button className="button1">
-            Lanjutkan <i class="far fa-arrow-alt-circle-right"></i>
+            Lanjutkan <i className="far fa-arrow-alt-circle-right"></i>
           </button>
         </div>
       </div>

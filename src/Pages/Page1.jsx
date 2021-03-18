@@ -456,7 +456,7 @@ export const Page1 = () => {
       {/* check Validation */}
 
       <div className={`${LoaderWrap}`}>
-        <div class={`${Loader}`}></div>
+        <div className={`${Loader}`}></div>
       </div>
       <div className="WrapperPage1">
         {/* header Page Start */}
@@ -471,7 +471,7 @@ export const Page1 = () => {
         <div className="FromIsi">
           {/* nomer Polis */}
           <div className="col nomerPolisWrap">
-            <label htmlFor="noPolis">
+            <label htmlhtmlFor="noPolis">
               Nomor Polis [18.1012354.5] <span>*</span>
             </label>
             <input
@@ -488,7 +488,7 @@ export const Page1 = () => {
           <div className={`ContainerShow ${AllFrom}`}>
             {/* Nama Lengkap */}
             <div className="col nameWrap">
-              <label htmlFor="Name">
+              <label htmlhtmlFor="Name">
                 Nama Lengkap <span>*</span>
               </label>
 
@@ -505,7 +505,7 @@ export const Page1 = () => {
             </div>
             {/* Nomor Ponsel */}
             <div className="col nomorWrap">
-              <label htmlFor="Nomor">
+              <label htmlhtmlFor="Nomor">
                 Nomor Ponsel / HP <span>*</span>
               </label>
               <input
@@ -521,7 +521,7 @@ export const Page1 = () => {
 
             {/* Alamat Email */}
             <div className="col emailWrap">
-              <label htmlFor="Email">
+              <label htmlhtmlFor="Email">
                 Alamat E-mail<span>*</span>
               </label>
               <input
@@ -538,7 +538,7 @@ export const Page1 = () => {
 
           {/* Upoad Data */}
           <div className="col dataUpload">
-            <label htmlFor="file">
+            <label htmlhtmlFor="file">
               Upload Ktp <span>*</span>
             </label>
             <input
@@ -624,7 +624,7 @@ export const Page1 = () => {
                   {/* Checkboox From */}
 
                   <div className={`col checkbookFrom ${Hide}`}>
-                    <label htmlFor="checkbookFrom ">
+                    <label htmlhtmlFor="checkbookFrom ">
                       Alamat Korespondensi <span> *</span>
                     </label>
                     {/* Nama Jalan dan rumah  */}
@@ -639,7 +639,7 @@ export const Page1 = () => {
                       onChange={handleChangeAll}
                       id="namaJalan"
                     />
-                    <label htmlFor="namaJalan"> Nama Jalan,No Rumah/Unit</label>
+                    <label htmlhtmlFor="namaJalan"> Nama Jalan,No Rumah/Unit</label>
                     {/* kecamatan */}
                     <input
                       type="text"
@@ -652,7 +652,7 @@ export const Page1 = () => {
                       }
                       id="namaJalan2"
                     />
-                    <label htmlFor="namaJalan2"> Kecamatan</label>
+                    <label htmlhtmlFor="namaJalan2"> Kecamatan</label>
                     {/* kota */}
                     <div className="KotaProf">
                       <div className="kota">
@@ -667,7 +667,7 @@ export const Page1 = () => {
                           onChange={handleChangeAll}
                           id="namaJalan3"
                         />
-                        <label htmlFor="namaJalan3"> Kota</label>
+                        <label htmlhtmlFor="namaJalan3"> Kota</label>
                       </div>
                       <div className="prof">
                         <input
@@ -681,7 +681,7 @@ export const Page1 = () => {
                           onChange={handleChangeAll}
                           id="namaJalan4"
                         />
-                        <label htmlFor="namaJalan4"> provinsi</label>
+                        <label htmlhtmlFor="namaJalan4"> provinsi</label>
                       </div>
                     </div>
                     {/* kode Pos */}
@@ -697,7 +697,7 @@ export const Page1 = () => {
                       onChange={handleChangeAll}
                       id="namaJalan5"
                     />
-                    <label htmlFor="namaJalan5"> Kode Pos</label>
+                    <label htmlhtmlFor="namaJalan5"> Kode Pos</label>
                   </div>
                 </div>
 
@@ -708,7 +708,7 @@ export const Page1 = () => {
             {/* Perubahan Data End */}
             {/*Terhubung Wa  */}
             <div className="col selectlWrap">
-              <label htmlFor="Email">
+              <label htmlhtmlFor="Email">
                 Apakah no Hp anda Terhubung dengan No Whatsapp <span>*</span>
               </label>
               <select onChange={handleChangeWa}>
@@ -722,7 +722,7 @@ export const Page1 = () => {
             </div>
             {/* no Wa baru  */}
             <div className={`col nomorWrap2 ${ChangeWa}`}>
-              <label htmlFor="Nomor">
+              <label htmlhtmlFor="Nomor">
                 Nomor Whatsapp <span>*</span>
               </label>
               <input
@@ -741,12 +741,12 @@ export const Page1 = () => {
             {/* wraper ctg   */}
 
             <div className="CheckiconWrap">
-              <div class="success-checkmark">
-                <div class={` ${CheckboxPersetujuan}` }>
-                  <span class="icon-line line-tip"></span>
-                  <span class="icon-line line-long"></span>
-                  <div class="icon-circle"></div>
-                  <div class="icon-fix"></div>
+              <div className="success-checkmark">
+                <div className={` ${CheckboxPersetujuan}` }>
+                  <span className="icon-line line-tip"></span>
+                  <span className="icon-line line-long"></span>
+                  <div className="icon-circle"></div>
+                  <div className="icon-fix"></div>
                 </div>
               </div>
             </div>
@@ -793,7 +793,7 @@ export const Page1 = () => {
           <hr />
           {/* verivikasi Chapta */}
           <div className="col nomorWrap">
-            <label htmlFor="Nomor">
+            <label htmlhtmlFor="Nomor">
               Mohon verivikasi Diri anda <span>*</span>
             </label>
 
