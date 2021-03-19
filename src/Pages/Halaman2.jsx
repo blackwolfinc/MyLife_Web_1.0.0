@@ -22,13 +22,74 @@ export const Halaman2 = () => {
   const [HidePerubahanPP, setHidePerubahanPP] = useState("hide");
   const [HidePerubahanKK, setHidePerubahanKK] = useState("hide");
   const [HidePerubahanAL, setHidePerubahanAL] = useState("hide");
-
+  // data
+  const [DataPolis, SetDataPolis] = useState("");
+  const [DataNama, SetDataNama] = useState("");
+  const [DataNumber, SetDataNumber] = useState(0);
+  const [DataEmail, SetDataEmail] = useState("");
+  const [NamaJalanKodePos, SetNamaJalanKodePos] = useState("");
+  const [NamaJalanKota, SetNamaJalanKota] = useState("");
+  const [NamaJalanProfinsi, SetNamaJalanProfinsi] = useState("");
+  const [NamaJalanKecamatan, SetNamaJalanKecamatan] = useState("");
+  const [NamaJalanRumah, SetNamaJalanRumah] = useState("");
+  // Untuk Data Update
+  const [DataNumberBaru, SetDataNumberBaru] = useState(0);
+  const [DataEmailBaru, SetDataEmailBaru] = useState("");
+  const [NomerWhatsapp, SetNomerWhatsapp] = useState("");
+  const [PersetujuanValid, SetPersetujuanValid] = useState(false);
   // Value Select 2
   const options = [
     { value: "Indonesia", label: "Indonesia" },
     { value: "Amerika", label: "Amerika" },
     { value: "Engris", label: "Engris" },
   ];
+  // ==============================================================
+  // Hendel Inputan
+  // ==============================================================
+  // Hendel Change Inputan
+  const handleChangeAll = (e) => {
+    if (e.target.id === "EmailChange" && HidePerubahanKK === "show") {
+      SetDataEmailBaru(e.target.value);
+    }
+
+    if (e.target.id === "NomerWhatsappTerbaru" && HidePerubahanKK === "show") {
+      SetNomerWhatsapp(e.target.value);
+    }
+    // nama jalan
+
+    if (e.target.id === "namaJalan" && HidePerubahanAL === "") {
+      SetNamaJalanRumah(e.target.value);
+
+      // console.log(NamaJalanRumah);
+    }
+    if (e.target.id === "namaJalan2" && HidePerubahanAL === "") {
+      SetNamaJalanKecamatan(e.target.value);
+
+      // console.log(NamaJalanKecamatan);
+    }
+    if (e.target.id === "namaJalan3" && HidePerubahanAL === "") {
+      SetNamaJalanKota(e.target.value);
+
+      // console.log(NamaJalanKota);
+    }
+    if (e.target.id === "namaJalan4" && HidePerubahanAL === "") {
+      SetNamaJalanProfinsi(e.target.value);
+
+      // console.log(NamaJalanProfinsi);
+    }
+    if (e.target.id === "namaJalan5" && HidePerubahanAL === "") {
+      SetNamaJalanKodePos(e.target.value);
+
+      // console.log(NamaJalanKodePos);
+    }
+
+    if (e.target.id === "Email") {
+      SetDataEmail(e.target.value);
+    }
+    if (e.target.id === "Nomor") {
+      SetDataNumber(e.target.value);
+    }
+  };
 
   // ==============================================================
   // Fungsi Fungsi
@@ -40,14 +101,11 @@ export const Halaman2 = () => {
     SetUrlFile(URL.createObjectURL(e.dataTransfer.files[0]));
     SetUploadStatus(true);
   };
-  
-
 
   const onDropCostum2 = (e) => {
     e.preventDefault();
-    console.log(e.dataTransfer.files[0])
+    console.log(e.dataTransfer.files[0]);
   };
-  
 
   // Anti Bypas
   const AntiBypass = () => {
@@ -104,6 +162,19 @@ export const Halaman2 = () => {
     }
     if (e.target.id === "PerubahanAlamat" && HidePerubahanAL === "hide") {
       setHidePerubahanAL("show");
+    }
+  };
+  // ==============================================================
+  // On Submit
+  // ==============================================================
+
+  const HendleSubmit = (e) => {
+    if (e.target.id === "ValidationButton") {
+      history.push("page3");
+    }
+
+    if (e.target.id === "backButton") {
+      history.push("/");
     }
   };
 
@@ -193,7 +264,7 @@ export const Halaman2 = () => {
           </div>
           {/* Inputan Perubahan Data  */}
           <div className={`InputWrap ${HidePerubahanPP}`}>
-            <p >Nama Lengkap Pemegang Polis</p>
+            <p>Nama Lengkap Pemegang Polis</p>
 
             <div className="inputanWraperIsi nameKhusus">
               <i className="fas fa-user"></i>
@@ -220,7 +291,9 @@ export const Halaman2 = () => {
           {/* Inputan Perubahan Data  2 */}
           {/* Inputan Nomor Handpone   */}
           <div className={`InputWrap ${HidePerubahanKK}`}>
-            <p htmlFor="InputNamaPemegangPolis">Nomor Handphone Pemegang Polis</p>
+            <p htmlFor="InputNamaPemegangPolis">
+              Nomor Handphone Pemegang Polis
+            </p>
             <div className="inputanWraperIsi">
               <i className="fas fa-phone-alt">
                 <p>+62</p>
@@ -234,7 +307,9 @@ export const Halaman2 = () => {
           </div>
           {/* Inputan Nomor wa   */}
           <div className={`InputWrap ${HidePerubahanKK}`}>
-            <p htmlFor="InputNamaPemegangPolis">Nomor WhatsApp Pemegang Polis</p>
+            <p htmlFor="InputNamaPemegangPolis">
+              Nomor WhatsApp Pemegang Polis
+            </p>
             <div className="inputanWraperIsi">
               <i className="fas fa-phone-alt">
                 {" "}
@@ -340,18 +415,22 @@ export const Halaman2 = () => {
           </div>
           {/* Attach  Component File Upload*/}
           <div className="UKGroup">
-          {UploadStatus ? (
-            <div className="ContainerImageUpload">
-              <img src={UrlFile} />
-            </div>
-          ) : (
-            <div onDragOver={onDropCostum2} onDrop={onDropCostum} className="DragCostum">
-            <div className="iconTengah">
-            <i className="fas fa-cloud-upload-alt"></i>
-            <p> Drag and Drop File
-      </p>
-      </div>   </div>  
-          )}
+            {UploadStatus ? (
+              <div className="ContainerImageUpload">
+                <img src={UrlFile} />
+              </div>
+            ) : (
+              <div
+                onDragOver={onDropCostum2}
+                onDrop={onDropCostum}
+                className="DragCostum"
+              >
+                <div className="iconTengah">
+                  <i className="fas fa-cloud-upload-alt"></i>
+                  <p> Drag and Drop File</p>
+                </div>{" "}
+              </div>
+            )}
             <div className="UKButtonGroup">
               <label>
                 <input
@@ -368,19 +447,13 @@ export const Halaman2 = () => {
           </div>
         </div>
 
-      
-        
-
-        
-      
-
-        {/* btn Lanjut Dan back  */}
+      {/* btn Lanjut Dan back  */}
         <div className="ButtonGroupNav">
-          <button className="button2">
+          <button onClick={HendleSubmit} id="backButton" className="button2">
             {" "}
             <i className="far fa-arrow-alt-circle-left"></i> Kembali{" "}
           </button>
-          <button className="button1">
+          <button id="ValidationButton" onClick={HendleSubmit} className="button1">
             Lanjutkan <i className="far fa-arrow-alt-circle-right"></i>
           </button>
         </div>

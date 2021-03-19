@@ -369,11 +369,11 @@
 
   .nameKhusus {
     input {
-      margin-left: -2rem;
+      
     }
     input::placeholder {
-      color: red;
-      padding-right: -2rem !important;
+      color: #73767f;
+      margin: -5rem!important;
     }
   }
 

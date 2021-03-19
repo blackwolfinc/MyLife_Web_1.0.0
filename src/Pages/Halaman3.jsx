@@ -3,15 +3,37 @@ import logo from "../Assets/Img/Logo.jpg";
 import "../Assets//Css/pages/Pages3.scss";
 import { MiniCrausel } from "./Components/MiniCrausel";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 
 export const Halaman3 = () => {
-  
+  const history = useHistory();
   // hide anda pop up parameter
   const options = [
     { value: "Indonesia", label: "Indonesia" },
     { value: "Amerika", label: "Amerika" },
     { value: "Engris", label: "Engris" },
   ];
+
+
+
+
+
+
+  // ==============================================================
+  // On Submit
+  // ==============================================================
+
+  const HendleSubmit = (e) => {
+    if (e.target.id === "ValidationButton") {
+      history.push("endpage");
+    }
+
+    if (e.target.id === "backButton") {
+      history.push("page2");
+    }
+  };
+
 
   return (
     <div className="ContainerDefaultSec">
@@ -197,14 +219,14 @@ export const Halaman3 = () => {
         {/* btn Lanjut Dan back  */}
 
         <div className="ButtonGroupNav">
-          <button className="button2">
-            {" "}
-            <i className="far fa-arrow-alt-circle-left"></i> Kembali{" "}
-          </button>
-          <button className="button1">
-            Lanjutkan <i className="far fa-arrow-alt-circle-right"></i>
-          </button>
-        </div>
+        <button onClick={HendleSubmit} id="backButton" className="button2">
+          {" "}
+          <i className="far fa-arrow-alt-circle-left"></i> Kembali{" "}
+        </button>
+        <button id="ValidationButton" onClick={HendleSubmit} className="button1">
+          Lanjutkan <i className="far fa-arrow-alt-circle-right"></i>
+        </button>
+      </div>
       </div>
     </div>
   );
