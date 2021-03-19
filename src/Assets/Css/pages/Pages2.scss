@@ -6,6 +6,8 @@
   border-radius: 10px;
   height: 100% !important;
 
+
+
   .TitlePage {
     border-left: 2px solid #349a46;
     padding-left: 2rem;
@@ -21,6 +23,9 @@
     border-radius: 8px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.04);
 
+    input:focus {
+      background-color: #ccffd5;
+    }
     .PerubahanDataPemegangPolis-Check,
     .PerubahanKontakPemegangPolis-Check,
     .PerubahanAlamatPemegangPolis-Check {
@@ -367,9 +372,6 @@
   }
 
   .nameKhusus {
-    input {
-   
-    }
     input::placeholder {
       color: red;
       padding-right: -2rem !important;
@@ -390,11 +392,7 @@
   }
 }
 
-.PerubahanAlamatPemegangPolis-Check {
-  border-bottom: 1px dashed rgba(128, 128, 128, 0.233);
-  margin-bottom: 1rem;
-  padding: 1rem 0;
-}
+
 
 .AlamatWraper {
   display: flex;
@@ -525,3 +523,4 @@
   margin-bottom: 2rem;
   border-radius: 8px;
 }
+

@@ -1,8 +1,6 @@
 import React, { forwardRef } from "react";
 import axios from "axios";
-import "../Assets/Css/LandingPage.scss";
-import "../Assets/Css/Checklist.scss";
-import "../Assets/Css/Validation.scss";
+
 import Logo from "../Assets/Img/Logo.jpg";
 import { useState, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -27,7 +25,6 @@ export const Page1 = () => {
   // Set Hide and Pop-UP
   const [ErorInput, SetErorInput] = useState(false);
   const [Hide, SetHideAlternative] = useState("hide");
-  const [CheckPersetujuan, SetCheckPersetujuan] = useState("hide");
   const [HideCheck, SetAlternativeCheck] = useState(false);
   const [HideCheck2, SetAlternativeCheck2] = useState("hide");
   const [HideCheck3, SetAlternativeCheck3] = useState("hide");
@@ -38,6 +35,7 @@ export const Page1 = () => {
   const [Loader, SetLoader] = useState("hide");
   const [LoaderWrap, SetLoaderWrap] = useState("hide");
   const [CheckboxPersetujuan, SetCheckboxPersetujuan] = useState("hide");
+  const [CheckPersetujuan, SetCheckPersetujuan] = useState("hide");
 
   //Set Hide and pop Up Modals
   const [ModalState, SetModalState] = useState(false);
@@ -102,12 +100,12 @@ export const Page1 = () => {
     if (e.target.id === "Persetujuan" && CheckPersetujuan === "hide") {
       SetCheckPersetujuan("");
       SetPersetujuanValid(true);
-      SetCheckboxPersetujuan("check-icon")
+      SetCheckboxPersetujuan("check-icon");
     }
     if (e.target.id === "Persetujuan" && CheckPersetujuan === "") {
       SetCheckPersetujuan("hide");
       SetPersetujuanValid(false);
-      SetCheckboxPersetujuan("hide")
+      SetCheckboxPersetujuan("hide");
     }
   };
 
@@ -370,27 +368,27 @@ export const Page1 = () => {
       DataNama !== "" &&
       UploadStatus === true
     ) {
-      if (HideCheck2 === "show" && DataNumberBaru !== DataNumber &&  DataNumberBaru.length < 10 ) {
-          alert("hit")
-          alert(DataNumberBaru)
-          document.getElementById("NumberChange").focus();
-      } 
-      if (HideCheck3 === "show" && DataEmailBaru !== DataEmail &&  DataEmailBaru.length < 5 ) {
-        
-        alert(DataEmailBaru)
+      if (
+        HideCheck2 === "show" &&
+        DataNumberBaru !== DataNumber &&
+        DataNumberBaru.length < 10
+      ) {
+        alert("hit");
+        alert(DataNumberBaru);
+        document.getElementById("NumberChange").focus();
+      }
+      if (
+        HideCheck3 === "show" &&
+        DataEmailBaru !== DataEmail &&
+        DataEmailBaru.length < 5
+      ) {
+        alert(DataEmailBaru);
         document.getElementById("EmailChange").focus();
-      }
-      else{
+      } else {
         SetModalState(true);
-
       }
 
-
-
-
-
-
-      // 
+      //
 
       // data yang di submit
     }
@@ -577,7 +575,6 @@ export const Page1 = () => {
                 </div>
                 <div className={`col nomorWa1 ${ChangeNumber}`}>
                   <input
-                    
                     placeholder={`Nomor Hp Lama : ${DataNumber}`}
                     type="number"
                     onChange={handleChangeAll}
@@ -639,7 +636,10 @@ export const Page1 = () => {
                       onChange={handleChangeAll}
                       id="namaJalan"
                     />
-                    <label htmlhtmlFor="namaJalan"> Nama Jalan,No Rumah/Unit</label>
+                    <label htmlhtmlFor="namaJalan">
+                      {" "}
+                      Nama Jalan,No Rumah/Unit
+                    </label>
                     {/* kecamatan */}
                     <input
                       type="text"
@@ -742,7 +742,7 @@ export const Page1 = () => {
 
             <div className="CheckiconWrap">
               <div className="success-checkmark">
-                <div className={` ${CheckboxPersetujuan}` }>
+                <div className={` ${CheckboxPersetujuan}`}>
                   <span className="icon-line line-tip"></span>
                   <span className="icon-line line-long"></span>
                   <div className="icon-circle"></div>
@@ -772,8 +772,11 @@ export const Page1 = () => {
             </p>
             <p>kesalahan tersebut.</p>
             <hr />
-            <div className={`checkboxlWrap ${CheckPersetujuan !=="hide" ? "hide": "tes"} ` }>
-
+            <div
+              className={`checkboxlWrap ${
+                CheckPersetujuan !== "hide" ? "hide" : "tes"
+              } `}
+            >
               <label>
                 <input
                   name="Persetujuan"
@@ -786,8 +789,6 @@ export const Page1 = () => {
                   Saya Menyetujui <span>*</span>
                 </p>
               </label>
-
-
             </div>
           </div>
           <hr />
@@ -824,15 +825,15 @@ export const Page1 = () => {
                 ></input>
               </div>
               <div className="DataOtp">
-              <div className="otpCon">
-                <p>Nomor Tujuan Otp  :  </p> 
-                <p>{DataNumber}</p>
+                <div className="otpCon">
+                  <p>Nomor Tujuan Otp : </p>
+                  <p>{DataNumber}</p>
                 </div>
 
-                <hr/>
+                <hr />
                 <div className="otpCon">
-                <p>Email Tujuan Otp  :  </p>
-                <p>{DataEmail}</p>
+                  <p>Email Tujuan Otp : </p>
+                  <p>{DataEmail}</p>
                 </div>
               </div>
               <div className="btnModalGroup">

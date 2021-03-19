@@ -14,10 +14,16 @@ export const Halaman2 = () => {
   // ==============================================================
   // Data Master
   // ==============================================================
+  // Load Data Indictor :
+  const [LoadData, SetLoadData] = useState(false);
+  const [LoadDataNegara, SetLoadDataNegara] = useState();
+
   //Upload File
   const [FileUpload, SetFileUpload] = useState({});
+  const [FileName, SetFileName] = useState("");
   const [UploadStatus, SetUploadStatus] = useState(false);
   const [UrlFile, SetUrlFile] = useState();
+
   // hide anda pop up parameter
   const [HidePerubahanPP, setHidePerubahanPP] = useState("hide");
   const [HidePerubahanKK, setHidePerubahanKK] = useState("hide");
@@ -38,11 +44,55 @@ export const Halaman2 = () => {
   const [NomerWhatsapp, SetNomerWhatsapp] = useState("");
   const [PersetujuanValid, SetPersetujuanValid] = useState(false);
   // Value Select 2
+
   const options = [
-    { value: "Indonesia", label: "Indonesia" },
+
     { value: "Amerika", label: "Amerika" },
     { value: "Engris", label: "Engris" },
+
   ];
+  // ==============================================================
+  // Load Data
+  // ==============================================================
+      useEffect(() => {
+          if (LoadData === false ) {
+
+          var axios = require('axios');
+          var config = {
+            method: 'get',
+            url: 'https://myelife-web-customer.herokuapp.com/api/v1/countries',
+            headers: { }
+          };
+
+          axios(config)
+          .then(function (response) {
+            console.log(response.data.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+          // Load Data Ke 2
+          var config = {
+            method: 'get',
+            url: 'https://myelife-web-customer.herokuapp.com/api/v1/states',
+            headers: { }
+          };
+
+          axios(config)
+          .then(function (response) {
+            console.log(response.data.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        }
+
+
+      }, [])
+
+
   // ==============================================================
   // Hendel Inputan
   // ==============================================================
@@ -99,6 +149,7 @@ export const Halaman2 = () => {
     e.preventDefault();
     SetFileUpload(e.dataTransfer.files[0]);
     SetUrlFile(URL.createObjectURL(e.dataTransfer.files[0]));
+    SetFileName(e.dataTransfer.files[0].name);
     SetUploadStatus(true);
   };
 
@@ -130,6 +181,7 @@ export const Halaman2 = () => {
         // console.log(FileUpload);
         SetUrlFile(URL.createObjectURL(e.target.files[0]));
         // console.log(UrlFile);
+        SetFileName(e.target.files[0].name);
       }
     } else {
       alert(
@@ -143,10 +195,12 @@ export const Halaman2 = () => {
   // ==============================================================
   // Fungsi Frontend
   // ==============================================================
+
   // Hendel Hide And popup
   const ChaneAllTrans = (e) => {
     if (e.target.id === "PemegangPolis" && HidePerubahanPP === "show") {
       setHidePerubahanPP("hide");
+      console.log(LoadDataNegara)
     }
     if (e.target.id === "PemegangPolis" && HidePerubahanPP === "hide") {
       setHidePerubahanPP("show");
@@ -181,6 +235,7 @@ export const Halaman2 = () => {
   return (
     <div className="ContainerDefaultSec">
       {AntiBypass()}
+
       {/* Container Kiri  */}
       <div className="ContainerKiri">
         {/* Logo Container*/}
@@ -300,7 +355,7 @@ export const Halaman2 = () => {
               </i>
               <input
                 name="InputNamaPemegangPolis"
-                type="text"
+                type="number"
                 placeholder="Masukkan Nama  Kontak Pemegang Polis"
               ></input>
             </div>
@@ -317,7 +372,7 @@ export const Halaman2 = () => {
               </i>
               <input
                 name="InputNamaPemegangPolis"
-                type="text"
+                type="number"
                 placeholder="Masukkan  Kontak Pemegang Polis"
               ></input>
             </div>
@@ -355,12 +410,13 @@ export const Halaman2 = () => {
           </div>
           <div className={HidePerubahanAL}>
             {/* Alamat negara*/}
+            <hr />
             <div className={`AlamatWraper `}>
               <p>Alamat Korespondensi Pemegang Polis</p>
               <input placeholder="Masukkan Alamat Rumah"></input>
               <input placeholder="Masukkan RT/RW atau Nama Bangunan/Gedung"></input>
               <p>Negara</p>
-              <Select options={options} />
+              <Select options={LoadDataNegara} />
             </div>
             {/* Alamat profinsi*/}
             <div className="AlamatWrapProf">
@@ -441,19 +497,26 @@ export const Halaman2 = () => {
                   name="file"
                 />
                 <span className="btn-Unggah">Unggah KTP</span>
-                <p>Tidak ada file yang dIpilih</p>
+
+                {FileName != "" ? (
+                  <p>{FileName}</p>
+                ) : (
+                  <p>"Tidak ada file yang dIpilih"</p>
+                )}
               </label>
             </div>
           </div>
         </div>
-
-      {/* btn Lanjut Dan back  */}
+        {/* btn Lanjut Dan back  */}
         <div className="ButtonGroupNav">
           <button onClick={HendleSubmit} id="backButton" className="button2">
-            {" "}
-            <i className="far fa-arrow-alt-circle-left"></i> Kembali{" "}
+            <i className="far fa-arrow-alt-circle-left"></i> Kembali
           </button>
-          <button id="ValidationButton" onClick={HendleSubmit} className="button1">
+          <button
+            id="ValidationButton"
+            onClick={HendleSubmit}
+            className="button1"
+          >
             Lanjutkan <i className="far fa-arrow-alt-circle-right"></i>
           </button>
         </div>

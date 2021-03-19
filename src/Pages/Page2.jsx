@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import "../Assets/Css/TanksPage.scss";
+
 
 
 export const Page2 = () => {

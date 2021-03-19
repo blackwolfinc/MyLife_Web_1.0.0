@@ -1,95 +1,99 @@
 .ContainerDefault {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  background-color: #ffffff;
+  .ContainerKiri {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    background-color: #349a46;
+
+    align-items: left;
+    text-align: left;
+    padding: 2rem;
+
+    .ContainerCrausel {
+      // background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      align-self: center;
+      align-content: center;
+      width: 80%;
+      margin-top: -5rem;
+    }
+  }
+
+  .ContainerKanan {
     display: flex;
     justify-content: center;
-    flex-direction: row;
-
-    background-color: #ffffff;
-    .ContainerKiri {
-        display: flex;
-        justify-content: left;
-        flex-direction: column;
-        background-color: #349a46;
-      
-
-        align-items: left;
-        text-align: left;
-        padding: 2rem;
-
-        .ContainerCrausel{
-            // background-color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            align-self: center;
-            align-content: center;
-            width: 80%;
-            margin-top: -5rem;
-
-        }
-    }
-
-    .ContainerKanan{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        background-color:#ffffff !important;
-        width: 40%;
-        height: 100%;
-        padding: 2rem 3rem;
-        margin: 0;
-       box-shadow:  0px, 32px
-rgba(110, 120, 135, 0.12)
-    }
-
-
-
+    flex-direction: column;
+    background-color: #ffffff !important;
+    width: 40%;
+    height: 100%;
+    padding: 2rem 3rem;
+    margin: 0;
+    box-shadow: 0px, 32px rgba(110, 120, 135, 0.12);
+  }
 }
 
 .ContainerDefaultSec {
+  display: flex;
+  // position:fixed;
+  justify-content: center;
+  flex-direction: row;
+  height: 100%;
+  background-color: #f5f9fa;
+  .ContainerKiri {
     display: flex;
-    // position:fixed;
+    justify-content: left;
+    flex-direction: column;
+    background-color: #349a46;
+    width: 30%;
+
+    align-items: left;
+    text-align: left;
+    padding: 2rem;
+
+    .ContainerCrausel {
+      background: none !important;
+      width: 100%;
+      height: 80%;
+      // margin-top: -5rem;
+    }
+  }
+
+  .ContainerKanan {
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
+    background-color: ffffff;
+    width: 70%;
     height: 100%;
-    background-color: #f5f9fa;
-    .ContainerKiri {
-        display: flex;
-        justify-content: left;
-        flex-direction: column;
-        background-color: #349a46;
-        width: 30%;
 
-        align-items: left;
-        text-align: left;
-        padding: 2rem;
-
-        .ContainerCrausel{
-            background: none  !important;
-            width: 100%;
-            height: 80%;
-            // margin-top: -5rem;
-
-        }
-    }
-
-    .ContainerKanan{
-       
-        justify-content: center;
-        flex-direction: column;
-        background-color:ffffff;
-        width: 70%;
-        height: 100%;
-
-          overflow-y: scroll;
-          z-index: 9999;
-    }
-
-
+    overflow-y: scroll;
+    z-index: 9999;
+  }
 }
 
 //Untuk Menghilangkan
 
 .hide {
-    display: none !important;
+  display: none !important;
+}
+
+input {
+    font-size: 14px;
+margin-left: 0.7rem;
+color: #1c1f24;
+font-weight: 400;
+letter-spacing: normal;
+font-family: Roboto;
+}
+
+input:active ,
+input:hover {
+  outline: none !important;
 }

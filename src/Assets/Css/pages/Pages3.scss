@@ -57,26 +57,22 @@
     justify-content: left;
     text-align: center;
     align-items: center;
-
     align-content: center;
     background-color: #ccffd5;
     // height: 2.7rem;
     padding-left: 1rem;
     border-radius: 8px;
     margin-bottom: 2rem;
-
     span {
       display: flex;
       justify-content: center;
       align-content: center;
-
       margin-right: 1rem;
       background-color: #ffffff;
       width: 2rem;
       height: 2rem;
       border-radius: 50%;
       box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12);
-
       i {
         display: flex;
         justify-content: center;
@@ -126,7 +122,7 @@
           font-style: normal;
           line-height: normal;
           letter-spacing: normal;
-         
+
         }
 
         p:first-child {
@@ -369,7 +365,7 @@
 
   .nameKhusus {
     input {
-      
+
     }
     input::placeholder {
       color: #73767f;
@@ -391,11 +387,7 @@
   }
 }
 
-.PerubahanAlamatPemegangPolis-Check {
-  border-bottom: 1px dashed rgba(128, 128, 128, 0.233);
-  margin-bottom: 1rem;
-  padding: 1rem 0;
-}
+
 
 .AlamatWraper {
   display: flex;
@@ -498,4 +490,50 @@
     border-radius: 20px;
     border: 3px solid #d0d8e1;
   }
+}
+
+
+.OtpInputWrap {
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.otpCon{
+  display: flex;
+  justify-content:space-between;
+  flex-direction: row;
+}
+.DataOtp{
+
+
+  padding: 1rem;
+  border: 1px solid gray ;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+.btnModalGroup {
+  display: flex;
+  justify-content: left;
+  margin-top: 1rem;
+
+  button {
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin: 0 0.3rem;
+  }
+}
+
+.Persetujuan {
+  margin-top: 4rem;
+  padding: 2rem;
+  border: 1px solid #80808070;
+  border-radius: 5px;
+  position: relative;
+}
+
+.fileInputCostum {
+  padding: 1rem;
 }
