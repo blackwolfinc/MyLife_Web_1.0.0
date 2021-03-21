@@ -13,3 +13,10 @@ export const GET_POLIS_SUCSSES ="GET_POLIS_SUCSSES"
 export const GET_POLIS_FAIL =  "GET_POLIS_FAIL"
 
 
+//Edit Data  Polis
+export const EDIT_POLIS =  "EDIT_POLIS"
+export const NO_POLIS =  "NO_POLIS"
+
+
+//Login Inddikator 
+export const LOGIN_TOKEN = "LOGIN_TOKEN"

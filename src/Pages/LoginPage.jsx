@@ -11,6 +11,12 @@ import { MainCrausel } from "./Components/MainCrausel";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { getData, GetDataPolis } from "../Redux/Action/getData";
 
+// using redux 
+import {editNoPolis} from "../Redux/Action/editData" 
+import {loginStatus} from "../Redux/Action/loginStatus" 
+
+
+
 const LoginPage = (getdataAll) => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -20,7 +26,7 @@ const LoginPage = (getdataAll) => {
   // ==============================================================
 
   const [TokenLogin, SetTokenLogin] = useState("");
-  const [loginStatus, SetloginStatus] = useState(false);
+  
   // ChaptaF
   const [Chapta, SetChapta] = useState("");
   // Data Validator '
@@ -60,6 +66,8 @@ const LoginPage = (getdataAll) => {
       }
       if (Chapta !== "") {
         localStorage.LoginStatusValid = "true";
+        dispatch(editNoPolis(DataPolis));
+        dispatch(loginStatus(true));
         history.push("page2");
       }
     } else {
@@ -141,6 +149,7 @@ const LoginPage = (getdataAll) => {
   useEffect(() => {
     if (DataPolis.length == 12) {
       dispatch(GetDataPolis(DataPolis, `${token}`));
+      dispatch(editNoPolis(DataPolis))
     } else {
       // SetAllFrom("hide");
       // console.log(response.data.data)

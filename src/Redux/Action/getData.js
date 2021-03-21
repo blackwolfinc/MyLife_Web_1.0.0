@@ -8,11 +8,21 @@ import {
   GET_POLIS_FAIL,
 } from "./actionTypes";
 
+
+
+
+
+
 export const getData = (data) => (dispatch) => {
+  //untuk call back ngasih tau redux jalanin pernitah ini 
   dispatch({
     type: GET_DATA_AWAL,
+    // tipenya 
+    // yang di lakukan 
+      // =================
     Loading: true,
     Error: null,
+    // =================
   });
 
   axios
@@ -34,24 +44,6 @@ export const getData = (data) => (dispatch) => {
       });
     });
 
-  //   try {
-  //     const res = axios.post(
-  //       "https://eli-uat-api.myequity.id/mobmyelife/services/api/v1/login",
-  //       data
-  //     );
-  //     dispatch({
-  //       type: GET_DATA_SUCSSES,
-  //       payload: res
-  //     });
-
-  //     console.log(res)
-  //   } catch (error) {
-  //     console.log(error);
-  //     dispatch({
-  //       type: GET_DATA_FAIL,
-  //       payload : error
-  //     });
-  //   }
 };
 //===========================================
 

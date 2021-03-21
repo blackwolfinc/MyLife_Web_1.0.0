@@ -1,16 +1,18 @@
 import React from "react";
+import {editData} from "../Redux/Action/editData" 
 import logo from "../Assets/Img/Logo.jpg";
 import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import { UploadFileDrop } from "./Components/UploadFileDrop";
 import { MiniCrausel } from "./Components/MiniCrausel";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import logoKecil1 from "../Assets/Img/Icon/ico-user-12-x-12.png";
 import "../Assets//Css/pages/Pages2.scss";
 
 export const Halaman2 = () => {
   const history = useHistory();
-
+  const Dispatch  = useDispatch() ;
   // ==============================================================
   // Data Master
   // ==============================================================
@@ -28,9 +30,20 @@ export const Halaman2 = () => {
   const [HidePerubahanPP, setHidePerubahanPP] = useState("hide");
   const [HidePerubahanKK, setHidePerubahanKK] = useState("hide");
   const [HidePerubahanAL, setHidePerubahanAL] = useState("hide");
+  // Contoh Data From Reudx 
+  const DataUserAwal = useSelector(state=> state.getdataAll.userPolis);
+  
+console.log(DataUserAwal)
+
+
+  
   // data
   const [DataPolis, SetDataPolis] = useState("");
-  const [DataNama, SetDataNama] = useState("");
+  const [DataNama, SetDataNama] = useState({
+    InputNamaPemegangPolis : "" ,
+    InputNomorHandponePemegangPolis : ""
+  });
+  console.log(DataNama)
   const [DataNumber, SetDataNumber] = useState(0);
   const [DataEmail, SetDataEmail] = useState("");
   const [NamaJalanKodePos, SetNamaJalanKodePos] = useState("");
@@ -98,13 +111,19 @@ export const Halaman2 = () => {
   // ==============================================================
   // Hendel Change Inputan
   const handleChangeAll = (e) => {
+    
+    if (e.target.id === "InputNamaPemegangPolis" && HidePerubahanPP === "show") {
+      SetDataNama({...DataNama, [e.target.id] : e.target.value})
+    }
+    if (e.target.id === "InputNomorHandponePemegangPolis" && HidePerubahanKK === "show") {
+      SetDataNama({...DataNama, [e.target.id] : e.target.value})
+    }
+
     if (e.target.id === "EmailChange" && HidePerubahanKK === "show") {
       SetDataEmailBaru(e.target.value);
     }
 
-    if (e.target.id === "NomerWhatsappTerbaru" && HidePerubahanKK === "show") {
-      SetNomerWhatsapp(e.target.value);
-    }
+
     // nama jalan
 
     if (e.target.id === "namaJalan" && HidePerubahanAL === "") {
@@ -180,6 +199,7 @@ export const Halaman2 = () => {
         SetUploadStatus(true);
         // console.log(FileUpload);
         SetUrlFile(URL.createObjectURL(e.target.files[0]));
+        SetDataNama({...DataNama, [e.target.id] :URL.createObjectURL(e.target.files[0])})
         // console.log(UrlFile);
         SetFileName(e.target.files[0].name);
       }
@@ -224,6 +244,7 @@ export const Halaman2 = () => {
 
   const HendleSubmit = (e) => {
     if (e.target.id === "ValidationButton") {
+      Dispatch(editData(DataNama))
       history.push("page3");
     }
 
@@ -268,14 +289,14 @@ export const Halaman2 = () => {
             <div className="showData">
               <p>No. Polis</p>
               <p className="hasil">
-                <b>12.4430244.1</b>
+              <b>{DataUserAwal.policy_holder}</b>
               </p>
             </div>
             <hr />
             <div className="showData">
               <p>Nama Pemegang Polis</p>
               <p className="hasil">
-                <b>Jhon Doe</b>
+                <b>{DataUserAwal.policy_holder}</b>
               </p>
             </div>
             <hr />
@@ -324,6 +345,8 @@ export const Halaman2 = () => {
             <div className="inputanWraperIsi nameKhusus">
               <i className="fas fa-user"></i>
               <input
+              onChange={handleChangeAll}
+                id="InputNamaPemegangPolis"
                 name="InputNamaPemegangPolis"
                 type="text"
                 placeholder="Masukkan Nama Lengkap Pemegang Polis"
@@ -354,7 +377,9 @@ export const Halaman2 = () => {
                 <p>+62</p>
               </i>
               <input
-                name="InputNamaPemegangPolis"
+                onChange={handleChangeAll}
+                id="InputNomorHandponePemegangPolis"
+                name="InputNomorHandponePemegangPolis"
                 type="number"
                 placeholder="Masukkan Nama  Kontak Pemegang Polis"
               ></input>
