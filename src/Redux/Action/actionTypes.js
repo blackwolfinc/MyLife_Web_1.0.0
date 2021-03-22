@@ -20,3 +20,4 @@ export const NO_POLIS =  "NO_POLIS"
 
 //Login Inddikator 
 export const LOGIN_TOKEN = "LOGIN_TOKEN"
+export const EDIT_STATUS = "EDIT_STATUS"

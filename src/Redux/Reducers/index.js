@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-// PAHSE 4 
-// KALO GAK KEBACA HARUS DI INIISIALISAI 
+// PAHSE 4
+// KALO GAK KEBACA HARUS DI INIISIALISAI
 // Import  Reducer Yang akan di guanakan
-import getDataReducer from "./getDataReducer"
+import getDataReducer from "./GetDataReducer"
 import editDataReducers from "./editDataReducers"
 import loginDataReducers from  "./loginDataReducers"
 //

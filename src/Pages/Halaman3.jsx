@@ -2,14 +2,24 @@ import React from "react";
 import logo from "../Assets/Img/Logo.jpg";
 import "../Assets//Css/pages/Pages3.scss";
 import "../Assets//Css/Validation.scss";
+import {editStatus} from "../Redux/Action/loginStatus"
 
+
+import { connect, useDispatch, useSelector } from "react-redux";
 import { MiniCrausel } from "./Components/MiniCrausel";
 import { useState  ,useEffect} from "react";
 import { useHistory } from "react-router-dom";
 import { MDBBtn, MDBModal, MDBModalBody, MDBModalFooter } from "mdbreact";
 
+
 export const Halaman3 = () => {
   const history = useHistory();
+  const Dispatch  = useDispatch() ;
+
+  const UserNoPolisData = useSelector((state) => state.editDataReducers.data);
+  const UserNoPolis = useSelector((state) => state.editDataReducers.no_polis);
+
+
   // hide anda pop up parameter
   const options = [
     { value: "Indonesia", label: "Indonesia" },
@@ -124,6 +134,7 @@ export const Halaman3 = () => {
     }
     if (e.target.id === "backButton") {
       history.push("page2");
+      // Dispatch(editStatus(true))
     }
   };
 
@@ -226,14 +237,14 @@ export const Halaman3 = () => {
             <div className="showData">
               <p>No. Polis</p>
               <p className="hasil">
-                <b>12.4430244.1</b>
+                <b>{UserNoPolis}</b>
               </p>
             </div>
             <hr />
             <div className="showData">
               <p>Nama Pemegang Polis</p>
               <p className="hasil">
-                <b>Jhon Doe</b>
+                <b>{UserNoPolisData.InputNamaPemegangPolis}</b>
               </p>
             </div>
           </div>
@@ -252,21 +263,21 @@ export const Halaman3 = () => {
             <div className="showData">
               <p>No. Handphone</p>
               <p className="hasil">
-                <b>+62 - 8123456789</b>
+                <b>{UserNoPolisData.nomorHpTelepone}</b>
               </p>
             </div>
             <hr />
             <div className="showData">
               <p>No. WhatsApp</p>
               <p className="hasil">
-                <b>+62 - 8123456789</b>
+                <b>{UserNoPolisData.nomorHpTelepone}</b>
               </p>
             </div>
             <hr />
             <div className="showData">
               <p>E-mail</p>
               <p className="hasil">
-                <b>example@gmail.com</b>
+                <b>{UserNoPolisData.EmailChange}</b>
               </p>
             </div>
           </div>
