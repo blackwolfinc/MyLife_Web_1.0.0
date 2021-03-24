@@ -85,31 +85,24 @@ export const Halaman3 = () => {
     if(OtpTriger === true){
 
       var axios = require('axios');
-    var FormData = require('form-data');
-    var data = new FormData();
-    data.append('customerCode', UserNoPolis);
-    data.append('customerName', UserNoPolisData.InputNamaPemegangPolis );
-    data.append('phoneNo', userNoBefore);
-    data.append('email', 'inc.blackwolf@gmail.com');
-    data.append('genderCode', GenderPost);
-    data.append('otpType', 'E');
-    data.append('typeCode', 'E46');
-    
-    var config = {
-      method: 'post',
-      url: 'https://api-pengkinian-data.herokuapp.com/api/v1/generate-otp',
-      data : data
-    };
-    
-    axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      alert("data ke send")
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
+      var data = JSON.stringify({"customerCode":"CM09012","customerName":"Mukhamat Jafar","phoneNo":"085779135418","email":"inc.blackwolf@gmail.com","genderCode":"L","otpType":"E","typeCode":"E46"});
+      
+      var config = {
+        method: 'post',
+        url: 'https://api-pengkinian-data.herokuapp.com/api/v1/generate-otp',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     }
 
@@ -519,7 +512,7 @@ export const Halaman3 = () => {
             <MDBBtn color="secondary" onClick={ModalTogller}>
               Close
             </MDBBtn>
-            <MDBBtn color="primary" onClick={OtpValidation}>
+            <MDBBtn color="primary" disabled onClick={OtpValidation}>
               Validation
             </MDBBtn>
           </MDBModalFooter>
