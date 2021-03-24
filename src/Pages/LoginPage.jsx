@@ -182,7 +182,7 @@ const LoginPage = (getdataAll) => {
             {/* inputan Body */}
             <div className="input-Container">
               <img src={icon1}></img>
-              <label>Nomor Polis</label>
+              <label>Nomor Polis [18.1012354.5]</label>
               <input
                 autoFocus
                 maxLength="12"
@@ -197,7 +197,7 @@ const LoginPage = (getdataAll) => {
             {/* Inputan Tanggal Lahir */}
             <div className="input-Container">
               <img src={icon2}></img>
-              <label>Tgl. Lahir</label>
+              <label>Tgl. Lahir [23/09/2012]</label>
               <input
                 onChange={handleChangeAll}
                 id="datePolis"

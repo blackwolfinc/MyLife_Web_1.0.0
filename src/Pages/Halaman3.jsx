@@ -102,6 +102,7 @@ export const Halaman3 = () => {
       })
       .catch(function (error) {
         console.log(error);
+        setOtpTriger(false)
       });
 
     }
@@ -113,7 +114,7 @@ export const Halaman3 = () => {
       // Api Untuk Send KE form
       SetLoader("loader");
       SetLoaderWrap("loaderWrap");
-    
+      setOtpTriger(false)
 
       var data = new FormData();
       data.append('changeAddressCode', '001');
@@ -237,9 +238,6 @@ export const Halaman3 = () => {
       PersetujuanValid === true
     ) {
 
-
-
-
       alert("Kode OTP Benar");
       SetSendDataFinal(true);
     }
@@ -255,6 +253,7 @@ export const Halaman3 = () => {
   const OtpEmail = () => {
     alert("OTP Dikirimkan Lewat E-mail");
     setOtpTriger(true)
+    
     if (gender === "PRIA") {
       SetGenderPost("L")
     } 
@@ -505,14 +504,14 @@ export const Halaman3 = () => {
             </div>
             <div className="btnModalGroup">
               <button onClick={OtpEmail}> Send By Email</button>
-              <button onClick={OtpSMS}> Send By No Handpone</button>
+              <button disabled onClick={OtpSMS}> Send By No Handpone</button>
             </div>
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={ModalTogller}>
               Close
             </MDBBtn>
-            <MDBBtn color="primary" disabled onClick={OtpValidation}>
+            <MDBBtn color="primary"  onClick={OtpValidation}>
               Validation
             </MDBBtn>
           </MDBModalFooter>
