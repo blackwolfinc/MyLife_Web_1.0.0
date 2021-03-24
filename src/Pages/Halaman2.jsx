@@ -17,22 +17,29 @@ export const Halaman2 = () => {
   // ==============================================================
   // Data Master
   // ==============================================================
+
   // Load Data Indictor :
   const [LoadData, SetLoadData] = useState(false);
   const [LoadDataNegara, SetLoadDataNegara] = useState();
 
-  //Upload File
+  // ==============================================================
+  // Upload File
+  // ==============================================================
   const [FileUpload, SetFileUpload] = useState({});
   const [FileName, SetFileName] = useState("");
   const [UploadStatus, SetUploadStatus] = useState(false);
   const [UrlFile, SetUrlFile] = useState();
 
+  // ==============================================================
   // hide anda pop up parameter
+  // ==============================================================
   const [HidePerubahanPP, setHidePerubahanPP] = useState("hide");
   const [HidePerubahanKK, setHidePerubahanKK] = useState("hide");
   const [HidePerubahanKKWa, setHidePerubahanKKWa] = useState("hide");
   const [HidePerubahanAL, setHidePerubahanAL] = useState("hide");
-  // Contoh Data From Reudx
+  // ==============================================================
+  // Get Data From Redux
+  // ==============================================================
   const DataUserAwal = useSelector((state) => state.getdataAll.userPolis);
   const UserNoPolis = useSelector((state) => state.editDataReducers.no_polis);
   const UserNoPolisData = useSelector((state) => state.editDataReducers.data);
@@ -42,10 +49,21 @@ export const Halaman2 = () => {
   const CheckEditStatus = useSelector(
     (state) => state.loginDataReducers.editStatusLook
   );
-  // data
+  // ==============================================================
+  // Data master
+  // ==============================================================
   const [DataPolis, SetDataPolis] = useState(UserNoPolis);
-  const [DataNumber, SetDataNumber] = useState(DataUserAwal.mobile_no);
   const [DataEmail, SetDataEmail] = useState(DataUserAwal.email);
+  // Nomor HP  :
+  //Nomer Telfone
+  const [DataNumberTelepone, setDataNumberTelepone] = useState(
+    DataUserAwal.mobile_no
+  );
+  const [DataNumberWhatssap, setDataNumberWhatssap] = useState("");
+
+  // ==============================================================
+  // Headel Data Alamat
+  // ==============================================================
   const [NamaJalanKodePos, SetNamaJalanKodePos] = useState(
     DataUserAwal.postal_code
   );
@@ -57,23 +75,9 @@ export const Halaman2 = () => {
     DataUserAwal.address
   );
   const [NamaJalanRumah, SetNamaJalanRumah] = useState(DataUserAwal.country);
-  // Untuk Data Update
-  const [DataNumberBaru, SetDataNumberBaru] = useState(0);
-  // Value Select 2
 
-  // if (CheckEditStatus === true ) {
-  //     alert(" cehek true")
-  // }
-  // if(CheckEditStatus === false ){
-  //   alert("salah")
-  // }
-
-  const options = [
-    { value: "Amerika", label: "Amerika" },
-    { value: "Engris", label: "Engris" },
-  ];
   // ==============================================================
-  // Load Data
+  // Load Data Country
   // ==============================================================
   useEffect(() => {
     if (LoadData === false) {
@@ -86,13 +90,23 @@ export const Halaman2 = () => {
 
       axios(config)
         .then(function (response) {
-          console.log(response.data.data);
+          const dataMap = response.data.data.map((negara) => {
+            return {
+              value: negara.countryCode,
+              label: negara.description,
+            };
+          });
+          // console.log(response.data.data);
+          optionsNegara.push(...dataMap);
+          // console.log(options)
         })
         .catch(function (error) {
           console.log(error);
         });
 
-      // Load Data Ke 2
+      // ==============================================================
+      // Load Data States
+      // ==============================================================
       var config = {
         method: "get",
         url: "https://myelife-web-customer.herokuapp.com/api/v1/states",
@@ -101,31 +115,39 @@ export const Halaman2 = () => {
 
       axios(config)
         .then(function (response) {
-          console.log(response.data.data);
+          const dataMap = response.data.data.map((negara) => {
+            return {
+              value: negara.stateCode,
+              label: negara.description,
+            };
+          });
+          // console.log(response.data.data);
+          optionState.push(...dataMap);
+          // console.log(options);
         })
         .catch(function (error) {
           console.log(error);
         });
     }
-  }, []);
+  },);
+
+  // ==============================================================
+  // Variabel Sementara Dan Editebel Variabel
+  // ==============================================================
+  const optionsNegara = [];
+  const optionState = [];
 
   const [SendAllData, SetSendAllData] = useState({
     InputNamaPemegangPolis:
       CheckEditStatus === false
         ? DataUserAwal.policy_holder
         : UserNoPolisData.InputNamaPemegangPolis,
-    InputNomorHandponePemegangPolis:
-      CheckEditStatus === false
-        ? DataNumber
-        : UserNoPolisData.InputNomorHandponePemegangPolis,
+    //  Change Email
     EmailChange:
-      CheckEditStatus === false
-        ? DataEmail
-        : UserNoPolisData.EmailChange,
-    UploadFileInput:
-      CheckEditStatus === false
-        ? UrlFile
-        : UserNoPolisData.UploadFileInput,
+      CheckEditStatus === false ? DataEmail : UserNoPolisData.EmailChange,
+    // Upload File
+
+    // Alamat
     namaJalanAddres1:
       CheckEditStatus === false
         ? NamaJalanKecamatan
@@ -135,58 +157,92 @@ export const Halaman2 = () => {
         ? NamaJalanKecamatan
         : UserNoPolisData.namaJalanAddres2,
     namaJalanKota:
-      CheckEditStatus === false
-        ? NamaJalanKota
-        : UserNoPolisData.namaJalanKota,
+      CheckEditStatus === false ? NamaJalanKota : UserNoPolisData.namaJalanKota,
     namaJalanKecamatan:
-      CheckEditStatus === false
-        ? ""
-        : UserNoPolisData.namaJalanKecamatan,
+      CheckEditStatus === false ? "" : UserNoPolisData.namaJalanKecamatan,
     namaJalanKelurahan:
-      CheckEditStatus === false
-        ? ""
-        : UserNoPolisData.namaJalanKelurahan,
+      CheckEditStatus === false ? "" : UserNoPolisData.namaJalanKelurahan,
     namaJalanKodePos:
       CheckEditStatus === false
-        ?NamaJalanKodePos
+        ? NamaJalanKodePos
         : UserNoPolisData.namaJalanKodePos,
-    UploadFileInput:
+    
+    // data Number Hp
+    InputNomorHandponePemegangPolis:
       CheckEditStatus === false
-        ? UrlFile
-        : UserNoPolisData.UploadFileInput,
-    nomorHpTelepone:
-        CheckEditStatus === false
-          ? DataNumber
-          : UserNoPolisData.nomorHpTelepone,
-    nomorHpWA:
-          CheckEditStatus === false
-            ? DataNumberBaru
-            : UserNoPolisData.nomorHpWA,
+        ? DataNumberTelepone
+        : UserNoPolisData.InputNomorHandponePemegangPolis,
+        NomorWhatsAppPemegangPolis:
+      CheckEditStatus === false ? DataNumberWhatssap : UserNoPolisData.NomorWhatsAppPemegangPolis,
+   
+    // Select From
+
+    optionsNegaraLabel:
+      CheckEditStatus === false
+        ? NamaJalanRumah
+        : UserNoPolisData.optionsNegaraLabel,
+        optionStateLabel:
+      CheckEditStatus === false
+        ? NamaJalanProfinsi
+        : UserNoPolisData.optionStateLabel,
   });
 
   // ==============================================================
   // Hendel Inputan
   // ==============================================================
   // Hendel Change Inputan
+
+  const hendeleKhusus = (e) => {
+    SetSendAllData({ ...SendAllData, optionsNegara: e.value });
+    SetSendAllData({ ...SendAllData, optionsNegaraLabel: e.label });
+  };
+  const hendeleKhusus2 = (e) => {
+    SetSendAllData({ ...SendAllData, optionState: e.value });
+    SetSendAllData({ ...SendAllData, optionStateLabel: e.label });
+  };
+
   const handleChangeAll = (e) => {
+    if (e.target.id === "optionState") {
+      SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
+    }
+
     if (
       e.target.id === "InputNamaPemegangPolis" &&
       HidePerubahanPP === "show"
     ) {
       SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
     }
+
+    if (
+      e.target.id === "NomorWhatsAppPemegangPolis" &&
+      HidePerubahanKK === "show"
+    ) {
+      SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
+      // setDataNumberWhatssap(e.target.value);
+      console.log(e.target.value)
+    }
     if (
       e.target.id === "InputNomorHandponePemegangPolis" &&
       HidePerubahanKK === "show"
     ) {
       SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
+      setDataNumberTelepone(e.target.value);
     }
 
     if (e.target.id === "EmailChange" && HidePerubahanKK === "show") {
       SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
     }
 
-    // nama jalan
+    if (e.target.id === "Email") {
+      SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
+    }
+    if (e.target.id === "Nomor") {
+      SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
+    }
+
+    // ==============================================================
+    // Hendel Change Alamat
+    // ==============================================================
 
     if (e.target.id === "namaJalanAddres1" && HidePerubahanAL === "show") {
       SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
@@ -218,12 +274,8 @@ export const Halaman2 = () => {
       // console.log(NamaJalanKodePos);
     }
 
-    if (e.target.id === "Email") {
-      SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
-    }
-    if (e.target.id === "Nomor") {
-      SetSendAllData({ ...SendAllData, [e.target.id]: e.target.value });
-    }
+    // hendle Select From Negara & State
+    // ==============================================================
   };
 
   // ==============================================================
@@ -244,7 +296,6 @@ export const Halaman2 = () => {
 
   const onDropCostum2 = (e) => {
     e.preventDefault();
-    // console.log(e.dataTransfer.files[0]);
   };
 
   // Anti Bypas
@@ -266,15 +317,22 @@ export const Halaman2 = () => {
         e.target.value = null;
       } else {
         SetFileUpload(e.target.files[0]);
-        SetUploadStatus(true);
-        // console.log(FileUpload);
+        console.log(e.target.files[0])
+      
+        // localStorage.setItem('xsdfsfs', e.target.files[0]);
+        // console.log(localStorage.getItem("xsdfsfs"))
         SetUrlFile(URL.createObjectURL(e.target.files[0]));
+        console.log(URL.createObjectURL(e.target.files[0]));
+
+ 
+
         SetSendAllData({
           ...SendAllData,
-          [e.target.id]: URL.createObjectURL(e.target.files[0]),
+          "Url": URL.createObjectURL(e.target.files[0]),
+          "UploadFileInput": e.target.files[0],
         });
-        // console.log(UrlFile);
         SetFileName(e.target.files[0].name);
+        SetUploadStatus(true);
       }
     } else {
       alert(
@@ -315,14 +373,14 @@ export const Halaman2 = () => {
       HidePerubahanKKWa === "hide"
     ) {
       setHidePerubahanKKWa("show");
-      SetDataNumberBaru(DataNumber);
+      setDataNumberWhatssap(DataNumberTelepone);
     }
     if (
       e.target.id === "NomorWhatsAppPemegangPolis" &&
       HidePerubahanKKWa === "show"
     ) {
       setHidePerubahanKKWa("hide");
-      SetDataNumberBaru("");
+      setDataNumberWhatssap("");
     }
   };
 
@@ -346,7 +404,6 @@ export const Halaman2 = () => {
   return (
     <div className="ContainerDefaultSec">
       {AntiBypass()}
-
       {/* Container Kiri  */}
       <div className="ContainerKiri">
         {/* Logo Container*/}
@@ -393,14 +450,14 @@ export const Halaman2 = () => {
             <div className="showData">
               <p>No. Handphone</p>
               <p className="hasil">
-                <b>{DataNumber}</b>
+                <b>{DataNumberTelepone}</b>
               </p>
             </div>
             <hr />
             <div className="showData">
               <p>Alamat Email</p>
               <p className="hasil">
-                <b>{DataEmail}</b>
+                <b>{DataEmail ==="" ? "Belum Mempunyai E-Mail" : DataEmail }</b>
               </p>
             </div>
             <hr />
@@ -478,7 +535,7 @@ export const Halaman2 = () => {
                 id="InputNomorHandponePemegangPolis"
                 name="InputNomorHandponePemegangPolis"
                 type="number"
-                placeholder={DataNumber}
+                placeholder={DataNumberTelepone}
               ></input>
             </div>
           </div>
@@ -497,9 +554,10 @@ export const Halaman2 = () => {
                 name="NomorWhatsAppPemegangPolis"
                 onChange={handleChangeAll}
                 type="number"
-                {...(HidePerubahanKKWa === "hide" ? "disabled" : <b>flase</b>)}
-                value={DataNumberBaru}
-                placeholder={DataNumberBaru}
+           
+                
+        
+                placeholder={DataNumberWhatssap}
               ></input>
             </div>
           </div>
@@ -557,13 +615,21 @@ export const Halaman2 = () => {
                 placeholder="Masukkan RT/RW atau Nama Bangunan/Gedung"
               ></input>
               <p>Negara</p>
-              <Select options={options} />
+              <Select
+                id="optionsNegara"
+                onChange={hendeleKhusus}
+                options={optionsNegara}
+              />
             </div>
             {/* Alamat profinsi*/}
             <div className="AlamatWrapProf">
               <div className="AlamatKanan">
                 <p>Provinsi</p>
-                <Select options={options} />
+                <Select
+                  id="optionState"
+                  onChange={hendeleKhusus2}
+                  options={optionState}
+                />
               </div>
               {/* Alamat kota*/}
               <div className="AlamatKiri">

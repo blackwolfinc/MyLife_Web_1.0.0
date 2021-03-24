@@ -3,8 +3,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import "../../Assets/Css/ComponentsCss/MiniCrausel.scss";
 import logo1 from "../../Assets/Img/Logo.jpg";
-import Cimage1 from "../../Assets/Img/Crausel1/art-carousel-1-423x421@3x.png";
-import Cimage2 from "../../Assets/Img/Crausel2/art-carousel-2-424x421@3x.png";
+import Cimage1 from "../../Assets/Img/NCrausel1/art-carousel-1-468-x-453@3x.png";
+import Cimage2 from "../../Assets/Img/NCrausel2/art-carousel-2-468-x-453@3x.png";
+import Cimage3 from "../../Assets/Img/NCrasuel3/art-carousel-3-468-x-453@3x.png";
 export const MiniCrausel = () => {
     return (
         <div>
@@ -19,21 +20,19 @@ export const MiniCrausel = () => {
         >
           <div>
             <img alt="" src={Cimage1} />
-            <div className="carousel-caption">
-              {/* <h1>Yuk, segera lakukan</h1>
-              <h1>Pengkinian Data Nasabah</h1> */}
-              {/* <p >Dalam upaya selalu meningkatkan pelayanan kepada Nasabah  <br/> Equity Life Indonesia.</p> */}
-            </div>
+        
           </div>
           <div>
             <img alt="" src={Cimage2} />
-            <div className="carousel-caption">
-              {/* <h1>Yuk, segera lakukan</h1>
-              <h1>Pengkinian Data Nasabah</h1>
-              <p >Dalam upaya selalu meningkatkan pelayanan kepada Nasabah  <br/> Equity Life Indonesia.</p> */}
-            </div>
+           
           </div>
-
+          <div>
+          <img alt="" src={Cimage3} />
+         
+        </div>
+        
+ 
+       
 
 
         </Carousel>

@@ -4,6 +4,11 @@
 
 .carousel-slider ,.ContainerCrausel{
     border-radius: 1rem;
+    background: url("../../Img/Svg/bg-circle-468x453.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+  
 }
 
 .carousel .slide {
@@ -11,42 +16,17 @@
     justify-content: center;
     background: none;
    
-
-   h1{
-     
-    font-family: Roboto;
-  font-size: 32px;
-  font-weight: 900;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-
+img{
+    margin-top: 2rem;
 }
+   
 
-.carousel-caption{
-    margin-bottom: 10rem;
-
-    p {
-        background-color: rgba(128, 128, 128, 0.082) !important;
-        margin-bottom: -5rem;
-        color: #b1e4ba;
-        font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2;
-  letter-spacing: 0.28px;
-    }
-}
 
    
 }
 
 li.slide 
-    {padding-bottom: 5rem;}
+    {padding-bottom: 4rem;}
 
 
 

@@ -10,7 +10,7 @@
   text-align: center;
   align-items: center;
   margin-top: -3rem;
-  z-index: 99999999;
+  z-index: 99999999999;
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */
@@ -19,7 +19,7 @@
     height: 170px;
     animation: spin 2s linear infinite;
     position: fixed;
-    z-index: 100;
+    z-index: 999999999;
 
   }
 }
