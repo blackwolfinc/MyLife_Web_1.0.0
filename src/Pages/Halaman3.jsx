@@ -2,42 +2,34 @@ import React from "react";
 import logo from "../Assets/Img/Logo.jpg";
 import "../Assets//Css/pages/Pages3.scss";
 import "../Assets//Css/Validation.scss";
-import {editStatus} from "../Redux/Action/loginStatus"
-
-
+import { editStatus } from "../Redux/Action/loginStatus";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { MiniCrausel } from "./Components/MiniCrausel";
-import { useState  ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { MDBBtn, MDBModal, MDBModalBody, MDBModalFooter } from "mdbreact";
 
-
 export const Halaman3 = () => {
   const history = useHistory();
-  const Dispatch  = useDispatch() ;
+  const Dispatch = useDispatch();
+ // ==============================================================
+  // Master Data Redux
+  // ==============================================================
 
   const UserNoPolisData = useSelector((state) => state.editDataReducers.data);
   const UserNoPolis = useSelector((state) => state.editDataReducers.no_polis);
-  const userNoBefore  = useSelector((state) => state.getdataAll.userPolis.mobile_no);
-  const userEmailBefore =  useSelector((state) => state.getdataAll.userPolis.email);
-  const gender =  useSelector((state) => state.getdataAll.userPolis.gender);
+  const userNoBefore = useSelector(
+    (state) => state.getdataAll.userPolis.mobile_no
+  );
+  const userEmailBefore = useSelector(
+    (state) => state.getdataAll.userPolis.email
+  );
+  const gender = useSelector((state) => state.getdataAll.userPolis.gender);
+  const Checklogin = useSelector(
+    (state) => state.loginDataReducers.loginStatus
+  );
 
-  // hide anda pop up parameter
-  const options = [
-    { value: "Indonesia", label: "Indonesia" },
-    { value: "Amerika", label: "Amerika" },
-    { value: "Engris", label: "Engris" },
-  ];
-
-
-
-
-  const util = require('util'),
-  request = util.promisify(require('request')),
-  fs = require('fs'),
-  fsp = fs.promises;
-
- 
+  const UploadFile = UserNoPolisData.UploadFileInput;
   // ==============================================================
   // Master Data
   // ==============================================================
@@ -45,11 +37,11 @@ export const Halaman3 = () => {
   // Data Otp
   const [OtpValue, SetOtpValue] = useState("");
   const [SendDataFinal, SetSendDataFinal] = useState(false);
+  const [DataOtpStatus, SetDataOtpStatus] = useState(false);
 
   // Untuk Data Update
   const [PersetujuanValid, SetPersetujuanValid] = useState(false);
   const [GenderPost, SetGenderPost] = useState("");
-
 
   //Data For OTP
   const [DataEmail, SetDataEmail] = useState("");
@@ -65,85 +57,50 @@ export const Halaman3 = () => {
   const [LoaderWrap, SetLoaderWrap] = useState("hide");
   const [AllFrom, SetAllFrom] = useState("hide");
 
-
   // Send OTP
-  const [OtpTriger, setOtpTriger] = useState(false)
-
-  const UploadFile = (UserNoPolisData.UploadFileInput)
-  console.log(UploadFile)
+  const [OtpTriger, setOtpTriger] = useState(false);
 
 
-  
-   // ==============================================================
-  // On Submit
   // ==============================================================
-  // sumbit Data Baru Setelah OTp
-
-
+  // Otp Section sumbit Data Baru Setelah Validsi OTP
+  // ==============================================================
 
   useEffect(() => {
-    if(OtpTriger === true){
-
-      var axios = require('axios');
-      var data = JSON.stringify({"customerCode":"CM09012","customerName":"Mukhamat Jafar","phoneNo":"085779135418","email":"inc.blackwolf@gmail.com","genderCode":"L","otpType":"E","typeCode":"E46"});
-      
-      var config = {
-        method: 'post',
-        url: 'https://api-pengkinian-data.herokuapp.com/api/v1/generate-otp',
-        headers: { 
-          'Content-Type': 'application/json'
-        },
-        data : data
-      };
-      
-      axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        console.log(error);
-        setOtpTriger(false)
-      });
-
-    }
-
-
-
-
     if (SendDataFinal === true) {
       // Api Untuk Send KE form
       SetLoader("loader");
       SetLoaderWrap("loaderWrap");
-      setOtpTriger(false)
+      setOtpTriger(false);
 
       var data = new FormData();
-      data.append('changeAddressCode', '001');
-      data.append('policyNo', UserNoPolis);
-      data.append('policyHolder', UserNoPolisData.InputNamaPemegangPolis);
-      data.append('handphoneNo', '08577915418');
-      data.append('emailAddress', UserNoPolisData.EmailChange);
-      data.append('changeData', '1');
-      data.append('newHandphoneNo', UserNoPolisData.NomorWhatsAppPemegangPolis);
-      data.append('whatsappNumber', '1');
-      data.append('whatsappNo', '085779135418');
-      data.append('newEmailAddress', UserNoPolisData.EmailChange);
-      data.append('changeAddress', '1');
-      data.append('address1', UserNoPolisData.namaJalanAddres1 + UserNoPolisData.namaJalanAddres2 );
-      data.append('address2', UserNoPolisData.namaJalanKelurahan);
-      data.append('address3', UserNoPolisData.namaJalanKecamatan);
-      data.append('cityCode', UserNoPolisData.namaJalanKota);
-      data.append('stateCode', '001');
-      data.append('postalCode', UserNoPolisData.namaJalanKodePos);
-      data.append('countryCode', '001');
-      data.append('faxNo', '0243299');
-      data.append('phoneNo', UserNoPolisData.InputNomorHandponePemegangPolis);
-      data.append('file', UploadFile);
-      data.append('active', '1');
-      data.append('transactionCode', '001');
-      data.append('transactionStatus', 'active');
+      data.append("changeAddressCode", "001");
+      data.append("policyNo", UserNoPolis);
+      data.append("policyHolder", UserNoPolisData.InputNamaPemegangPolis);
+      data.append("handphoneNo", "08577915418");
+      data.append("emailAddress", UserNoPolisData.EmailChange);
+      data.append("changeData", "1");
+      data.append("newHandphoneNo", UserNoPolisData.NomorWhatsAppPemegangPolis);
+      data.append("whatsappNumber", "1");
+      data.append("whatsappNo", "085779135418");
+      data.append("newEmailAddress", UserNoPolisData.EmailChange);
+      data.append("changeAddress", "1");
+      data.append(
+        "address1",
+        UserNoPolisData.namaJalanAddres1 + UserNoPolisData.namaJalanAddres2
+      );
+      data.append("address2", UserNoPolisData.namaJalanKelurahan);
+      data.append("address3", UserNoPolisData.namaJalanKecamatan);
+      data.append("cityCode", UserNoPolisData.namaJalanKota);
+      data.append("stateCode", "001");
+      data.append("postalCode", UserNoPolisData.namaJalanKodePos);
+      data.append("countryCode", "001");
+      data.append("faxNo", "0243299");
+      data.append("phoneNo", UserNoPolisData.InputNomorHandponePemegangPolis);
+      data.append("file", UploadFile);
+      data.append("active", "1");
+      data.append("transactionCode", "001");
+      data.append("transactionStatus", "active");
       // =================
-          
-
 
       var requestOptions = {
         method: "POST",
@@ -159,18 +116,124 @@ export const Halaman3 = () => {
         .then(function (response) {
           SetAllFrom("");
           localStorage.clear();
-          alert(response)
           SetLoader("hide");
           SetLoaderWrap("hide");
           history.push("endpage");
-          //  console.log(response.message)
         })
         .catch((error) => alert("error", error));
     } else {
-      //  alert("eror Post")
     }
-  }, [SendDataFinal][OtpTriger]);
+  }, [SendDataFinal]);
 
+
+  // ==============================================================
+  // Validasi Inputan OTP
+  // ==============================================================
+
+  const OtpValidation = () => {
+    if (OtpValue.length === 6) {
+      SetDataOtpStatus(true);
+    } else {
+      alert("Input 6 digit dari otp");
+    }
+  };
+
+
+  // ==============================================================
+  // ON CLICK SEND E-MAIL
+  // ==============================================================
+
+  const OtpEmail = () => {
+    alert("OTP Dikirimkan Lewat E-mail");
+    setOtpTriger(true);
+
+    if (gender === "PRIA") {
+      SetGenderPost("L");
+    }
+    if (gender === "WANITA") {
+      SetGenderPost("P");
+    }
+  };
+  // ==============================================================
+  // ON CLICK SEND SMS
+  // ==============================================================
+
+  const OtpSMS = () => {
+    alert("OTP Dikirimkan Lewat SMS / whatsaap");
+  };
+
+  // ==============================================================
+  // Create OTP Email
+  // ==============================================================
+
+  useEffect(() => {
+    if (OtpTriger === true) {
+      var axios = require("axios");
+      var data = JSON.stringify({
+        customerCode: "CM09039",
+        customerName: "Mukhamat Jafar",
+        phoneNo: "085779135418",
+        email: "inc.blackwolf@gmail.com",
+        genderCode: "L",
+        otpType: "E",
+        typeCode: "E46",
+      });
+
+      var config = {
+        method: "post",
+        url: "https://api-pengkinian-data.herokuapp.com/api/v1/generate-otp",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          alert(response.data.message);
+        })
+        .catch(function (error) {
+          alert(error);
+          SetDataOtpStatus(false);
+          setOtpTriger(false);
+        });
+    }
+  }, [OtpTriger]);
+
+  // ==============================================================
+  // Validasi OTP
+  // ==============================================================
+
+  useEffect(() => {
+    if (
+      DataOtpStatus === true &&
+      ModalState === true &&
+      PersetujuanValid === true
+    ) {
+      var axios = require("axios");
+
+      var config = {
+        method: "post",
+        url: `https://api-pengkinian-data.herokuapp.com/api/v1/verify-otp?otp=${OtpValue}`,
+        headers: {},
+      };
+
+      axios(config)
+        .then(function (response) {
+          if (response.data.status === true) {
+            alert("Data Otp Benar");
+            SetSendDataFinal(true);
+          }
+          if (response.data.status === false) {
+            alert(response.message);
+          }
+        })
+        .catch(function (error) {
+          alert(error);
+          alert("kode OTP salah ");
+        });
+    }
+  }, [DataOtpStatus]);
 
   // ==============================================================
   // Hide And Show
@@ -207,7 +270,6 @@ export const Halaman3 = () => {
     }
   };
 
-
   // ==============================================================
   // Fungsi Fungsi
   // ==============================================================
@@ -227,50 +289,17 @@ export const Halaman3 = () => {
     }
   };
 
-  // ==============================================================
-  // Otp Section
-  // ==============================================================
-
-  const OtpValidation = () => {
-    if (
-      OtpValue === "1234" &&
-      ModalState === true &&
-      PersetujuanValid === true
-    ) {
-
-      alert("Kode OTP Benar");
-      SetSendDataFinal(true);
-    }
-    if (
-      OtpValue !== "1234" &&
-      ModalState === true &&
-      PersetujuanValid === true
-    ) {
-      alert("kode OTP salah ");
+  // Anti Bypas
+  const AntiBypass = () => {
+    if (Checklogin !== true) {
+      history.push("");
     }
   };
-
-  const OtpEmail = () => {
-    alert("OTP Dikirimkan Lewat E-mail");
-    setOtpTriger(true)
-    
-    if (gender === "PRIA") {
-      SetGenderPost("L")
-    } 
-    if (gender === "WANITA") {
-      SetGenderPost("P")
-    }
-  
-  };
-
-  const OtpSMS = () => {
-    alert("OTP Dikirimkan Lewat SMS / whatsaap");
-  };
-
 
   return (
     <div className="ContainerDefaultSec">
-        <div className={`${LoaderWrap}`}>
+      {AntiBypass()}
+      <div className={`${LoaderWrap}`}>
         <div className={`${Loader}`}></div>
       </div>
       <div className="ContainerKiri">
@@ -362,8 +391,9 @@ export const Halaman3 = () => {
               <p>Alamat</p>
               <p className="hasil">
                 <b>
-             
-                {UserNoPolisData.namaJalanAddres1+" "+UserNoPolisData.namaJalanAddres2}
+                  {UserNoPolisData.namaJalanAddres1 +
+                    " " +
+                    UserNoPolisData.namaJalanAddres2}
                 </b>
               </p>
             </div>
@@ -419,10 +449,7 @@ export const Halaman3 = () => {
             <p>Kartu Tanda Penduduk</p>
           </div>
           <div className="UKGroup2">
-            <img
-              src={UserNoPolisData.Url}
-              alt=""
-            />
+            <img src={UserNoPolisData.Url} alt="" />
             <div className="UKButtonGroup"></div>
           </div>
         </div>
@@ -481,7 +508,7 @@ export const Halaman3 = () => {
         <MDBModal isOpen={ModalState} centered>
           <MDBModalBody>
             <div className="OtpInputWrap">
-              <h5> Masukan Kode OTP [1234]</h5>
+              <h5> Masukan Kode OTP [Klik Send By Email]</h5>
               <input
                 className="InputOTP"
                 type="number"
@@ -499,19 +526,26 @@ export const Halaman3 = () => {
               <hr />
               <div className="otpCon">
                 <p>Email Tujuan Otp : </p>
-                <p>{userEmailBefore ==="" ? "Belum Mempunyai Email " : userEmailBefore }</p>
+                <p>
+                  {userEmailBefore === ""
+                    ? "Belum Mempunyai Email "
+                    : userEmailBefore}
+                </p>
               </div>
             </div>
             <div className="btnModalGroup">
               <button onClick={OtpEmail}> Send By Email</button>
-              <button disabled onClick={OtpSMS}> Send By No Handpone</button>
+              <button disabled onClick={OtpSMS}>
+                {" "}
+                Send By No Handpone
+              </button>
             </div>
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={ModalTogller}>
               Close
             </MDBBtn>
-            <MDBBtn color="primary"  onClick={OtpValidation}>
+            <MDBBtn color="primary" onClick={OtpValidation}>
               Validation
             </MDBBtn>
           </MDBModalFooter>

@@ -166,7 +166,7 @@ export const Halaman2 = () => {
       CheckEditStatus === false
         ? NamaJalanKodePos
         : UserNoPolisData.namaJalanKodePos,
-    
+
     // data Number Hp
     InputNomorHandponePemegangPolis:
       CheckEditStatus === false
@@ -174,7 +174,7 @@ export const Halaman2 = () => {
         : UserNoPolisData.InputNomorHandponePemegangPolis,
         NomorWhatsAppPemegangPolis:
       CheckEditStatus === false ? DataNumberWhatssap : UserNoPolisData.NomorWhatsAppPemegangPolis,
-   
+
     // Select From
 
     optionsNegaraLabel:
@@ -284,14 +284,33 @@ export const Halaman2 = () => {
 
   const onDropCostum = (e) => {
     e.preventDefault();
-    SetFileUpload(e.dataTransfer.files[0]);
-    SetUrlFile(URL.createObjectURL(e.dataTransfer.files[0]));
-    SetFileName(e.dataTransfer.files[0].name);
-    SetSendAllData({
-      ...SendAllData,
-      UploadFileInput: URL.createObjectURL(e.dataTransfer.files[0]),
-    });
-    SetUploadStatus(true);
+    if (
+      e.dataTransfer.files[0].type === "image/jpeg" ||
+      e.dataTransfer.files[0].type === "image/png"
+    ) {
+      if (e.dataTransfer.files[0].size >= 2097152) {
+        alert("File Terlalu Besar Max 2Mb");
+        SetUploadStatus(false);
+        e.dataTransfer.value = null;
+      } else {
+        e.preventDefault();
+        SetFileUpload(e.dataTransfer.files[0]);
+        SetUrlFile(URL.createObjectURL(e.dataTransfer.files[0]));
+        SetFileName(e.dataTransfer.files[0].name);
+        SetSendAllData({
+          ...SendAllData,
+          UploadFileInput: URL.createObjectURL(e.dataTransfer.files[0]),
+        });
+        SetUploadStatus(true);
+      }
+    } else {
+      alert(
+        `Format { ${e.dataTransfer.files[0].type} } Tidak Di Dukung Gunakan Jpeg/Png`
+      );
+      SetUploadStatus(false);
+      e.dataTransfer.value = null;
+    }
+
   };
 
   const onDropCostum2 = (e) => {
@@ -318,13 +337,13 @@ export const Halaman2 = () => {
       } else {
         SetFileUpload(e.target.files[0]);
         console.log(e.target.files[0])
-      
+
         // localStorage.setItem('xsdfsfs', e.target.files[0]);
         // console.log(localStorage.getItem("xsdfsfs"))
         SetUrlFile(URL.createObjectURL(e.target.files[0]));
         console.log(URL.createObjectURL(e.target.files[0]));
 
- 
+
 
         SetSendAllData({
           ...SendAllData,
@@ -554,9 +573,9 @@ export const Halaman2 = () => {
                 name="NomorWhatsAppPemegangPolis"
                 onChange={handleChangeAll}
                 type="number"
-           
-                
-        
+
+
+
                 placeholder={DataNumberWhatssap}
               ></input>
             </div>

@@ -11,9 +11,9 @@ import { MainCrausel } from "./Components/MainCrausel";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { getData, GetDataPolis } from "../Redux/Action/getData";
 
-// using redux 
-import {editNoPolis} from "../Redux/Action/editData" 
-import {loginStatus} from "../Redux/Action/loginStatus" 
+// using redux
+import {editNoPolis} from "../Redux/Action/editData"
+import {loginStatus} from "../Redux/Action/loginStatus"
 
 
 
@@ -21,12 +21,17 @@ const LoginPage = (getdataAll) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.getdataAll.token);
+  const userNoBefore = useSelector(
+    (state) => state.getdataAll.userPolis
+  );
+  //undefined
+  console.log(userNoBefore )
   // ==============================================================
   // Login Paramater
   // ==============================================================
 
   const [TokenLogin, SetTokenLogin] = useState("");
-  
+
   // ChaptaF
   const [Chapta, SetChapta] = useState("");
   // Data Validator '
@@ -64,13 +69,16 @@ const LoginPage = (getdataAll) => {
       if (Chapta === "") {
         alert("masukan Chapta Terlebih Dahulu");
       }
-      if (Chapta !== "") {
+      if (Chapta !== "" && userNoBefore != undefined) {
         localStorage.LoginStatusValid = "true";
         dispatch(editNoPolis(DataPolis));
         dispatch(loginStatus(true));
         history.push("page2");
       }
-    } else {
+      if (userNoBefore === undefined) {
+        alert("Data Polis tidak di temukan ");
+      }
+    } if(DatatanggalPolis != DataTanggalInputan) {
       alert("Data Polis Dan Tanggal lahir TIDAK COCOK ");
     }
 

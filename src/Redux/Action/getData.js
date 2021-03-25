@@ -14,11 +14,11 @@ import {
 
 
 export const getData = (data) => (dispatch) => {
-  //untuk call back ngasih tau redux jalanin pernitah ini 
+  //untuk call back ngasih tau redux jalanin pernitah ini
   dispatch({
     type: GET_DATA_AWAL,
-    // tipenya 
-    // yang di lakukan 
+    // tipenya
+    // yang di lakukan
       // =================
     Loading: true,
     Error: null,
@@ -65,6 +65,8 @@ export const GetDataPolis = (data, token) => (dispatch) => {
       }
     )
     .then((response) => {
+
+
       dispatch({
         type: GET_POLIS_SUCSSES,
         payload: response.data,

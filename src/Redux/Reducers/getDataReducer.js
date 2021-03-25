@@ -23,7 +23,7 @@ const initialState = {
 export const getDataReducer = (state = initialState, action) => {
   const { type } = action;
   switch (type) {
-// fungsi yang di jalankan sesuai triger 
+// fungsi yang di jalankan sesuai triger
 
     case GET_DATA_AWAL:
       return {
